@@ -1,0 +1,369 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/*header design starts*/
+.header {
+    height: 100px;
+    width: 1268px;
+    background-color: #F2F4F6;
+    display:flex;
+    padding-top:20px;
+}
+/*Style for search Button*/
+.searchBox{
+    margin-left:800px;
+}
+.searchbar {
+    width: 100%;
+    max-width: 250px;
+    display: inline-flex;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #696969;
+    border-radius: 5px 0 0 5px;
+    background: #F4FAF9;
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+    .searchbar__input:focus {
+        background: white;
+        box-shadow: 0 0 2px #696969;
+    }
+
+    .searchbar__input::placeholder {
+        color: #696969;
+    }
+
+.searchbar__button {
+    width: 40px;
+    background: #696969;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .searchbar__button:active {
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+    }
+/*style for search button ends*/
+/* message icon style*/
+.messageBox{
+    margin-left:1070px;
+    position:absolute;
+}
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #696969;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+}
+
+
+    .icon-button:active {
+        background: #cccccc;
+    }
+
+
+.icon-button__badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.icon-button a {
+    text-decoration: none;
+    color: #333333;
+}
+/*message style ends*/
+/*admin icon style*/
+.adminBox {
+    width: 50px;
+    position: relative;
+    margin-left:50px;
+
+}
+
+.click {
+    background-color: #696969;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-style: none;
+    margin-left: 75px;
+    margin-bottom:5px;
+}
+
+
+
+.links {
+    padding: 12px;
+    font-size: 1.2em;
+    font-family: futura Md BT;
+    border: none;
+    outline: none;
+    width: 200px;
+    color: black;
+    transition: 0.3s;
+   
+  
+}
+
+.list {
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+}
+
+.newlist {
+    transform: scaleY(1);
+}
+
+.links {
+    background-color: white;
+}
+
+    .links:hover {
+        padding-left: 30px;
+    }
+
+.list button a {
+    text-decoration: none;
+    color: #696969;
+}
+/*admin icon style ends*/
+/*header design ends*/
+/*Product Box design*/
+.productBox{
+    height:150px;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+
+}
+.box1 {
+    height: 120px;
+    width: 20%;
+    background-color: #27a9e3;
+    margin-top:15px;
+    border-radius:20px;
+    display:flex;
+}
+.box2 {
+    height: 120px;
+    width: 20%;
+    background-color: #28b779;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.box3 {
+    height: 120px;
+    width: 20%;
+    background-color: #ffb848;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.box4 {
+    height: 120px;
+    width: 20%;
+    background-color: #da542e;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.forIcon span{
+    font-size:80px;
+    color:white;
+    margin-left:20px;
+    margin-top:20px;
+}
+.forCount{
+    height:60px;
+}
+.forCount p{
+    font-family: 'Advent Pro', sans-serif;
+    font-family: 'Signika Negative', sans-serif;
+    font-size:60px;
+    margin-left:40px;
+    color:white;
+  
+    
+   
+}
+.forName p {
+    font-family: 'Advent Pro', sans-serif;
+    font-family: 'Signika Negative', sans-serif;
+    font-size:20px;
+    margin-top:15px;
+    margin-left:50px;
+    color:white;
+}
+/*Product Box design ends*/
+/*Business Box starts*/
+.businessBox {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.box5 {
+    height: 120px;
+    width: 20%;
+    background-color: #e9ddb3;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.box6 {
+    height: 120px;
+    width: 20%;
+    background-color: #c150ff;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.box7 {
+    height: 120px;
+    width: 20%;
+    background-color: #79ff7a;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.box8 {
+    height: 120px;
+    width: 20%;
+    background-color: #fea28b;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+
+/*Business box ends*/
+/*Graph and Pie chart design*/
+.mainChartBox{
+    height:550px;
+    width:100%;
+    display:flex;
+}
+.graphBox {
+    height: 500px;
+    width: 58%;
+    box-shadow: 0px 0px 10px 0px #DDDEE3;
+    margin-top:25px;
+    margin-left:30px;
+    border-radius:10px;
+}
+.pieBox {
+    height: 500px;
+    width: 35%;
+    box-shadow: 0px 0px 10px 0px #DDDEE3;
+    margin-top: 25px;
+    margin-left: 25px;
+    border-radius: 10px;
+}
+    .graphBox, .pieBox p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: red;
+        font-size:20px;
+        text-align:center;
+    }
+    #myChart{
+        margin-top:30px;
+    }
+
+/*Graph and pie Chart design ends*/
+/*table design starts*/
+.forTable h2 {
+    font-family: 'Advent Pro', sans-serif;
+    font-family: 'Signika Negative', sans-serif;
+    color: black;
+    font-size: 40px;
+    text-align: center;
+}
+table {
+    margin-left:630px;
+    margin-top:140px;
+    transform: translate(-50%, -50%);
+    border-collapse: collapse;
+    width: 95%;
+    height: 200px;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+tr {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#header {
+    background-color: #16a085;
+    color: #fff;
+}
+
+h1 {
+    font-weight: 600;
+    text-align: center;
+    background-color: #16a085;
+    color: #fff;
+    padding: 10px 0px;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 768px) {
+    table {
+        width: 90%;
+    }
+}
+/*table design ends*/

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "loginPage";
+    Layout = null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/loginPage/css/loginPageCss.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
+    <title>LogIn Page</title>
+</head>
+    <body>
+        <div class="mainBody">
+            <div class="loginBox">
+                <div class="formBox">
+                    <div class="forLogo">
+                        <img src="~/Content/loginPage/image/gameland.jpg"/>
+                    </div>
+                    <div class="forLoginText">
+                        <p>Sign in to GameLand</p>
+                    </div>
+                    <div class="forerror" id="errorBox">
+                        <div class="icon" id="errorIcon">
+                            <i class="fa fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="text">
+                            <p id="errorMessage"></p>
+                        </div>
+
+
+                    </div>
+                    <div class="forForm">
+                            <label>Username</label>
+                            <br />
+                            <input type="text" name="userName" id="userName" />
+                            <br />
+                            <br />
+                            <label>Password</label>
+                            <br />
+                            <input type="password" name="password" id="password" />
+                            <br />
+                            <div class="forgetPassword">
+                                <a href="#">Forget Password?</a>
+                            </div>
+                            <br />
+                            <button >Sign In</button>
+                       
+
+                    </div>
+                    <div class="createAccount">
+                        <div style="margin-left:120px">
+                            <p style="font-size: 20px; color: #696969 ">New to GameLand?</p>
+                        </div>
+                        <div class="create1" style="margin-left:5px;">
+                            <a href="#">Create Account</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="imageBox">
+                <img src="~/Content/loginPage/image/fifa.jpg" />
+            </div>
+        </div>
+    </body>
+</html>
+
