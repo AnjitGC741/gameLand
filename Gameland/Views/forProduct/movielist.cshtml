@@ -1,0 +1,23 @@
+﻿@model List<Gameland.Models.moviesData>
+
+@foreach (var data in Model)
+{
+
+    <div class="movieBox">
+        <div class="forMovieImage">
+            <img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" alt="image" />
+        </div>
+        <div class="forMoviePrice">
+            <div class="MovieName">
+                <p>@(data.movieName)</p>
+            </div>
+            <div class="movieOriginalPrice">
+                <p>Rs<span> @(data.moviePrice)</span></p>
+            </div>
+            <div class="movieCart">
+                <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+            </div>
+        </div>
+    </div>
+   
+}

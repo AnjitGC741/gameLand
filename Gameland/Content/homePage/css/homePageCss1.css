@@ -561,6 +561,10 @@ body {
     margin-top: 10px;
     border-style: none;
 }
+.movieCart span {
+    font-size: 5px;
+    visibility: hidden;
+}
 
 .movieCart button:hover {
     background-color: black;

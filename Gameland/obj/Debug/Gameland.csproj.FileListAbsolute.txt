@@ -77,3 +77,7 @@ C:\Users\DELL\source\repos\Gameland\Gameland\obj\Debug\Gameland.csproj.CoreCompi
 C:\Users\DELL\source\repos\Gameland\Gameland\obj\Debug\Gameland.csproj.CopyComplete
 C:\Users\DELL\source\repos\Gameland\Gameland\obj\Debug\Gameland.dll
 C:\Users\DELL\source\repos\Gameland\Gameland\obj\Debug\Gameland.pdb
+C:\Users\DELL\source\repos\Gameland\Gameland\bin\EntityFramework.dll
+C:\Users\DELL\source\repos\Gameland\Gameland\bin\EntityFramework.SqlServer.dll
+C:\Users\DELL\source\repos\Gameland\Gameland\bin\EntityFramework.xml
+C:\Users\DELL\source\repos\Gameland\Gameland\bin\EntityFramework.SqlServer.xml

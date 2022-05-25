@@ -653,28 +653,13 @@
 
     @*Subscription contain ends*@
     @*Movie Contain starts*@
+
+
     <div class="movieText">
         <p>Movies</p>
     </div>
     <div class="owl-carousel owl-theme" id="movieContent">
-       
-        <div class="movieBox">
-            <div class="forMovieImage">
-                <img src="~/Content/homePage/image/movies/ForrestGump.jpg" alt="image" />
-            </div>
-            <div class="forMoviePrice">
-                <div class="movieName">
-                    <p>Forest Gump</p>
-                </div>
-                <div class="movieOriginalPrice">
-                    <p>Rs 2000</p>
-                </div>
-                <div class="movieCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white;"></i></button>
-                </div>
-            </div>
-        </div>
-        
+        @{ Html.RenderAction("movielist", "forProduct");}
 
     </div>
     @*Movie Contain Ends*@

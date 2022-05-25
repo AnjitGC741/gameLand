@@ -1,0 +1,311 @@
+﻿@model List<Gameland.Models.moviesData>
+@{
+    ViewBag.Title = "dashboardPage";
+    Layout = null;
+
+
+}
+<html>
+<head>
+    <title>Movies Table</title>
+    @*Css*@
+    <link rel="stylesheet" href="~/Content/AdminPannel/adminTables/movieTableCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
+    @*Font awesome*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*font family*@
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .mainBox {
+            width: 100%;
+            display: flex;
+        }
+
+        .pageContent {
+            width: 1270px;
+            height: 800px;
+        }
+
+        .dummyBox {
+            width: 250px;
+            height: 780px;
+        }
+
+        .editMovieBox {
+            height: 500px;
+            width: 30%;
+            background-color: #F2F4F6;
+            position: absolute;
+            margin-top: 150px;
+            margin-left: 400px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainBox">
+        <div class="dummyBox">
+
+        </div>
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h2 style="background-color: #696969; color:white; margin-bottom:60px; margin-top:30px">GameLand</h2>
+                <ul class="list-unstyled components mb-5">
+
+
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Table</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">User</a>
+                            </li>
+                            <li>
+                                <a href="#">Movies</a>
+                            </li>
+                            <li>
+                                <a href="#">Games</a>
+                            </li>
+                            <li>
+                                <a href="#">Subscription</a>
+                            </li>
+                            <li>
+                                <a href="#">Series</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Calender</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="mb-5">
+                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <form action="#" class="colorlib-subscribe-form">
+                        <div class="form-group d-flex">
+                            <div class="icon"><span class="icon-paper-plane"></span></div>
+                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="footer">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+
+            </div>
+        </nav>@*navbar content ends*@
+        <div class="pageContent">
+
+            @*Header part start*@
+            @*Form Box*@
+            <div class="addMovieBox" id="addMovieBox">
+                <button onclick="hide();"><i class="fa fa-close">Close</i></button>
+                <div class="addMovieForm">
+                    @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                    {
+                        <label> Movie Name</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
+
+                        <label>Price</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
+
+                        <label>Type</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
+
+                        <label>Type</label>
+
+                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
+
+                        <label> choose Image</label>
+
+                        <input type="file" value="Choose a Image" name="SelectedImg">
+
+
+                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+
+
+                    }
+                </div>
+
+            </div>
+
+            <div class="editMovieBox" id="editMovieBox">
+                <button onclick="hideEditBox();"><i class="fa fa-close">close</i></button>
+
+                <div class="addMovieForm">
+                    <form action="saveData">
+                        <label> Movie Name</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
+
+                        <label>Price</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
+
+                        <label>Type</label>
+
+                        <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
+
+                        <label>Type</label>
+
+                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
+
+                        <label> choose Image</label>
+
+                        <input type="file" value="Choose a Image" name="SelectedImg">
+
+
+                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+
+
+
+                    </form>
+                </div>
+
+            </div>
+
+
+            @*Form Box ends*@
+            <div class="header">
+                <div class="searchBox">
+                    <form action="#" method="get">
+                        <div class="searchbar">
+                            <input type="text" class="searchbar__input" name="q" placeholder="Search...">
+                            <button type="submit" class="searchbar__button">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="messageBox">
+                    <button type="button" class="icon-button">
+                        <a href="#">
+                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                            <span class="icon-button__badge">2</span>
+                        </a>
+                    </button>
+                </div>
+                <div class="adminBox">
+                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
+
+                    <div class="list">
+
+                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
+
+                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+
+                    </div>
+                    <script>
+
+                        let click = document.querySelector('.click');
+
+                        let list = document.querySelector('.list');
+
+                        click.addEventListener("click", () => {
+
+                            list.classList.toggle('newlist');
+
+                        });
+                    </script>
+                </div>
+            </div>
+            @*header part ends*@
+            @*recent Purchase table starts*@
+            <div class="forTable">
+                <h1>Movies</h1>
+                <table class="table" border="1">
+                    <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
+                    <tr>
+                        <th rowspan="2" class="rowSpan">Movie Name</th>
+                        <th rowspan="2">Price</th>
+                        <th rowspan="2">Type</th>
+                        <th rowspan="2">Product Type</th>
+                        <th rowspan="2">Image</th>
+                        <th rowspan="2">Downloads</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    <tr>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td>@(data.movieName)</td>
+                            <td>@(data.moviePrice)</td>
+                            <td>@(data.movieType)</td>
+                            <td>@(data.productType)</td>
+                            <td><img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" height="100" width="50" /></td>
+                            <td>@(data.downloads)</td>
+                            <td><button onclick="showEdit();"><a href="@Url.Action("Edit", new {name=data.movieName})"><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                            <td><button><a href="@Url.Action("Delete", new {name=data.movieName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            @*recent purchase table ends*@
+
+
+        </div>@*pageContent*@
+
+    </div>@*mainBox ends*@
+    <script>
+        function show() {
+            document.getElementById("addMovieBox").style.visibility = "visible";
+        }
+        function showEdit() {
+            document.getElementById("editMovieBox").style.visibility = "visible";
+        }
+        function hide() {
+            document.getElementById("addMovieBox").style.visibility = "hidden";
+        }
+        function hideEditBox() {
+            document.getElementById("editMovieBox").style.visibility = "hidden";
+        }
+
+    </script>
+    <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/bootstrap.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/main.js"></script>
+</body>
+</html>
