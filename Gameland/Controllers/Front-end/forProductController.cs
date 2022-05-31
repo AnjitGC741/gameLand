@@ -9,15 +9,12 @@ namespace Gameland.Controllers
 {
     public class forProductController : Controller
     {
-        forGameLandEntities db = new forGameLandEntities();
+        forGameLandEntities1 db = new forGameLandEntities1();
         // GET: forProduct
-        public ActionResult gamesPage()
-        {
-            return View();
-        }
         public ActionResult moviePage()
         {
-            return View();
+            List<moviesData> all_data = db.moviesDatas.ToList();
+            return PartialView(all_data);
         }
         public ActionResult seriesPage()
         {
@@ -30,7 +27,19 @@ namespace Gameland.Controllers
         public ActionResult movielist()
         {
             List<moviesData> all_data = db.moviesDatas.ToList();
+            Session["totalMovies"] = db.moviesDatas.Count();
             return PartialView(all_data);
         }
+        public ActionResult Search(string name1)
+        {
+            var data1 = db.moviesDatas.Where(x => x.movieName == name1).ToList();
+            return View("moviePage", data1);
+        }
+        public ActionResult Sort(string name2)
+        {
+            var data1 = db.moviesDatas.Where(x => x.movieType == name2).ToList();
+            return View("moviePage", data1);
+        }
+
     }
 }

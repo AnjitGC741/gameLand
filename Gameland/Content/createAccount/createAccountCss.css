@@ -1,0 +1,178 @@
+﻿*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.fixedBox {
+    height: 650px;
+    width:35%;
+    position:fixed;
+    margin-top:60px;
+    margin-left:194px;
+    visibility:visible;
+
+}
+.fixedBox img {
+    width: 100%;
+    height: 650px;
+}
+.mainbox{
+    height:700px;
+    width:100%;
+    display:flex;
+    padding-top:60px;
+    padding-left:300px;
+}
+.forImg
+{
+    width:35%;
+    height:600px;
+    visibility:hidden;
+  
+
+}
+    .forImg img {
+        width: 100%;
+        height: 650px;
+    }
+.createAccountBox {
+    width: 35%;
+    height: 650px;
+    margin-left:10px; 
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0 #696969;
+}
+.createAccountBox h2{
+    font-size:32px;
+    margin-left:10px;
+    margin-top:10px;
+
+}
+    .createAccountBox p {
+        font-size: 18px;
+        margin-left: 13px;
+        margin-bottom: 5px;
+        color: #696969;
+    }
+
+.forerror {
+    margin-top:5px;
+    height: 45px;
+    width: 80%;
+    background-color: #FFE0DD;
+    margin-left: 50px;
+    border-radius: 10px;
+    padding-top: 10px;
+    display: flex;
+    border: 1px solid #D84943;
+    visibility: hidden;
+}
+
+
+.icon {
+    margin-left: 50px;
+    font-size: 20px;
+    color: #D84943;
+    visibility: hidden;
+}
+
+.text p {
+    margin-left: 10px;
+    color: #D84943;
+    font-size: 18px;
+    margin-top:1px;
+}
+.formBox{
+    height:470px;
+    width:90%;
+    margin-left:20px;
+    padding-top:5px;
+}
+#userName, #country,#email,#password{
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border-style: none;
+    border: 1px solid #696969;
+    font-size: 20px;
+    padding-left: 5px;
+    margin-top: 3px;
+    margin-bottom:10px;
+}
+.forGender {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+.male {
+    height: 40px;
+    width: 40%;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    display: flex;
+}
+.male p{
+    font-size:20px;
+    margin-top:8px;
+    color:black;
+}
+.male1 {
+    height: 20px;
+    width: 20px;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+.female1{
+  height:20px;
+  width:20px;
+  margin-left:48px;
+  margin-top:10px;
+}
+.female {
+    height: 40px;
+    width: 40%;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    display: flex;
+    margin-left:20px;
+}
+
+    .female p {
+        font-size: 20px;
+        margin-top: 8px;
+        color:black;
+    }
+#userName, #country,#email,#password, placeholder {
+    color: #696969;
+    font-size:15px;
+}
+.sample {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border-style: none;
+    border: 1px solid #696969;
+    font-size: 20px;
+    padding-left: 5px;
+    margin-top: 3px;
+    margin-bottom:10px;
+}
+button {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    font-size: 23px;
+    background-color: #956E22;
+    color:white;
+    border-style:none;
+    border-radius:10px;
+}
+.sample, placeholder {
+    color: #696969;
+    font-size: 15px;
+}

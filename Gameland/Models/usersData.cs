@@ -18,6 +18,8 @@ namespace Gameland.Models
         public usersData()
         {
             this.messageBoxDatas = new HashSet<messageBoxData>();
+            this.cartDatas = new HashSet<cartData>();
+            this.recentlyPurchaseProducts = new HashSet<recentlyPurchaseProduct>();
         }
     
         public string userName { get; set; }
@@ -25,8 +27,13 @@ namespace Gameland.Models
         public string gender { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string userImg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<messageBoxData> messageBoxDatas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cartData> cartDatas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<recentlyPurchaseProduct> recentlyPurchaseProducts { get; set; }
     }
 }

@@ -14,18 +14,10 @@ namespace Gameland.Models
     
     public partial class subscriptionsData
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public subscriptionsData()
-        {
-            this.specialOfferDatas = new HashSet<specialOfferData>();
-        }
-    
         public string subscriptionName { get; set; }
         public Nullable<int> subscriptionPrice { get; set; }
         public string productType { get; set; }
+        public string subscriptionImg { get; set; }
         public Nullable<int> downloads { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<specialOfferData> specialOfferDatas { get; set; }
     }
 }

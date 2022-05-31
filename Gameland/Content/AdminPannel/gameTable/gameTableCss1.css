@@ -190,65 +190,75 @@ tr:nth-child(even) {
 
 /*table design ends*/
 /*Form Box*/
-.addMovieBox {
-    height: 500px;
+.addGameBox {
+    height: 560px;
     width: 30%;
     background-color: #F2F4F6;
-    position: absolute;
-    margin-top: 150px;
+    position: fixed;
+    margin-top: 100px;
     margin-left: 400px;
     visibility:hidden;
     
 }
-    .editMovieBox button {
+.editGameBox1 {
+    height: 560px;
+    width: 30%;
+    background-color: #F2F4F6;
+    position: fixed;
+    margin-top: 100px;
+    margin-left: 400px;
+    visibility: hidden;
+}
+.editGameBox1 button {
+    margin-left: 406px;
+    border-style: none;
+    background-color: #F2F4F6;
+    width: 50px;
+}
+
+.editGameBox1 button i {
+        color: red;
+        font-size: 40px;
+ }
+
+    .editGameBox1 button:hover {
+        background-color: red;
+
+    }
+
+        .editGameBox1 button:hover i {
+            color: white;
+        }
+
+
+    .addGameBox button {
         margin-left: 406px;
         border-style: none;
         background-color: #F2F4F6;
         width: 50px;
     }
 
-        .editMovieBox button i {
+        .addGameBox button i {
             color: red;
             font-size: 40px;
         }
 
-        .editMovieBox button:hover {
+        .addGameBox button:hover {
             background-color: red;
         }
 
-            .MovieBox button:hover i {
+            .addGameBox button:hover i {
                 color: white;
             }
 
-
-    .addMovieBox button {
-        margin-left: 406px;
-        border-style: none;
-        background-color: #F2F4F6;
-        width: 50px;
-    }
-
-        .addMovieBox button i {
-            color: red;
-            font-size: 40px;
-        }
-
-        .addMovieBox button:hover {
-            background-color: red;
-        }
-
-            .addMovieBox button:hover i {
-                color: white;
-            }
-
-.addMovieForm {
+.addGameForm {
     height: 420px;
     width: 85%;
     margin-left: 7.5%;
     padding-top: 10px;
 }
 
-    .addMovieForm label {
+    .addGameForm label {
         font-size: 18px;
         color:black;
         margin-bottom: 0;

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Gameland.Models.moviesData>
 @{
     ViewBag.Title = "moviePage";
     Layout = null;
@@ -49,91 +49,73 @@
     </div>
     @*navbar design ends*@
     @*movies name and search button starts*@
-<div class="movieNameAndSearch">
-    <div class="movieText">
-        <p>Movies</p>
+    <div class="movieNameAndSearch">
+        <div class="movieText">
+            <p>Movies</p>
+        </div>
+        <div class="searchButton">
+            @using (Html.BeginForm("Search", "forProduct", FormMethod.Post))
+            {
+                <div class="searchbar">
+                    <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
+                    <button type="submit" class="searchbar__button">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            }
+        </div>
     </div>
-    <div class="searchButton">
-    <form action="#" method="get">
-        <div class="searchbar">
-            <input type="text" class="searchbar__input" name="q" placeholder="Search Movies">
-            <button type="submit" class="searchbar__button">
-                <i class="material-icons">search</i>
-            </button>
-        </div>
-    </form>
-        </div>
-</div>
 
     @*movies name and search button ends*@
     @*Total product content starts*@
     <div class="mainDiv">
         <div class="totalMovies">
-            <p>20<span>movies</span></p>
+            <p>@Model.Count()<span>movies</span></p>
         </div>
-        <div class="categories">
-            <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; ">Categories<i class="fa fa-angle-down" style="margin-left:10px;"></i></button>
 
-            <div class="list">
-
-                <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Action</button>
-
-                <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Horror</button>
-
-                <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Comedy</button>
-
-                <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Animated</button>
-
-
-
+        <div class="forCategories">
+            @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
+            {
+            <div class="searchbar">
+                <select name="name2" id="name2">
+                    <option>Categories</option>
+                    <option value="Animated">Animated</option>
+                    <option value="War">War</option>
+                    <option value="Crime">Crime</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                </select>
+                <button type="submit" class="searchbar__button">
+                    <i class="material-icons">autorenew</i>
+                </button>
             </div>
-
+            }
         </div>
-        <div class="sortBy1">
-            <button class="click1" style="color: #696969; font-family:'Poppins', sans-serif; ">Sort By<i class="fa fa-angle-down" style="margin-left:10px;"></i></button>
-
-            <div class="list1">
-
-                <button class="links1" style="color: #696969; font-family:'Poppins', sans-serif;">Name</button>
-
-                <button class="links1" style="color: #696969; font-family:'Poppins', sans-serif;">Price</button>
-
-                <button class="links1" style="color: #696969; font-family:'Poppins', sans-serif;">Best Selling</button>
-
-
-
-            </div>
-
-        </div>
-
-        <script>
-
-            let click = document.querySelector('.click');
-
-            let list = document.querySelector('.list');
-
-            click.addEventListener("click", () => {
-
-                list.classList.toggle('newlist');
-
-            });
-            let click1 = document.querySelector('.click1');
-
-            let list1 = document.querySelector('.list1');
-
-            click1.addEventListener("click", () => {
-
-                list1.classList.toggle('newlist1');
-
-            });
-        </script>
-
     </div>
     @*Total poduct content ends*@
     @*movie content starts*@
-<div class="movieContent">
-    @{ Html.RenderAction("movielist", "forProduct");}
-</div>@*movie content end div*@
+    <div class="movieContent">
+        @foreach (var data in Model)
+        {
+
+            <div class="movieBox">
+                <div class="forMovieImage">
+                    <img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" alt="image" />
+                </div>
+                <div class="forMoviePrice">
+                    <div class="MovieName">
+                        <p>@(data.movieName)</p>
+                    </div>
+                    <div class="movieOriginalPrice">
+                        <p>Rs<span> @(data.moviePrice)</span></p>
+                    </div>
+                    <div class="movieCart">
+                        <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>@*movie content end div*@
     @*movie content ends*@
     @*Footer Contain start*@
     <footer class="footer11">

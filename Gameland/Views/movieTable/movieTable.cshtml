@@ -9,7 +9,7 @@
 <head>
     <title>Movies Table</title>
     @*Css*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/adminTables/movieTableCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/movieTables/movieTableCss1.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -128,178 +128,194 @@
 
             </div>
         </nav>@*navbar content ends*@
-        <div class="pageContent">
+    <div class="pageContent">
 
-            @*Header part start*@
-            @*Form Box*@
-            <div class="addMovieBox" id="addMovieBox">
-                <button onclick="hide();"><i class="fa fa-close">Close</i></button>
-                <div class="addMovieForm">
-                    @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
-                    {
-                        <label> Movie Name</label>
+        @*Header part start*@
+        @*Form Box*@
+        <div class="addMovieBox" id="addMovieBox">
+            <button onclick="hide();"><i class="fa fa-close"></i></button>
+            <div class="addMovieForm">
+                @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                {
+                    <label> Movie Name</label>
 
-                        <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
+                    <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
 
-                        <label>Price</label>
+                    <label>Price</label>
 
-                        <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
+                    <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
 
-                        <label>Type</label>
+                    <label>Type</label>
 
-                        <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
+                    <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
 
-                        <label>Type</label>
+                    <label>Type</label>
 
-                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
+                    <input type="text" class="forForm" placeholder="Product Categories" name="productType">
 
-                        <label> choose Image</label>
+                    <label> choose Image</label>
 
-                        <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+                    <input type="file" value="Choose a Image" name="SelectedImg">
 
 
-                    }
-                </div>
+                    <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
 
+
+                }
             </div>
 
-            <div class="editMovieBox" id="editMovieBox">
-                <button onclick="hideEditBox();"><i class="fa fa-close">close</i></button>
-
-                <div class="addMovieForm">
-                    <form action="saveData">
-                        <label> Movie Name</label>
-
-                        <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
-
-                        <label>Price</label>
-
-                        <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
-
-                        <label>Type</label>
-
-                        <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
-
-                        <label>Type</label>
-
-                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
-
-                        <label> choose Image</label>
-
-                        <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+        </div>
 
 
 
-                    </form>
-                </div>
 
-            </div>
+        @*Form Box ends*@
+        <div class="header">
+            <div class="searchBox">
 
-
-            @*Form Box ends*@
-            <div class="header">
-                <div class="searchBox">
-                    <form action="#" method="get">
-                        <div class="searchbar">
-                            <input type="text" class="searchbar__input" name="q" placeholder="Search...">
-                            <button type="submit" class="searchbar__button">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="messageBox">
-                    <button type="button" class="icon-button">
-                        <a href="#">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                            <span class="icon-button__badge">2</span>
-                        </a>
-                    </button>
-                </div>
-                <div class="adminBox">
-                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
-
-                    <div class="list">
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
-
+                @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
+                {
+                    <div class="searchbar">
+                        <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
+                        <button type="submit" class="searchbar__button">
+                            <i class="material-icons">search</i>
+                        </button>
                     </div>
-                    <script>
+                }
 
-                        let click = document.querySelector('.click');
+            </div>
+            <div class="messageBox">
+                <button type="button" class="icon-button">
+                    <a href="#">
+                        <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                        <span class="icon-button__badge">2</span>
+                    </a>
+                </button>
+            </div>
+            <div class="adminBox">
+                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
 
-                        let list = document.querySelector('.list');
+                <div class="list">
 
-                        click.addEventListener("click", () => {
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
 
-                            list.classList.toggle('newlist');
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
 
-                        });
-                    </script>
+                </div>
+                <script>
+
+                    let click = document.querySelector('.click');
+
+                    let list = document.querySelector('.list');
+
+                    click.addEventListener("click", () => {
+
+                        list.classList.toggle('newlist');
+
+                    });
+                </script>
+            </div>
+        </div>
+        @*header part ends*@
+
+        @foreach (var data in Model)
+        {
+            <div class="editMovieBox1" id="editMovieBox_@data.movieName">
+                <button id="editMovieBox_@data.movieName" onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
+                <div class="addMovieForm">
+
+                    @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                    {
+                        <form action="saveData">
+                            <label> Movie Name</label>
+
+                            <input type="text" class="forForm" placeholder="Movie Name" name="movieName" value="@data.movieName" />
+
+                            <label>Price</label>
+
+                            <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice" Value="@data.moviePrice" />
+
+                            <label>Type</label>
+
+                            <input type="text" class="forForm" placeholder="Movie Type" name="movieType" value="@data.movieType"/>
+
+                            <label>Type</label>
+
+                            <input type="text" class="forForm" placeholder="Product Categories" name="productType" value="@data.productType">
+
+                            <label> choose Image</label>
+
+                            <input type="file" value="Choose a Image" name="SelectedImg">
+
+
+                            <input type="submit" value="Update" class="btn btn-warning" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+
+                        </form>
+                    }
+
                 </div>
             </div>
-            @*header part ends*@
-            @*recent Purchase table starts*@
-            <div class="forTable">
-                <h1>Movies</h1>
-                <table class="table" border="1">
-                    <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
+        }
+
+
+        @*recent Purchase table starts*@
+        <div class="forTable">
+            <p>@Model.Count()</p>
+            <h1>Movies</h1>
+            <table class="table" border="1">
+                <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
+                <tr>
+                    <th rowspan="2" class="rowSpan">Movie Name</th>
+                    <th rowspan="2">Price</th>
+                    <th rowspan="2">Type</th>
+                    <th rowspan="2">Product Type</th>
+                    <th rowspan="2">Image</th>
+                    <th rowspan="2">Downloads</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <tr>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                @foreach (var data in Model)
+                {
                     <tr>
-                        <th rowspan="2" class="rowSpan">Movie Name</th>
-                        <th rowspan="2">Price</th>
-                        <th rowspan="2">Type</th>
-                        <th rowspan="2">Product Type</th>
-                        <th rowspan="2">Image</th>
-                        <th rowspan="2">Downloads</th>
-                        <th colspan="2">Action</th>
+                        <td>@(data.movieName)</td>
+                        <td>@(data.moviePrice)</td>
+                        <td>@(data.movieType)</td>
+                        <td>@(data.productType)</td>
+                        <td><img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" height="100" width="50" /></td>
+                        <td>@(data.downloads)</td>
+                        <td><button id="@data.movieName" onclick="showEditBox(this.id);"><a @*href="@Url.Action("Edit", new {name=data.movieName})"*@><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                        <td><button><a href="@Url.Action("Delete", new {name=data.movieName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+
                     </tr>
-                    <tr>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    @foreach (var data in Model)
-                    {
-                        <tr>
-                            <td>@(data.movieName)</td>
-                            <td>@(data.moviePrice)</td>
-                            <td>@(data.movieType)</td>
-                            <td>@(data.productType)</td>
-                            <td><img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" height="100" width="50" /></td>
-                            <td>@(data.downloads)</td>
-                            <td><button onclick="showEdit();"><a href="@Url.Action("Edit", new {name=data.movieName})"><i class="material-icons" style="color:green;">edit</i></a></button></td>
-                            <td><button><a href="@Url.Action("Delete", new {name=data.movieName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
-
-                        </tr>
-                    }
-                </table>
-            </div>
-
-            @*recent purchase table ends*@
 
 
-        </div>@*pageContent*@
+                }
+            </table>
+        </div>
+
+        @*recent purchase table ends*@
+
+
+    </div>@*pageContent*@
 
     </div>@*mainBox ends*@
     <script>
         function show() {
             document.getElementById("addMovieBox").style.visibility = "visible";
         }
-        function showEdit() {
-            document.getElementById("editMovieBox").style.visibility = "visible";
-        }
+        
         function hide() {
             document.getElementById("addMovieBox").style.visibility = "hidden";
         }
-        function hideEditBox() {
-            document.getElementById("editMovieBox").style.visibility = "hidden";
+        function showEditBox(id)
+            {
+            document.getElementById("editMovieBox_"+id).style.visibility = "visible";
+        }
+        function hideEditBox(id) {
+            document.getElementById(id).style.visibility = "hidden";
         }
 
     </script>

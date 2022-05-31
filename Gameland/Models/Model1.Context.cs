@@ -13,10 +13,10 @@ namespace Gameland.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class forGameLandEntities : DbContext
+    public partial class forGameLandEntities1 : DbContext
     {
-        public forGameLandEntities()
-            : base("name=forGameLandEntities")
+        public forGameLandEntities1()
+            : base("name=forGameLandEntities1")
         {
         }
     
@@ -26,12 +26,14 @@ namespace Gameland.Models
         }
     
         public virtual DbSet<adminData> adminDatas { get; set; }
-        public virtual DbSet<gamesData> gamesDatas { get; set; }
         public virtual DbSet<messageBoxData> messageBoxDatas { get; set; }
         public virtual DbSet<moviesData> moviesDatas { get; set; }
-        public virtual DbSet<seriesData> seriesDatas { get; set; }
-        public virtual DbSet<specialOfferData> specialOfferDatas { get; set; }
-        public virtual DbSet<subscriptionsData> subscriptionsDatas { get; set; }
         public virtual DbSet<usersData> usersDatas { get; set; }
+        public virtual DbSet<specialOfferData1> specialOfferData1 { get; set; }
+        public virtual DbSet<gamesData> gamesDatas { get; set; }
+        public virtual DbSet<seriesData> seriesDatas { get; set; }
+        public virtual DbSet<subscriptionsData> subscriptionsDatas { get; set; }
+        public virtual DbSet<cartData> cartDatas { get; set; }
+        public virtual DbSet<recentlyPurchaseProduct> recentlyPurchaseProducts { get; set; }
     }
 }

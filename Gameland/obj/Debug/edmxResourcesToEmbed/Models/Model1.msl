@@ -1,22 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="forGameLandModelStoreContainer" CdmEntityContainer="forGameLandEntities">
+  <EntityContainerMapping StorageEntityContainer="forGameLandModelStoreContainer" CdmEntityContainer="forGameLandEntities1">
     <EntitySetMapping Name="adminDatas">
       <EntityTypeMapping TypeName="forGameLandModel.adminData">
         <MappingFragment StoreEntitySet="adminData">
           <ScalarProperty Name="adminId" ColumnName="adminId" />
           <ScalarProperty Name="password" ColumnName="password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="gamesDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.gamesData">
-        <MappingFragment StoreEntitySet="gamesData">
-          <ScalarProperty Name="gameName" ColumnName="gameName" />
-          <ScalarProperty Name="gamePrice" ColumnName="gamePrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
-          <ScalarProperty Name="gameType" ColumnName="gameType" />
-          <ScalarProperty Name="downloads" ColumnName="downloads" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -43,50 +32,85 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="seriesDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.seriesData">
-        <MappingFragment StoreEntitySet="seriesData">
-          <ScalarProperty Name="seriesName" ColumnName="seriesName" />
-          <ScalarProperty Name="seriesPrice" ColumnName="seriesPrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
-          <ScalarProperty Name="seriesType" ColumnName="seriesType" />
-          <ScalarProperty Name="downloads" ColumnName="downloads" />
+    <EntitySetMapping Name="usersDatas">
+      <EntityTypeMapping TypeName="forGameLandModel.usersData">
+        <MappingFragment StoreEntitySet="usersData">
+          <ScalarProperty Name="userImg" ColumnName="userImg" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="specialOfferDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
-        <MappingFragment StoreEntitySet="specialOfferData">
-          <ScalarProperty Name="offerId" ColumnName="offerId" />
-          <ScalarProperty Name="movieName" ColumnName="movieName" />
-          <ScalarProperty Name="gameName" ColumnName="gameName" />
-          <ScalarProperty Name="seriesName" ColumnName="seriesName" />
-          <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
-          <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-          <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
+    <EntitySetMapping Name="specialOfferData1">
+      <EntityTypeMapping TypeName="forGameLandModel.specialOfferData1">
+        <MappingFragment StoreEntitySet="specialOfferData1">
           <ScalarProperty Name="offerImg" ColumnName="offerImg" />
+          <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
+          <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="productCategories" ColumnName="productCategories" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gamesDatas">
+      <EntityTypeMapping TypeName="forGameLandModel.gamesData">
+        <MappingFragment StoreEntitySet="gamesData">
+          <ScalarProperty Name="downloads" ColumnName="downloads" />
+          <ScalarProperty Name="gamesImg" ColumnName="gamesImg" />
+          <ScalarProperty Name="gameType" ColumnName="gameType" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="gamePrice" ColumnName="gamePrice" />
+          <ScalarProperty Name="gameName" ColumnName="gameName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seriesDatas">
+      <EntityTypeMapping TypeName="forGameLandModel.seriesData">
+        <MappingFragment StoreEntitySet="seriesData">
+          <ScalarProperty Name="downloads" ColumnName="downloads" />
+          <ScalarProperty Name="seriesImg" ColumnName="seriesImg" />
+          <ScalarProperty Name="seriesType" ColumnName="seriesType" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="seriesPrice" ColumnName="seriesPrice" />
+          <ScalarProperty Name="seriesName" ColumnName="seriesName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="subscriptionsDatas">
       <EntityTypeMapping TypeName="forGameLandModel.subscriptionsData">
         <MappingFragment StoreEntitySet="subscriptionsData">
-          <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
-          <ScalarProperty Name="subscriptionPrice" ColumnName="subscriptionPrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
           <ScalarProperty Name="downloads" ColumnName="downloads" />
+          <ScalarProperty Name="subscriptionImg" ColumnName="subscriptionImg" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="subscriptionPrice" ColumnName="subscriptionPrice" />
+          <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="usersDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.usersData">
-        <MappingFragment StoreEntitySet="usersData">
+    <EntitySetMapping Name="cartDatas">
+      <EntityTypeMapping TypeName="forGameLandModel.cartData">
+        <MappingFragment StoreEntitySet="cartData">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="productImg" ColumnName="productImg" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="userName" ColumnName="userName" />
-          <ScalarProperty Name="country" ColumnName="country" />
-          <ScalarProperty Name="gender" ColumnName="gender" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recentlyPurchaseProducts">
+      <EntityTypeMapping TypeName="forGameLandModel.recentlyPurchaseProduct">
+        <MappingFragment StoreEntitySet="recentlyPurchaseProduct">
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+          <ScalarProperty Name="purchaseImg" ColumnName="purchaseImg" />
+          <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

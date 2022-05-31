@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Gameland.Models.recentlyPurchaseProduct>
 @{
     ViewBag.Title = "dashboardPage";
     Layout = null;
@@ -33,13 +33,13 @@
 
         .pageContent {
             width: 1270px;
-            margin-left:0;
+            margin-left: 0;
         }
 
         .dummyBox {
             width: 250px;
             height: 780px;
-            background-color:red;
+            background-color: red;
         }
     </style>
 </head>
@@ -122,316 +122,302 @@
 
             </div>
         </nav>@*navbar content ends*@
-    <div class="pageContent">
-        @*Header Part*@
-        <div class="header">
-            <div class="searchBox">
-                <form action="#" method="get">
-                    <div class="searchbar">
-                        <input type="text" class="searchbar__input" name="q" placeholder="Search...">
-                        <button type="submit" class="searchbar__button">
-                            <i class="material-icons">search</i>
-                        </button>
+        <div class="pageContent">
+            @*Header Part*@
+            <div class="header">
+                <div class="searchBox">
+                    <form action="#" method="get">
+                        <div class="searchbar">
+                            <input type="text" class="searchbar__input" name="q" placeholder="Search...">
+                            <button type="submit" class="searchbar__button">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="messageBox">
+                    <button type="button" class="icon-button">
+                        <a href="#">
+                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                            <span class="icon-button__badge">2</span>
+                        </a>
+                    </button>
+                </div>
+                <div class="adminBox">
+                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
+
+                    <div class="list">
+
+                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
+
+                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+
                     </div>
-                </form>
+                    <script>
+
+                        let click = document.querySelector('.click');
+
+                        let list = document.querySelector('.list');
+
+                        click.addEventListener("click", () => {
+
+                            list.classList.toggle('newlist');
+
+                        });
+                    </script>
+                </div>
             </div>
-            <div class="messageBox">
-                <button type="button" class="icon-button">
-                    <a href="#">
-                        <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                        <span class="icon-button__badge">2</span>
-                    </a>
-                </button>
+            @*header part ends*@
+            @*Product Count starts*@
+            <div class="productBox">
+                <div class="box1">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            sports_esports
+                        </span>
+                    </div>
+
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p>Games</p>
+                        </div>
+                    </div>
+                </div>@*box 1 ends*@
+                <div class="box2">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            movie
+                        </span>
+                    </div>
+
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p>Movies</p>
+                        </div>
+                    </div>
+                </div>@*box 2 ends*@
+                <div class="box3">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            subscriptions
+                        </span>
+
+                    </div>
+
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p style="margin-left: 20px;"> Subscription</p>
+                        </div>
+                    </div>
+                </div>@*box 3 ends*@
+                <div class="box4">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            theaters
+                        </span>
+                    </div>
+
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p>Series</p>
+                        </div>
+                    </div>
+                </div>@*box 4 ends*@
             </div>
-            <div class="adminBox">
-                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
+            @*Product count ends*@
+            @*Business Details starts*@
+            <div class="businessBox">
+                <div class="box5">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            shopping_cart
+                        </span>
+                    </div>
 
-                <div class="list">
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>50</p>
+                        </div>
+                        <div class="forName">
+                            <p>Sales</p>
+                        </div>
+                    </div>
+                </div>@*box 1 ends*@
+                <div class="box6">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            paid
+                        </span>
+                    </div>
 
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p>Earning</p>
+                        </div>
+                    </div>
+                </div>@*box 2 ends*@
+                <div class="box7">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            people_alt
+                        </span>
 
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+                    </div>
 
-                </div>
-                <script>
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </div>@*box 3 ends*@
+                <div class="box8">
+                    <div class="forIcon">
+                        <span class="material-icons">
+                            notifications
+                        </span>
+                    </div>
 
-                    let click = document.querySelector('.click');
-
-                    let list = document.querySelector('.list');
-
-                    click.addEventListener("click", () => {
-
-                        list.classList.toggle('newlist');
-
-                    });
-                </script>
+                    <div class="forText">
+                        <div class="forCount">
+                            <p>40</p>
+                        </div>
+                        <div class="forName">
+                            <p style="margin-left: 20px;">Notifitcations</p>
+                        </div>
+                    </div>
+                </div>@*box 4 ends*@
             </div>
-        </div>
-        @*header part ends*@
-        @*Product Count starts*@
-        <div class="productBox">
-            <div class="box1">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        sports_esports
-                    </span>
+            @*Businesss Details ends*@
+            @*Graph and Pie Chart starts*@
+            <div class="mainChartBox">
+                <div class="graphBox">
+                    <p>Sales Per Month</p>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="pieBox">
+                    <p>Sales</p>
+                    <canvas id="myPie"></canvas>
                 </div>
 
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p>Games</p>
-                    </div>
-                </div>
-            </div>@*box 1 ends*@
-            <div class="box2">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        movie
-                    </span>
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p>Movies</p>
-                    </div>
-                </div>
-            </div>@*box 2 ends*@
-            <div class="box3">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        subscriptions
-                    </span>
-
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p style="margin-left: 20px;"> Subscription</p>
-                    </div>
-                </div>
-            </div>@*box 3 ends*@
-            <div class="box4">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        theaters
-                    </span>
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p>Series</p>
-                    </div>
-                </div>
-            </div>@*box 4 ends*@
-        </div>
-        @*Product count ends*@
-        @*Business Details starts*@
-        <div class="businessBox">
-            <div class="box5">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        shopping_cart
-                    </span>
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>50</p>
-                    </div>
-                    <div class="forName">
-                        <p>Sales</p>
-                    </div>
-                </div>
-            </div>@*box 1 ends*@
-            <div class="box6">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        paid
-                    </span>
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p>Earning</p>
-                    </div>
-                </div>
-            </div>@*box 2 ends*@
-            <div class="box7">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        people_alt
-                    </span>
-
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p>Users</p>
-                    </div>
-                </div>
-            </div>@*box 3 ends*@
-            <div class="box8">
-                <div class="forIcon">
-                    <span class="material-icons">
-                        notifications
-                    </span>
-                </div>
-
-                <div class="forText">
-                    <div class="forCount">
-                        <p>40</p>
-                    </div>
-                    <div class="forName">
-                        <p style="margin-left: 20px;">Notifitcations</p>
-                    </div>
-                </div>
-            </div>@*box 4 ends*@
-        </div>
-        @*Businesss Details ends*@
-        @*Graph and Pie Chart starts*@
-        <div class="mainChartBox">
-            <div class="graphBox">
-                <p>Sales Per Month</p>
-                <canvas id="myChart"></canvas>
             </div>
-            <div class="pieBox">
-                <p>Sales</p>
-                <canvas id="myPie"></canvas>
-            </div>
-
-        </div>
-        @*Graph and pie chart ends*@
-        @*recent Purchase table starts*@
-        <div class="forTable">
-            <h2>Recently purchase</h2>
-            <table>
-                <tr id="header">
-                    <th>User name</th>
-                    <th>Email</th>
-                    <th>Country</th>
-                    <th>Purchase</th>
-                    <th>Categories</th>
-                </tr>
+            @*Graph and pie chart ends*@
+            @*recent Purchase table starts*@
+            <div class="forTable">
+                <h2>Recently purchase</h2>
+                <table>
+                    <tr id="header">
+                        <th>orderId</th>
+                        <th>User name</th>
+                        <th>Purchase Name</th>
+                        <th>Purchase Img</th>
+                        <th>type</th>
+                        <th>price</th>
+                    </tr>
+                    @foreach (var data in Model)
+                    {
                 <tr>
-                    <td>John </td>
-                    <td>john@gmail.com </td>
-                    <td>Usa </td>
-                    <td>Gta V</td>
-                    <td>Game</td>
+                    <td>@(data.orderID)</td>
+                    <td>@(data.userName)</td>
+                    <td>@(data.purchaseName)</td>
+                    <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="50" /</td>
+                    <td>@(data.purchaseType)</td>
+                    <td>@(data.purchasePrice)</td>
 
-                </tr>
-                <tr>
-                    <td>John </td>
-                    <td>john@gmail.com </td>
-                    <td>Usa </td>
-                    <td>Gta V</td>
-                    <td>Game</td>
 
-                </tr>
-                <tr>
-                    <td>John </td>
-                    <td>john@gmail.com </td>
-                    <td>Usa </td>
-                    <td>Gta V</td>
-                    <td>Game</td>
 
-                </tr>
-                <tr>
-                    <td>John </td>
-                    <td>john@gmail.com </td>
-                    <td>Usa </td>
-                    <td>Gta V</td>
-                    <td>Game</td>
 
                 </tr>
 
 
+                    }
 
 
-            </table>
-        </div>
-        @*recent purchase table ends*@
-    </div>@*Page Content ends*@
+
+
+                </table>
+            </div>
+            @*recent purchase table ends*@
+        </div>@*Page Content ends*@
 
 
 
 
     </div>@*mainDiv ends ends*@
-        <script>
-            const ctx = document.getElementById("myChart").getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['January', 'Februray', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    datasets: [{
-                        label: 'Sales per Month',
-                        data: [12, 19, 3, 5, 2, 31, 1, 22, 3, 4, 5, 6],
-                        backgroundColor: [
-                            '#da542e',
-                            '#27a9e3',
-                            '#808080',
-                            '#28b779',
-                            '#2255a4',
-                            '#FF0000',
-                            '#006400',
-                            '#FF1493',
-                            '#FFFF00',
-                            '#8A2BE2',
-                            'rgb(0, 0, 0)',
-                            '#ffb848'
-                        ],
+    <script>
+        const ctx = document.getElementById("myChart").getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'Februray', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Sales per Month',
+                    data: [12, 19, 3, 5, 2, 31, 1, 22, 3, 4, 5, 6],
+                    backgroundColor: [
+                        '#da542e',
+                        '#27a9e3',
+                        '#808080',
+                        '#28b779',
+                        '#2255a4',
+                        '#FF0000',
+                        '#006400',
+                        '#FF1493',
+                        '#FFFF00',
+                        '#8A2BE2',
+                        'rgb(0, 0, 0)',
+                        '#ffb848'
+                    ],
 
-                    }]
-                },
-                options: {
-                    Response: true,
-                }
-            });
-            const ctx1 = document.getElementById('myPie').getContext('2d');
-            const myPie = new Chart(ctx1, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Movies', 'Games', 'Subscription', 'Series'],
-                    datasets: [{
-                        label: 'Product Sales',
-                        data: [12, 19, 3, 5],
-                        backgroundColor: [
-                            '#28b779',
-                            '#27a9e3',
-                            '#ffb848',
-                            '#da542e',
-                        ],
+                }]
+            },
+            options: {
+                Response: true,
+            }
+        });
+        const ctx1 = document.getElementById('myPie').getContext('2d');
+        const myPie = new Chart(ctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ['Movies', 'Games', 'Subscription', 'Series'],
+                datasets: [{
+                    label: 'Product Sales',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: [
+                        '#28b779',
+                        '#27a9e3',
+                        '#ffb848',
+                        '#da542e',
+                    ],
 
-                    }]
-                },
-                options: {
-                    Response: true,
-                }
-            });
-        </script>
+                }]
+            },
+            options: {
+                Response: true,
+            }
+        });
+    </script>
 
-        <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
-        <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
-        <script src="~/Content/AdminPannel/dashboard/bootstrap.min.js"></script>
-        <script src="~/Content/AdminPannel/dashboard/main.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/bootstrap.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/main.js"></script>
 </body>
 </html>
 

@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Gameland.Controllers
 {
-    public class forLoginPageController : Controller
+    public class specialOfferTableController : Controller
     {
-        // GET: forLoginPage
-        public ActionResult loginPage()
+        // GET: specialOfferTable
+        public ActionResult specialOfferTable()
         {
             return View();
         }

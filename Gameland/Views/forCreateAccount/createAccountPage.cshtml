@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "createAccountPage";
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Create Account</title>
+    @*Css*@
+    <link rel="stylesheet" href="~/Content/createAccount/createAccountCss.css">
+    @*font Awesome*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
+    @*Bootstrap*@
+
+
+</head>
+<body>
+    <div class="fixedBox" id="img1">
+        <img src="~/Content/createAccount/pngwing.com.png" />
+    </div>
+    <div class="mainBox">
+        <div class="forImg" id="img2">
+          <img src="~/Content/createAccount/kP.jpg" />
+        </div>
+        <div class="createAccountBox">
+            <h2>Create Account</h2>
+            <p>It's simple and fast</p>
+            <hr />
+            <div class="forerror" id="errorBox">
+                <div class="icon" id="errorIcon">
+                    <i class="fa fa-exclamation-triangle"></i>
+                </div>
+                <div class="text">
+                    <p id="errorMessage"></p>
+                </div>
+
+
+            </div>
+            <div class="formBox">
+                @using (Html.BeginForm("saveData1", "forCreateAccount", FormMethod.Post, new { id = "mainform1" }))
+                {
+                    <label>User Name</label>
+                    <br />
+                    <input type="text" name="userName" id="userName" placeholder="User Name" />
+                    <br />
+
+                    <label>Country</label>
+                    <br />
+                    <input type="text" id="country" name="country" placeholder="Country" />
+                    <br />
+
+                    <label>Gender</label>
+                    <br />
+                    <div class="forGender">
+                        <div class="male">
+                            <p>Male</p>
+                            <input type="radio" id="gender" class="male1" name="gender" value="Male" />
+                        </div>
+                        <div class="female">
+                            <p>Female</p>
+                            <input type="radio" id="gender" class="female1" name="gender" value="Female" />
+                        </div>
+                    </div>
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email" />
+                    <br />
+                    <label>password</label>
+                    <br />
+                    <input type="password" class="sample" placeholder="Password" id="password1"/>
+                    <br />
+                    <label>Confirm Password</label>
+                    <br />
+                    <input type="password" id="password" name="password" placeholder="Confirm Password" />
+                    <button class="btn-btn success" onclick=" return submitData();">Create Account</button>
+
+                }
+
+            </div>
+        </div>
+    </div>
+    <script>
+        checkUserName();
+        function submitData() {
+            let userNameValue = document.getElementById("userName").value;
+            let countryValue = document.getElementById("country").value;
+            let genderValue = document.getElementById("gender").value;
+            let emailValue = document.getElementById("email").value;
+            let samplePasswordValue = document.getElementById("password1").value;
+            let confirmPasswordValue = document.getElementById("password").value;
+            if (userNameValue == '' || countryValue == '' || genderValue == null || emailValue == '' || samplePasswordValue == '' || confirmPasswordValue == '')
+            {
+                document.getElementById("errorBox").style.visibility = "Visible";
+                document.getElementById("errorMessage").innerHTML = "Empty Fields "
+                document.getElementById("errorIcon").style.visibility = "Visible";
+                document.getElementById("img1").style.visibility = "hidden";
+                document.getElementById("img2").style.visibility = "visible";
+                return false;
+            }
+            if (samplePasswordValue != confirmPasswordValue)
+            {
+
+                document.getElementById("errorBox").style.visibility = "Visible";
+                document.getElementById("errorMessage").innerHTML = "Password does not match";
+                document.getElementById("errorIcon").style.visibility = "Visible";
+                document.getElementById("img1").style.visibility = "hidden";
+                document.getElementById("img2").style.visibility = "visible";
+                return false;
+            }
+            else
+            {
+                $("#mainform1").submit();
+            }
+
+
+        }
+         function checkUserName()
+        {
+            if ("@Session["userNameTaken"]" == "false") {
+                document.getElementById("errorBox").style.visibility = "Visible";
+                document.getElementById("errorMessage").innerHTML = "User Name already taken";
+                document.getElementById("errorIcon").style.visibility = "Visible";
+                document.getElementById("img1").style.visibility = "hidden";
+                document.getElementById("img2").style.visibility = "visible";
+            }
+
+        }
+    </script>
+</body>
+</html>
+@*<div class="createAccountBox">
+        <h1>Create Account</h1>
+        <div class="forerror" id="errorBox">
+            <div class="icon" id="errorIcon">
+                <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="text">
+                <p id="errorMessage"></p>
+            </div>
+
+
+        </div>
+        @using (Html.BeginForm("saveData1", "forCreateAccount", FormMethod.Post, new { id = "mainform1" }))
+        {
+            <label>User Name</label>
+            <br />
+            <input type="text" id="userName" name="userName" />
+            <br />
+            <label>Country</label>
+            <br />
+            <input type="text" id="country" name="country" />
+            <br />
+            <fieldset>
+                <legend>Gender</legend>
+                <p>
+                    Male <input type="radio" id="gender" name="gender" value="Male" /> Female<input type="radio" id="gender" name="gender" value="Female" />
+                </p>
+            </fieldset>
+            <label>Email</label>
+            <br />
+            <input type="email" id="email" name="email" />
+            <br />
+            <label>password</label>
+            <br />
+            <input type="password"/>
+            <br />
+            <label>Confirm Password</label>
+            <br />
+            <input type="password" id="password" name="password" />
+            <br />
+            <br />
+            <button class="btn-btn success" onclick="submitData();">Create Account</button>
+
+        }
+    </div>*@

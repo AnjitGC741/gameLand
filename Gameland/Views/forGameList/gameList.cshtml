@@ -1,0 +1,28 @@
+﻿@model List<Gameland.Models.gamesData>
+
+@foreach (var data in Model)
+{
+    using (Html.BeginForm("AddToCart", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+    {
+        <input type="hidden" value="primary_key_column" name="primary_key_column" />
+        <div class="movieBox">
+            <div class="forMovieImage">
+                <img src="@(data.gamesImg != null ? Url.Content(data.gamesImg) : "")" alt="image" />
+            </div>
+            <div class="forMoviePrice">
+                <div class="MovieName">
+                    <p>@(data.gameName)</p>
+                </div>
+                <div class="movieOriginalPrice">
+                    <p>Rs<span>@(data.gamePrice) </span></p>
+                </div>
+                <div class="movieCart">
+                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+@*@(data.gamesImg != null ? Url.Content(data.gamesImg) : "")*@

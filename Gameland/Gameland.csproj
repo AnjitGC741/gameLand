@@ -128,17 +128,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Front-end\forCreateAccountController.cs" />
+    <Compile Include="Controllers\Front-end\myCartController.cs" />
+    <Compile Include="Controllers\gameTableController.cs" />
+    <Compile Include="Controllers\forGameListController.cs" />
     <Compile Include="Controllers\movieTableController.cs" />
-    <Compile Include="Controllers\contactUsController.cs" />
+    <Compile Include="Controllers\Front-end\contactUsController.cs" />
     <Compile Include="Controllers\forAdminPannelController.cs" />
-    <Compile Include="Controllers\forHomePageController.cs" />
-    <Compile Include="Controllers\forLoginPageController.cs" />
-    <Compile Include="Controllers\forProductController.cs" />
+    <Compile Include="Controllers\Front-end\forHomePageController.cs" />
+    <Compile Include="Controllers\Front-end\forLoginPageController.cs" />
+    <Compile Include="Controllers\Front-end\forProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\specialOfferTableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\adminData.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cartData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\gamesData.cs">
@@ -165,10 +173,13 @@
     <Compile Include="Models\moviesData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\recentlyPurchaseProduct.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\seriesData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\specialOfferData.cs">
+    <Compile Include="Models\specialOfferData1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\subscriptionsData.cs">
@@ -180,7 +191,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AdminPannel\adminTables\movieTableCss.css" />
+    <Content Include="Content\AdminPannel\gameTable\gameTableCss1.css" />
+    <Content Include="Content\AdminPannel\movieTables\movieTableCss1.css" />
     <Content Include="Content\AdminPannel\dashboard\bootstrap.min.js" />
     <Content Include="Content\AdminPannel\dashboard\jquery.min.js" />
     <Content Include="Content\AdminPannel\dashboard\dashboardCss.css" />
@@ -191,9 +203,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cart\cartCss1.css" />
+    <Content Include="Content\ContactUs\contactus.gif" />
     <Content Include="Content\ContactUs\contactUsCss.css" />
     <Content Include="Content\ContactUs\mailbox3.gif" />
     <Content Include="Content\ContactUs\tom-and-jerry-tom.gif" />
+    <Content Include="Content\createAccount\createAccountCss.css" />
+    <Content Include="Content\createAccount\kP.jpg" />
+    <Content Include="Content\createAccount\pngegg %281%29.png" />
+    <Content Include="Content\createAccount\pngwing.com.png" />
     <Content Include="Content\homePage\css\homePageCss1.css" />
     <Content Include="Content\homePage\image\amazone prime 2.jpg" />
     <Content Include="Content\homePage\image\assassins.jpg" />
@@ -259,13 +277,14 @@
     <Content Include="Content\homePage\image\witcher2.png" />
     <Content Include="Content\homePage\image\world war 2.jpg" />
     <Content Include="Content\homePage\image\you tube.jpg" />
-    <Content Include="Content\loginPage\css\loginPageCss.css" />
+    <Content Include="Content\loginPage\css\loginPageCss1.css" />
     <Content Include="Content\loginPage\image\fifa.jpg" />
     <Content Include="Content\loginPage\image\gameland.jpg" />
-    <Content Include="Content\product\games\gameCss1.css" />
+    <Content Include="Content\product\games\gameCss.css" />
     <Content Include="Content\product\Movie\movieCss.css" />
     <Content Include="Content\product\Series\seriesCss1.css" />
     <Content Include="Content\product\subscription\subscriptionCss.css" />
+    <Content Include="Content\speicalOfferTable\specialOfferTableCss.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -316,7 +335,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\forLoginPage\loginPage.cshtml" />
     <Content Include="Views\forHomePage\homePage.cshtml" />
-    <Content Include="Views\forProduct\gamesPage.cshtml" />
     <Content Include="Views\forProduct\moviePage.cshtml" />
     <Content Include="Views\forProduct\seriesPage.cshtml" />
     <Content Include="Views\forProduct\subscriptionPage.cshtml" />
@@ -324,6 +342,12 @@
     <Content Include="Views\forAdminPannel\dashboardPage.cshtml" />
     <Content Include="Views\movieTable\movieTable.cshtml" />
     <Content Include="Views\forProduct\movielist.cshtml" />
+    <Content Include="Views\myCart\forCart.cshtml" />
+    <Content Include="Views\forCreateAccount\createAccountPage.cshtml" />
+    <Content Include="Views\specialOfferTable\specialOfferTable.cshtml" />
+    <Content Include="Views\gameTable\gameTable.cshtml" />
+    <Content Include="Views\forGameList\gameList.cshtml" />
+    <Content Include="Views\forGameList\gamesPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

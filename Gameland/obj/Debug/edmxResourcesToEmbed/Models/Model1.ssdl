@@ -7,6 +7,16 @@
     <Property Name="adminId" Type="int" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="20" />
   </EntityType>
+  <EntityType Name="cartData">
+    <Key>
+      <PropertyRef Name="productName" />
+    </Key>
+    <Property Name="userName" Type="varchar" MaxLength="20" />
+    <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="productImg" Type="varchar" MaxLength="255" />
+    <Property Name="productType" Type="varchar" MaxLength="20" />
+    <Property Name="price" Type="int" />
+  </EntityType>
   <EntityType Name="gamesData">
     <Key>
       <PropertyRef Name="gameName" />
@@ -15,6 +25,7 @@
     <Property Name="gamePrice" Type="int" />
     <Property Name="productType" Type="varchar" MaxLength="20" />
     <Property Name="gameType" Type="varchar" MaxLength="20" />
+    <Property Name="gamesImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
   <EntityType Name="messageBoxData">
@@ -38,6 +49,17 @@
     <Property Name="movieImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
+  <EntityType Name="recentlyPurchaseProduct">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="20" />
+    <Property Name="purchaseName" Type="varchar" MaxLength="30" />
+    <Property Name="purchaseImg" Type="varchar" MaxLength="255" />
+    <Property Name="purchaseType" Type="varchar" MaxLength="20" />
+    <Property Name="purchasePrice" Type="int" />
+  </EntityType>
   <EntityType Name="seriesData">
     <Key>
       <PropertyRef Name="seriesName" />
@@ -46,20 +68,18 @@
     <Property Name="seriesPrice" Type="int" />
     <Property Name="productType" Type="varchar" MaxLength="20" />
     <Property Name="seriesType" Type="varchar" MaxLength="20" />
+    <Property Name="seriesImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
-  <EntityType Name="specialOfferData">
+  <EntityType Name="specialOfferData1">
     <Key>
-      <PropertyRef Name="offerId" />
+      <PropertyRef Name="productName" />
     </Key>
-    <Property Name="offerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="movieName" Type="varchar" MaxLength="25" />
-    <Property Name="gameName" Type="varchar" MaxLength="25" />
-    <Property Name="seriesName" Type="varchar" MaxLength="25" />
-    <Property Name="subscriptionName" Type="varchar" MaxLength="30" />
+    <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="productCategories" Type="varchar" MaxLength="30" />
+    <Property Name="productType" Type="varchar" MaxLength="30" />
     <Property Name="originalPrice" Type="int" />
     <Property Name="offerPrice" Type="int" />
-    <Property Name="productType" Type="varchar" MaxLength="30" />
     <Property Name="offerImg" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="subscriptionsData">
@@ -69,19 +89,33 @@
     <Property Name="subscriptionName" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="subscriptionPrice" Type="int" />
     <Property Name="productType" Type="varchar" MaxLength="20" />
+    <Property Name="subscriptionImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
   <EntityType Name="usersData">
     <Key>
       <PropertyRef Name="userName" />
     </Key>
+    <Property Name="userImg" Type="varchar" MaxLength="255" />
     <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="country" Type="varchar" MaxLength="20" />
     <Property Name="gender" Type="varchar" MaxLength="10" />
     <Property Name="email" Type="varchar" MaxLength="30" />
     <Property Name="password" Type="varchar" MaxLength="30" />
   </EntityType>
-  <Association Name="FK__messageBo__userN__4D94879B">
+  <Association Name="FK__cartData__userNa__2DE6D218">
+    <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
+    <End Role="cartData" Type="Self.cartData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usersData">
+        <PropertyRef Name="userName" />
+      </Principal>
+      <Dependent Role="cartData">
+        <PropertyRef Name="userName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__messageBo__userN__656C112C">
     <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
     <End Role="messageBoxData" Type="Self.messageBoxData" Multiplicity="*" />
     <ReferentialConstraint>
@@ -93,82 +127,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__specialOf__gameN__45F365D3">
-    <End Role="gamesData" Type="Self.gamesData" Multiplicity="0..1" />
-    <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
+  <Association Name="FK__recentlyP__userN__339FAB6E">
+    <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
+    <End Role="recentlyPurchaseProduct" Type="Self.recentlyPurchaseProduct" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="gamesData">
-        <PropertyRef Name="gameName" />
+      <Principal Role="usersData">
+        <PropertyRef Name="userName" />
       </Principal>
-      <Dependent Role="specialOfferData">
-        <PropertyRef Name="gameName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__specialOf__movie__44FF419A">
-    <End Role="moviesData" Type="Self.moviesData" Multiplicity="0..1" />
-    <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="moviesData">
-        <PropertyRef Name="movieName" />
-      </Principal>
-      <Dependent Role="specialOfferData">
-        <PropertyRef Name="movieName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__specialOf__serie__46E78A0C">
-    <End Role="seriesData" Type="Self.seriesData" Multiplicity="0..1" />
-    <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="seriesData">
-        <PropertyRef Name="seriesName" />
-      </Principal>
-      <Dependent Role="specialOfferData">
-        <PropertyRef Name="seriesName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__specialOf__subsc__47DBAE45">
-    <End Role="subscriptionsData" Type="Self.subscriptionsData" Multiplicity="0..1" />
-    <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="subscriptionsData">
-        <PropertyRef Name="subscriptionName" />
-      </Principal>
-      <Dependent Role="specialOfferData">
-        <PropertyRef Name="subscriptionName" />
+      <Dependent Role="recentlyPurchaseProduct">
+        <PropertyRef Name="userName" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="forGameLandModelStoreContainer">
     <EntitySet Name="adminData" EntityType="Self.adminData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cartData" EntityType="Self.cartData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="gamesData" EntityType="Self.gamesData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="messageBoxData" EntityType="Self.messageBoxData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__messageBo__userN__4D94879B" Association="Self.FK__messageBo__userN__4D94879B">
+    <AssociationSet Name="FK__cartData__userNa__2DE6D218" Association="Self.FK__cartData__userNa__2DE6D218">
+      <End Role="usersData" EntitySet="usersData" />
+      <End Role="cartData" EntitySet="cartData" />
+    </AssociationSet>
+    <AssociationSet Name="FK__messageBo__userN__656C112C" Association="Self.FK__messageBo__userN__656C112C">
       <End Role="usersData" EntitySet="usersData" />
       <End Role="messageBoxData" EntitySet="messageBoxData" />
     </AssociationSet>
-    <AssociationSet Name="FK__specialOf__gameN__45F365D3" Association="Self.FK__specialOf__gameN__45F365D3">
-      <End Role="gamesData" EntitySet="gamesData" />
-      <End Role="specialOfferData" EntitySet="specialOfferData" />
-    </AssociationSet>
-    <AssociationSet Name="FK__specialOf__movie__44FF419A" Association="Self.FK__specialOf__movie__44FF419A">
-      <End Role="moviesData" EntitySet="moviesData" />
-      <End Role="specialOfferData" EntitySet="specialOfferData" />
-    </AssociationSet>
-    <AssociationSet Name="FK__specialOf__serie__46E78A0C" Association="Self.FK__specialOf__serie__46E78A0C">
-      <End Role="seriesData" EntitySet="seriesData" />
-      <End Role="specialOfferData" EntitySet="specialOfferData" />
-    </AssociationSet>
-    <AssociationSet Name="FK__specialOf__subsc__47DBAE45" Association="Self.FK__specialOf__subsc__47DBAE45">
-      <End Role="subscriptionsData" EntitySet="subscriptionsData" />
-      <End Role="specialOfferData" EntitySet="specialOfferData" />
+    <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="Self.FK__recentlyP__userN__339FAB6E">
+      <End Role="usersData" EntitySet="usersData" />
+      <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProduct" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

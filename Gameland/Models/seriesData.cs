@@ -14,19 +14,11 @@ namespace Gameland.Models
     
     public partial class seriesData
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public seriesData()
-        {
-            this.specialOfferDatas = new HashSet<specialOfferData>();
-        }
-    
         public string seriesName { get; set; }
         public Nullable<int> seriesPrice { get; set; }
         public string productType { get; set; }
         public string seriesType { get; set; }
+        public string seriesImg { get; set; }
         public Nullable<int> downloads { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<specialOfferData> specialOfferDatas { get; set; }
     }
 }

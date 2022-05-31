@@ -4,13 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="forGameLandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="forGameLandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="adminData">
           <Key>
             <PropertyRef Name="adminId" />
           </Key>
           <Property Name="adminId" Type="int" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="cartData">
+          <Key>
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="userName" Type="varchar" MaxLength="20" />
+          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productImg" Type="varchar" MaxLength="255" />
+          <Property Name="productType" Type="varchar" MaxLength="20" />
+          <Property Name="price" Type="int" />
         </EntityType>
         <EntityType Name="gamesData">
           <Key>
@@ -20,6 +30,7 @@
           <Property Name="gamePrice" Type="int" />
           <Property Name="productType" Type="varchar" MaxLength="20" />
           <Property Name="gameType" Type="varchar" MaxLength="20" />
+          <Property Name="gamesImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
         </EntityType>
         <EntityType Name="messageBoxData">
@@ -43,6 +54,17 @@
           <Property Name="movieImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
         </EntityType>
+        <EntityType Name="recentlyPurchaseProduct">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="20" />
+          <Property Name="purchaseName" Type="varchar" MaxLength="30" />
+          <Property Name="purchaseImg" Type="varchar" MaxLength="255" />
+          <Property Name="purchaseType" Type="varchar" MaxLength="20" />
+          <Property Name="purchasePrice" Type="int" />
+        </EntityType>
         <EntityType Name="seriesData">
           <Key>
             <PropertyRef Name="seriesName" />
@@ -51,20 +73,18 @@
           <Property Name="seriesPrice" Type="int" />
           <Property Name="productType" Type="varchar" MaxLength="20" />
           <Property Name="seriesType" Type="varchar" MaxLength="20" />
+          <Property Name="seriesImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
         </EntityType>
-        <EntityType Name="specialOfferData">
+        <EntityType Name="specialOfferData1">
           <Key>
-            <PropertyRef Name="offerId" />
+            <PropertyRef Name="productName" />
           </Key>
-          <Property Name="offerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="movieName" Type="varchar" MaxLength="25" />
-          <Property Name="gameName" Type="varchar" MaxLength="25" />
-          <Property Name="seriesName" Type="varchar" MaxLength="25" />
-          <Property Name="subscriptionName" Type="varchar" MaxLength="30" />
+          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productCategories" Type="varchar" MaxLength="30" />
+          <Property Name="productType" Type="varchar" MaxLength="30" />
           <Property Name="originalPrice" Type="int" />
           <Property Name="offerPrice" Type="int" />
-          <Property Name="productType" Type="varchar" MaxLength="30" />
           <Property Name="offerImg" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="subscriptionsData">
@@ -74,19 +94,33 @@
           <Property Name="subscriptionName" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="subscriptionPrice" Type="int" />
           <Property Name="productType" Type="varchar" MaxLength="20" />
+          <Property Name="subscriptionImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
         </EntityType>
         <EntityType Name="usersData">
           <Key>
             <PropertyRef Name="userName" />
           </Key>
+          <Property Name="userImg" Type="varchar" MaxLength="255" />
           <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="country" Type="varchar" MaxLength="20" />
           <Property Name="gender" Type="varchar" MaxLength="10" />
           <Property Name="email" Type="varchar" MaxLength="30" />
           <Property Name="password" Type="varchar" MaxLength="30" />
         </EntityType>
-        <Association Name="FK__messageBo__userN__4D94879B">
+        <Association Name="FK__cartData__userNa__2DE6D218">
+          <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
+          <End Role="cartData" Type="Self.cartData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usersData">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="cartData">
+              <PropertyRef Name="userName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__messageBo__userN__656C112C">
           <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
           <End Role="messageBoxData" Type="Self.messageBoxData" Multiplicity="*" />
           <ReferentialConstraint>
@@ -98,86 +132,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__specialOf__gameN__45F365D3">
-          <End Role="gamesData" Type="Self.gamesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
+        <Association Name="FK__recentlyP__userN__339FAB6E">
+          <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
+          <End Role="recentlyPurchaseProduct" Type="Self.recentlyPurchaseProduct" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="gamesData">
-              <PropertyRef Name="gameName" />
+            <Principal Role="usersData">
+              <PropertyRef Name="userName" />
             </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="gameName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__specialOf__movie__44FF419A">
-          <End Role="moviesData" Type="Self.moviesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="moviesData">
-              <PropertyRef Name="movieName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="movieName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__specialOf__serie__46E78A0C">
-          <End Role="seriesData" Type="Self.seriesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="seriesData">
-              <PropertyRef Name="seriesName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="seriesName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__specialOf__subsc__47DBAE45">
-          <End Role="subscriptionsData" Type="Self.subscriptionsData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="subscriptionsData">
-              <PropertyRef Name="subscriptionName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="subscriptionName" />
+            <Dependent Role="recentlyPurchaseProduct">
+              <PropertyRef Name="userName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="forGameLandModelStoreContainer">
           <EntitySet Name="adminData" EntityType="Self.adminData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cartData" EntityType="Self.cartData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="gamesData" EntityType="Self.gamesData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="messageBoxData" EntityType="Self.messageBoxData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__messageBo__userN__4D94879B" Association="Self.FK__messageBo__userN__4D94879B">
+          <AssociationSet Name="FK__cartData__userNa__2DE6D218" Association="Self.FK__cartData__userNa__2DE6D218">
+            <End Role="usersData" EntitySet="usersData" />
+            <End Role="cartData" EntitySet="cartData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__messageBo__userN__656C112C" Association="Self.FK__messageBo__userN__656C112C">
             <End Role="usersData" EntitySet="usersData" />
             <End Role="messageBoxData" EntitySet="messageBoxData" />
           </AssociationSet>
-          <AssociationSet Name="FK__specialOf__gameN__45F365D3" Association="Self.FK__specialOf__gameN__45F365D3">
-            <End Role="gamesData" EntitySet="gamesData" />
-            <End Role="specialOfferData" EntitySet="specialOfferData" />
-          </AssociationSet>
-          <AssociationSet Name="FK__specialOf__movie__44FF419A" Association="Self.FK__specialOf__movie__44FF419A">
-            <End Role="moviesData" EntitySet="moviesData" />
-            <End Role="specialOfferData" EntitySet="specialOfferData" />
-          </AssociationSet>
-          <AssociationSet Name="FK__specialOf__serie__46E78A0C" Association="Self.FK__specialOf__serie__46E78A0C">
-            <End Role="seriesData" EntitySet="seriesData" />
-            <End Role="specialOfferData" EntitySet="specialOfferData" />
-          </AssociationSet>
-          <AssociationSet Name="FK__specialOf__subsc__47DBAE45" Association="Self.FK__specialOf__subsc__47DBAE45">
-            <End Role="subscriptionsData" EntitySet="subscriptionsData" />
-            <End Role="specialOfferData" EntitySet="specialOfferData" />
+          <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="Self.FK__recentlyP__userN__339FAB6E">
+            <End Role="usersData" EntitySet="usersData" />
+            <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProduct" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="forGameLandModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -187,17 +178,6 @@
           </Key>
           <Property Name="adminId" Type="Int32" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="gamesData">
-          <Key>
-            <PropertyRef Name="gameName" />
-          </Key>
-          <Property Name="gameName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="gamePrice" Type="Int32" />
-          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="gameType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="downloads" Type="Int32" />
-          <NavigationProperty Name="specialOfferDatas" Relationship="Self.FK__specialOf__gameN__45F365D3" FromRole="gamesData" ToRole="specialOfferData" />
         </EntityType>
         <EntityType Name="messageBoxData">
           <Key>
@@ -220,46 +200,6 @@
           <Property Name="movieType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="movieImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="downloads" Type="Int32" />
-          <NavigationProperty Name="specialOfferDatas" Relationship="Self.FK__specialOf__movie__44FF419A" FromRole="moviesData" ToRole="specialOfferData" />
-        </EntityType>
-        <EntityType Name="seriesData">
-          <Key>
-            <PropertyRef Name="seriesName" />
-          </Key>
-          <Property Name="seriesName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="seriesPrice" Type="Int32" />
-          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="seriesType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="downloads" Type="Int32" />
-          <NavigationProperty Name="specialOfferDatas" Relationship="Self.FK__specialOf__serie__46E78A0C" FromRole="seriesData" ToRole="specialOfferData" />
-        </EntityType>
-        <EntityType Name="specialOfferData">
-          <Key>
-            <PropertyRef Name="offerId" />
-          </Key>
-          <Property Name="offerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="movieName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="gameName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="seriesName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="subscriptionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="originalPrice" Type="Int32" />
-          <Property Name="offerPrice" Type="Int32" />
-          <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="gamesData" Relationship="Self.FK__specialOf__gameN__45F365D3" FromRole="specialOfferData" ToRole="gamesData" />
-          <NavigationProperty Name="moviesData" Relationship="Self.FK__specialOf__movie__44FF419A" FromRole="specialOfferData" ToRole="moviesData" />
-          <NavigationProperty Name="seriesData" Relationship="Self.FK__specialOf__serie__46E78A0C" FromRole="specialOfferData" ToRole="seriesData" />
-          <NavigationProperty Name="subscriptionsData" Relationship="Self.FK__specialOf__subsc__47DBAE45" FromRole="specialOfferData" ToRole="subscriptionsData" />
-        </EntityType>
-        <EntityType Name="subscriptionsData">
-          <Key>
-            <PropertyRef Name="subscriptionName" />
-          </Key>
-          <Property Name="subscriptionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="subscriptionPrice" Type="Int32" />
-          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="downloads" Type="Int32" />
-          <NavigationProperty Name="specialOfferDatas" Relationship="Self.FK__specialOf__subsc__47DBAE45" FromRole="subscriptionsData" ToRole="specialOfferData" />
         </EntityType>
         <EntityType Name="usersData">
           <Key>
@@ -271,19 +211,10 @@
           <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="messageBoxDatas" Relationship="Self.FK__messageBo__userN__4D94879B" FromRole="usersData" ToRole="messageBoxData" />
+          <Property Name="userImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cartDatas" Relationship="forGameLandModel.FK__cartData__userNa__2DE6D218" FromRole="usersData" ToRole="cartData" />
+          <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
         </EntityType>
-        <Association Name="FK__specialOf__gameN__45F365D3">
-          <End Role="gamesData" Type="Self.gamesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="gamesData">
-              <PropertyRef Name="gameName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="gameName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__messageBo__userN__4D94879B">
           <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
           <End Role="messageBoxData" Type="Self.messageBoxData" Multiplicity="*" />
@@ -296,94 +227,131 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__specialOf__movie__44FF419A">
-          <End Role="moviesData" Type="Self.moviesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="moviesData">
-              <PropertyRef Name="movieName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="movieName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__specialOf__serie__46E78A0C">
-          <End Role="seriesData" Type="Self.seriesData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="seriesData">
-              <PropertyRef Name="seriesName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="seriesName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__specialOf__subsc__47DBAE45">
-          <End Role="subscriptionsData" Type="Self.subscriptionsData" Multiplicity="0..1" />
-          <End Role="specialOfferData" Type="Self.specialOfferData" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="subscriptionsData">
-              <PropertyRef Name="subscriptionName" />
-            </Principal>
-            <Dependent Role="specialOfferData">
-              <PropertyRef Name="subscriptionName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="forGameLandEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="forGameLandEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="adminDatas" EntityType="Self.adminData" />
-          <EntitySet Name="gamesDatas" EntityType="Self.gamesData" />
           <EntitySet Name="messageBoxDatas" EntityType="Self.messageBoxData" />
           <EntitySet Name="moviesDatas" EntityType="Self.moviesData" />
-          <EntitySet Name="seriesDatas" EntityType="Self.seriesData" />
-          <EntitySet Name="specialOfferDatas" EntityType="Self.specialOfferData" />
-          <EntitySet Name="subscriptionsDatas" EntityType="Self.subscriptionsData" />
           <EntitySet Name="usersDatas" EntityType="Self.usersData" />
-          <AssociationSet Name="FK__specialOf__gameN__45F365D3" Association="Self.FK__specialOf__gameN__45F365D3">
-            <End Role="gamesData" EntitySet="gamesDatas" />
-            <End Role="specialOfferData" EntitySet="specialOfferDatas" />
-          </AssociationSet>
           <AssociationSet Name="FK__messageBo__userN__4D94879B" Association="Self.FK__messageBo__userN__4D94879B">
             <End Role="usersData" EntitySet="usersDatas" />
             <End Role="messageBoxData" EntitySet="messageBoxDatas" />
           </AssociationSet>
-          <AssociationSet Name="FK__specialOf__movie__44FF419A" Association="Self.FK__specialOf__movie__44FF419A">
-            <End Role="moviesData" EntitySet="moviesDatas" />
-            <End Role="specialOfferData" EntitySet="specialOfferDatas" />
+          <EntitySet Name="specialOfferData1" EntityType="forGameLandModel.specialOfferData1" />
+          <EntitySet Name="gamesDatas" EntityType="forGameLandModel.gamesData" />
+          <EntitySet Name="seriesDatas" EntityType="forGameLandModel.seriesData" />
+          <EntitySet Name="subscriptionsDatas" EntityType="forGameLandModel.subscriptionsData" />
+          <EntitySet Name="cartDatas" EntityType="forGameLandModel.cartData" />
+          <AssociationSet Name="FK__cartData__userNa__2DE6D218" Association="forGameLandModel.FK__cartData__userNa__2DE6D218">
+            <End Role="usersData" EntitySet="usersDatas" />
+            <End Role="cartData" EntitySet="cartDatas" />
           </AssociationSet>
-          <AssociationSet Name="FK__specialOf__serie__46E78A0C" Association="Self.FK__specialOf__serie__46E78A0C">
-            <End Role="seriesData" EntitySet="seriesDatas" />
-            <End Role="specialOfferData" EntitySet="specialOfferDatas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__specialOf__subsc__47DBAE45" Association="Self.FK__specialOf__subsc__47DBAE45">
-            <End Role="subscriptionsData" EntitySet="subscriptionsDatas" />
-            <End Role="specialOfferData" EntitySet="specialOfferDatas" />
+          <EntitySet Name="recentlyPurchaseProducts" EntityType="forGameLandModel.recentlyPurchaseProduct" />
+          <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="forGameLandModel.FK__recentlyP__userN__339FAB6E">
+            <End Role="usersData" EntitySet="usersDatas" />
+            <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="specialOfferData1">
+          <Key>
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="originalPrice" Type="Int32" />
+          <Property Name="offerPrice" Type="Int32" />
+          <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="gamesData">
+          <Key>
+            <PropertyRef Name="gameName" />
+          </Key>
+          <Property Name="gameName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="gamePrice" Type="Int32" />
+          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gameType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gamesImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="downloads" Type="Int32" />
+        </EntityType>
+        <EntityType Name="seriesData">
+          <Key>
+            <PropertyRef Name="seriesName" />
+          </Key>
+          <Property Name="seriesName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="seriesPrice" Type="Int32" />
+          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="seriesType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="seriesImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="downloads" Type="Int32" />
+        </EntityType>
+        <EntityType Name="subscriptionsData">
+          <Key>
+            <PropertyRef Name="subscriptionName" />
+          </Key>
+          <Property Name="subscriptionName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="subscriptionPrice" Type="Int32" />
+          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subscriptionImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="downloads" Type="Int32" />
+        </EntityType>
+        <EntityType Name="cartData">
+          <Key>
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="productType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__cartData__userNa__2DE6D218" FromRole="cartData" ToRole="usersData" />
+        </EntityType>
+        <Association Name="FK__cartData__userNa__2DE6D218">
+          <End Type="forGameLandModel.usersData" Role="usersData" Multiplicity="0..1" />
+          <End Type="forGameLandModel.cartData" Role="cartData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usersData">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="cartData">
+              <PropertyRef Name="userName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="recentlyPurchaseProduct">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="purchasePrice" Type="Int32" />
+          <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="recentlyPurchaseProduct" ToRole="usersData" />
+        </EntityType>
+        <Association Name="FK__recentlyP__userN__339FAB6E">
+          <End Type="forGameLandModel.usersData" Role="usersData" Multiplicity="0..1" />
+          <End Type="forGameLandModel.recentlyPurchaseProduct" Role="recentlyPurchaseProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usersData">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="recentlyPurchaseProduct">
+              <PropertyRef Name="userName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="forGameLandModelStoreContainer" CdmEntityContainer="forGameLandEntities">
+        <EntityContainerMapping StorageEntityContainer="forGameLandModelStoreContainer" CdmEntityContainer="forGameLandEntities1">
           <EntitySetMapping Name="adminDatas">
             <EntityTypeMapping TypeName="forGameLandModel.adminData">
               <MappingFragment StoreEntitySet="adminData">
                 <ScalarProperty Name="adminId" ColumnName="adminId" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="gamesDatas">
-            <EntityTypeMapping TypeName="forGameLandModel.gamesData">
-              <MappingFragment StoreEntitySet="gamesData">
-                <ScalarProperty Name="gameName" ColumnName="gameName" />
-                <ScalarProperty Name="gamePrice" ColumnName="gamePrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
-                <ScalarProperty Name="gameType" ColumnName="gameType" />
-                <ScalarProperty Name="downloads" ColumnName="downloads" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -410,50 +378,85 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="seriesDatas">
-            <EntityTypeMapping TypeName="forGameLandModel.seriesData">
-              <MappingFragment StoreEntitySet="seriesData">
-                <ScalarProperty Name="seriesName" ColumnName="seriesName" />
-                <ScalarProperty Name="seriesPrice" ColumnName="seriesPrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
-                <ScalarProperty Name="seriesType" ColumnName="seriesType" />
-                <ScalarProperty Name="downloads" ColumnName="downloads" />
+          <EntitySetMapping Name="usersDatas">
+            <EntityTypeMapping TypeName="forGameLandModel.usersData">
+              <MappingFragment StoreEntitySet="usersData">
+                <ScalarProperty Name="userImg" ColumnName="userImg" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="specialOfferDatas">
-            <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
-              <MappingFragment StoreEntitySet="specialOfferData">
-                <ScalarProperty Name="offerId" ColumnName="offerId" />
-                <ScalarProperty Name="movieName" ColumnName="movieName" />
-                <ScalarProperty Name="gameName" ColumnName="gameName" />
-                <ScalarProperty Name="seriesName" ColumnName="seriesName" />
-                <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
-                <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-                <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
+          <EntitySetMapping Name="specialOfferData1">
+            <EntityTypeMapping TypeName="forGameLandModel.specialOfferData1">
+              <MappingFragment StoreEntitySet="specialOfferData1">
                 <ScalarProperty Name="offerImg" ColumnName="offerImg" />
+                <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
+                <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="productCategories" ColumnName="productCategories" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gamesDatas">
+            <EntityTypeMapping TypeName="forGameLandModel.gamesData">
+              <MappingFragment StoreEntitySet="gamesData">
+                <ScalarProperty Name="downloads" ColumnName="downloads" />
+                <ScalarProperty Name="gamesImg" ColumnName="gamesImg" />
+                <ScalarProperty Name="gameType" ColumnName="gameType" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="gamePrice" ColumnName="gamePrice" />
+                <ScalarProperty Name="gameName" ColumnName="gameName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seriesDatas">
+            <EntityTypeMapping TypeName="forGameLandModel.seriesData">
+              <MappingFragment StoreEntitySet="seriesData">
+                <ScalarProperty Name="downloads" ColumnName="downloads" />
+                <ScalarProperty Name="seriesImg" ColumnName="seriesImg" />
+                <ScalarProperty Name="seriesType" ColumnName="seriesType" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="seriesPrice" ColumnName="seriesPrice" />
+                <ScalarProperty Name="seriesName" ColumnName="seriesName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="subscriptionsDatas">
             <EntityTypeMapping TypeName="forGameLandModel.subscriptionsData">
               <MappingFragment StoreEntitySet="subscriptionsData">
-                <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
-                <ScalarProperty Name="subscriptionPrice" ColumnName="subscriptionPrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
                 <ScalarProperty Name="downloads" ColumnName="downloads" />
+                <ScalarProperty Name="subscriptionImg" ColumnName="subscriptionImg" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="subscriptionPrice" ColumnName="subscriptionPrice" />
+                <ScalarProperty Name="subscriptionName" ColumnName="subscriptionName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="usersDatas">
-            <EntityTypeMapping TypeName="forGameLandModel.usersData">
-              <MappingFragment StoreEntitySet="usersData">
+          <EntitySetMapping Name="cartDatas">
+            <EntityTypeMapping TypeName="forGameLandModel.cartData">
+              <MappingFragment StoreEntitySet="cartData">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="productImg" ColumnName="productImg" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recentlyPurchaseProducts">
+            <EntityTypeMapping TypeName="forGameLandModel.recentlyPurchaseProduct">
+              <MappingFragment StoreEntitySet="recentlyPurchaseProduct">
+                <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+                <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+                <ScalarProperty Name="purchaseImg" ColumnName="purchaseImg" />
+                <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

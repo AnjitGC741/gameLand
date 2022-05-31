@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gameland.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace Gameland.Controllers
 {
     public class forAdminPannelController : Controller
     {
+        forGameLandEntities1 db = new forGameLandEntities1();
         // GET: forAdminPannel
         public ActionResult dashboardPage()
         {
-            return View();
+            List<recentlyPurchaseProduct> all_data = db.recentlyPurchaseProducts.ToList();
+            return View(all_data);
         }
     }
 }

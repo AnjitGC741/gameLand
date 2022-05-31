@@ -12,21 +12,13 @@ namespace Gameland.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class specialOfferData
+    public partial class specialOfferData1
     {
-        public int offerId { get; set; }
-        public string movieName { get; set; }
-        public string gameName { get; set; }
-        public string seriesName { get; set; }
-        public string subscriptionName { get; set; }
+        public string productName { get; set; }
+        public string productCategories { get; set; }
+        public string productType { get; set; }
         public Nullable<int> originalPrice { get; set; }
         public Nullable<int> offerPrice { get; set; }
-        public string productType { get; set; }
         public string offerImg { get; set; }
-    
-        public virtual gamesData gamesData { get; set; }
-        public virtual moviesData moviesData { get; set; }
-        public virtual seriesData seriesData { get; set; }
-        public virtual subscriptionsData subscriptionsData { get; set; }
     }
 }

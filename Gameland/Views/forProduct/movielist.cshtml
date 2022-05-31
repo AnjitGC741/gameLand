@@ -2,22 +2,77 @@
 
 @foreach (var data in Model)
 {
-
-    <div class="movieBox">
-        <div class="forMovieImage">
-            <img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" alt="image" />
+    using (Html.BeginForm("AddToCart", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+    {
+        <input type="hidden" value="@data.movieName" name="productName" />
+        <div class="movieBox">
+            <div class="forMovieImage">
+                <img src="@(data.movieImg != null ? Url.Content(data.movieImg) : "")" alt="image" />
+            </div>
+            <div class="forMoviePrice">
+                <div class="MovieName">
+                    <p>@(data.movieName)</p>
+                </div>
+                <div class="movieOriginalPrice">
+                    <p>Rs<span> @(data.moviePrice)</span></p>
+                </div>
+                <div class="movieCart">
+                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+                </div>
+            </div>
         </div>
-        <div class="forMoviePrice">
-            <div class="MovieName">
-                <p>@(data.movieName)</p>
-            </div>
-            <div class="movieOriginalPrice">
-                <p>Rs<span> @(data.moviePrice)</span></p>
-            </div>
-            <div class="movieCart">
-                <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
-            </div>
-        </div>
-    </div>
-   
+    }
 }
+
+
+
+@*AddToCart
+
+    public ActionResult AddToCart(string primary_key_column){
+    moviesData moviesData=db.moviesData.Find(primary_key_column);
+    mycart mycart=new mycart();
+    mycart.user_id=session.login_user_id;
+    mycart.columnname=moviesData.columnname;
+    mycart.columnname=moviesData.columnname;
+    mycart.columnname=moviesData.columnname;
+    mycart.columnname=moviesData.columnname;
+
+        db.mycarts.Add(mycart);
+    db.savecahnges();
+    }
+
+    public ActionResult MakePayment()
+    {
+        var dataList=db.mycart.Where(x=>x.user_id==login_user_id).tolist();
+        foreach(var data in dataList)
+    {
+        purchaseTable purchaseTable=new purchaseTable();
+    purchaseTable.columnname=data.columnname;
+    purchaseTable.columnname=data.columnname;
+    purchaseTable.columnname=data.columnname;
+    purchaseTable.columnname=data.columnname;
+    db.purchaseTable.Add(purchaseTable);
+    }
+
+    db.mycart.RemoveRange(dataList);
+    db.savechanges();
+    }
+    }
+
+
+*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

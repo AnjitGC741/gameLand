@@ -14,20 +14,11 @@ namespace Gameland.Models
     
     public partial class moviesData
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public moviesData()
-        {
-            this.specialOfferDatas = new HashSet<specialOfferData>();
-        }
-    
         public string movieName { get; set; }
         public Nullable<int> moviePrice { get; set; }
         public string productType { get; set; }
         public string movieType { get; set; }
         public string movieImg { get; set; }
         public Nullable<int> downloads { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<specialOfferData> specialOfferDatas { get; set; }
     }
 }

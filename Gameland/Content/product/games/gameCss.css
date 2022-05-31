@@ -299,10 +299,9 @@ body {
    
     width: 86%;
     margin-left: 105px;
-   
-   
     display:flex;
     flex-wrap:wrap;
+    
 }
 
 .gameBox {
@@ -370,7 +369,10 @@ body {
     margin-top: 10px;
     border-style: none;
 }
-
+.gameCart span{
+    font-size:5px;
+    visibility:hidden;
+}
     .gameCart button:hover {
         background-color: black;
     }
