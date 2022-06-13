@@ -32,6 +32,7 @@ namespace Gameland.Controllers.Front_end
             value.password = password;
             db.usersDatas.Add(value);
             db.SaveChanges();
+            Session["userName"] = userName;
             return RedirectToAction("homePage", "forHomePage");
 
         }

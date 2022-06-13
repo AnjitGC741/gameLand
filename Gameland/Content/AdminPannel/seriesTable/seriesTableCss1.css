@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/*header design starts*/
+.header {
+    height: 100px;
+    width: 1268px;
+    background-color: #F2F4F6;
+    display:flex;
+    padding-top:20px;
+}
+/*Style for search Button*/
+.searchBox{
+    margin-left:800px;
+}
+.searchbar {
+    width: 100%;
+    max-width: 250px;
+    display: inline-flex;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #696969;
+    border-radius: 5px 0 0 5px;
+    background: #F4FAF9;
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+    .searchbar__input:focus {
+        background: white;
+        box-shadow: 0 0 2px #696969;
+    }
+
+    .searchbar__input::placeholder {
+        color: #696969;
+    }
+
+.searchbar__button {
+    width: 40px;
+    background: #696969;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .searchbar__button:active {
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+    }
+/*style for search button ends*/
+/* message icon style*/
+.messageBox{
+    margin-left:1070px;
+    position:absolute;
+}
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #696969;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+}
+
+
+    .icon-button:active {
+        background: #cccccc;
+    }
+
+
+.icon-button__badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.icon-button a {
+    text-decoration: none;
+    color: #333333;
+}
+/*message style ends*/
+/*admin icon style*/
+.adminBox {
+    width: 50px;
+    position: relative;
+    margin-left:50px;
+
+}
+
+.click {
+    background-color: #696969;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-style: none;
+    margin-left: 75px;
+    margin-bottom:5px;
+}
+
+
+
+.links {
+    padding: 12px;
+    font-size: 1.2em;
+    font-family: futura Md BT;
+    border: none;
+    outline: none;
+    width: 200px;
+    color: black;
+    transition: 0.3s;
+   
+  
+}
+
+.list {
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+}
+
+.newlist {
+    transform: scaleY(1);
+}
+
+.links {
+    background-color: white;
+}
+
+    .links:hover {
+        padding-left: 30px;
+    }
+
+.list button a {
+    text-decoration: none;
+    color: #696969;
+}
+/*admin icon style ends*/
+/*header design ends*/
+/*table design starts*/
+.forTable table{
+    width:90%;
+    margin-left:5%;
+
+}
+.forTable h1 {
+    text-align: center;
+    margin-top: 100px
+}
+table th,td
+{
+    text-align:center;
+}
+table th {
+    background-color: darkorange;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #fedbb0;
+}
+
+/*table design ends*/
+/*Form Box*/
+.addSeriesBox {
+    height: 560px;
+    width: 30%;
+    background-color: #F2F4F6;
+    position: fixed;
+    margin-top: 100px;
+    margin-left: 400px;
+    visibility:hidden;
+    
+}
+.editSeriesBox1 {
+    height: 560px;
+    width: 30%;
+    background-color: #F2F4F6;
+    margin-top: 100px;
+    margin-left: 400px;
+    position: fixed;
+    visibility:hidden;
+}
+.editSeriesBox1 button {
+    margin-left: 406px;
+    border-style: none;
+    background-color: #F2F4F6;
+    width: 50px;
+}
+
+.editSeriesBox1 button i {
+        color: red;
+        font-size: 40px;
+ }
+
+    .editSeriesBox1 button:hover {
+        background-color: red;
+
+    }
+
+        .editSeriesBox1 button:hover i {
+            color: white;
+        }
+
+
+    .addSeriesBox button {
+        margin-left: 406px;
+        border-style: none;
+        background-color: #F2F4F6;
+        width: 50px;
+    }
+
+        .addSeriesBox button i {
+            color: red;
+            font-size: 40px;
+        }
+
+        .addSeriesBox button:hover {
+            background-color: red;
+        }
+
+            .addSeriesBox button:hover i {
+                color: white;
+            }
+
+.addMovieForm {
+    height: 420px;
+    width: 85%;
+    margin-left: 7.5%;
+    padding-top: 10px;
+}
+
+    .addMovieForm label {
+        font-size: 18px;
+        color:black;
+        margin-bottom: 0;
+    }
+
+.forForm {
+    margin-top: 0;
+    height: 45px;
+    font-size: 15px;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border-color: #696969;
+    border-style: none;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+
+.forForm placeholder {
+    color: #696969;
+}
+
+
+
+.button {
+    margin-top: 10px;
+    width: 200px;
+    background-color: #696969;
+    color: white;
+}
+
+    .button:hover {
+        background-color: black;
+    }
+/*Form box ends*/

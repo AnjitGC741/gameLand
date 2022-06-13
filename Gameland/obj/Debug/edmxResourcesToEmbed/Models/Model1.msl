@@ -110,7 +110,19 @@
           <ScalarProperty Name="purchaseImg" ColumnName="purchaseImg" />
           <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
           <ScalarProperty Name="userName" ColumnName="userName" />
-          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialOfferDatas">
+      <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
+        <MappingFragment StoreEntitySet="specialOfferData">
+          <ScalarProperty Name="offerImg" ColumnName="offerImg" />
+          <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
+          <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="productCategories" ColumnName="productCategories" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

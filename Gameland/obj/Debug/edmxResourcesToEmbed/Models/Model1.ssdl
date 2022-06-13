@@ -51,9 +51,9 @@
   </EntityType>
   <EntityType Name="recentlyPurchaseProduct">
     <Key>
-      <PropertyRef Name="orderID" />
+      <PropertyRef Name="purchaseID" />
     </Key>
-    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="purchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userName" Type="varchar" MaxLength="20" />
     <Property Name="purchaseName" Type="varchar" MaxLength="30" />
     <Property Name="purchaseImg" Type="varchar" MaxLength="255" />
@@ -70,6 +70,17 @@
     <Property Name="seriesType" Type="varchar" MaxLength="20" />
     <Property Name="seriesImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
+  </EntityType>
+  <EntityType Name="specialOfferData">
+    <Key>
+      <PropertyRef Name="productName" />
+    </Key>
+    <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="productCategories" Type="varchar" MaxLength="30" />
+    <Property Name="productType" Type="varchar" MaxLength="30" />
+    <Property Name="originalPrice" Type="int" />
+    <Property Name="offerPrice" Type="int" />
+    <Property Name="offerImg" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="specialOfferData1">
     <Key>
@@ -127,7 +138,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__recentlyP__userN__339FAB6E">
+  <Association Name="FK__recentlyP__userN__3C34F16F">
     <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
     <End Role="recentlyPurchaseProduct" Type="Self.recentlyPurchaseProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -147,6 +158,7 @@
     <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
@@ -158,7 +170,7 @@
       <End Role="usersData" EntitySet="usersData" />
       <End Role="messageBoxData" EntitySet="messageBoxData" />
     </AssociationSet>
-    <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="Self.FK__recentlyP__userN__339FAB6E">
+    <AssociationSet Name="FK__recentlyP__userN__3C34F16F" Association="Self.FK__recentlyP__userN__3C34F16F">
       <End Role="usersData" EntitySet="usersData" />
       <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProduct" />
     </AssociationSet>

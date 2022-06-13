@@ -128,17 +128,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Front-end\forCreateAccountController.cs" />
-    <Compile Include="Controllers\Front-end\myCartController.cs" />
+    <Compile Include="Controllers\forCreateAccountController.cs" />
+    <Compile Include="Controllers\forGamePageController.cs" />
+    <Compile Include="Controllers\forHomeGamesController.cs" />
+    <Compile Include="Controllers\forSeriesController.cs" />
+    <Compile Include="Controllers\myCartController.cs" />
     <Compile Include="Controllers\gameTableController.cs" />
     <Compile Include="Controllers\forGameListController.cs" />
     <Compile Include="Controllers\movieTableController.cs" />
-    <Compile Include="Controllers\Front-end\contactUsController.cs" />
+    <Compile Include="Controllers\contactUsController.cs" />
     <Compile Include="Controllers\forAdminPannelController.cs" />
-    <Compile Include="Controllers\Front-end\forHomePageController.cs" />
-    <Compile Include="Controllers\Front-end\forLoginPageController.cs" />
-    <Compile Include="Controllers\Front-end\forProductController.cs" />
+    <Compile Include="Controllers\forHomePageController.cs" />
+    <Compile Include="Controllers\forLoginPageController.cs" />
+    <Compile Include="Controllers\forProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\seriesTableController.cs" />
     <Compile Include="Controllers\specialOfferTableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,6 +183,9 @@
     <Compile Include="Models\seriesData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\specialOfferData.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\specialOfferData1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -195,10 +202,11 @@
     <Content Include="Content\AdminPannel\movieTables\movieTableCss1.css" />
     <Content Include="Content\AdminPannel\dashboard\bootstrap.min.js" />
     <Content Include="Content\AdminPannel\dashboard\jquery.min.js" />
-    <Content Include="Content\AdminPannel\dashboard\dashboardCss.css" />
+    <Content Include="Content\AdminPannel\dashboard\dashboardCss1.css" />
     <Content Include="Content\AdminPannel\dashboard\main.js" />
     <Content Include="Content\AdminPannel\dashboard\popper.js" />
     <Content Include="Content\AdminPannel\dashboard\sideBarCss.css" />
+    <Content Include="Content\AdminPannel\seriesTable\seriesTableCss1.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -212,7 +220,7 @@
     <Content Include="Content\createAccount\kP.jpg" />
     <Content Include="Content\createAccount\pngegg %281%29.png" />
     <Content Include="Content\createAccount\pngwing.com.png" />
-    <Content Include="Content\homePage\css\homePageCss1.css" />
+    <Content Include="Content\homePage\css\homePageCss.css" />
     <Content Include="Content\homePage\image\amazone prime 2.jpg" />
     <Content Include="Content\homePage\image\assassins.jpg" />
     <Content Include="Content\homePage\image\cod1.jpg" />
@@ -282,7 +290,7 @@
     <Content Include="Content\loginPage\image\gameland.jpg" />
     <Content Include="Content\product\games\gameCss.css" />
     <Content Include="Content\product\Movie\movieCss.css" />
-    <Content Include="Content\product\Series\seriesCss1.css" />
+    <Content Include="Content\product\Series\seriesCss.css" />
     <Content Include="Content\product\subscription\subscriptionCss.css" />
     <Content Include="Content\speicalOfferTable\specialOfferTableCss.css" />
     <Content Include="favicon.ico" />
@@ -336,7 +344,7 @@
     <Content Include="Views\forLoginPage\loginPage.cshtml" />
     <Content Include="Views\forHomePage\homePage.cshtml" />
     <Content Include="Views\forProduct\moviePage.cshtml" />
-    <Content Include="Views\forProduct\seriesPage.cshtml" />
+    <Content Include="Views\forProduct\series1Page.cshtml" />
     <Content Include="Views\forProduct\subscriptionPage.cshtml" />
     <Content Include="Views\contactUs\contactUsPage.cshtml" />
     <Content Include="Views\forAdminPannel\dashboardPage.cshtml" />
@@ -346,8 +354,12 @@
     <Content Include="Views\forCreateAccount\createAccountPage.cshtml" />
     <Content Include="Views\specialOfferTable\specialOfferTable.cshtml" />
     <Content Include="Views\gameTable\gameTable.cshtml" />
-    <Content Include="Views\forGameList\gameList.cshtml" />
-    <Content Include="Views\forGameList\gamesPage.cshtml" />
+    <Content Include="Views\forHomeGames\game1List.cshtml" />
+    <Content Include="Views\forGameContent\game1Content.cshtml" />
+    <Content Include="Views\forGamePage\gamePage.cshtml" />
+    <Content Include="Views\seriesTable\seriesTable.cshtml" />
+    <Content Include="Views\forSeries\seriesList.cshtml" />
+    <Content Include="Views\forSeries\seriesPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

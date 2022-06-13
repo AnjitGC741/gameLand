@@ -35,5 +35,6 @@ namespace Gameland.Models
         public virtual DbSet<subscriptionsData> subscriptionsDatas { get; set; }
         public virtual DbSet<cartData> cartDatas { get; set; }
         public virtual DbSet<recentlyPurchaseProduct> recentlyPurchaseProducts { get; set; }
+        public virtual DbSet<specialOfferData> specialOfferDatas { get; set; }
     }
 }

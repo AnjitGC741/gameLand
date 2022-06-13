@@ -12,15 +12,13 @@ namespace Gameland.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class recentlyPurchaseProduct
+    public partial class specialOfferData
     {
-        public int purchaseID { get; set; }
-        public string userName { get; set; }
-        public string purchaseName { get; set; }
-        public string purchaseImg { get; set; }
-        public string purchaseType { get; set; }
-        public Nullable<int> purchasePrice { get; set; }
-    
-        public virtual usersData usersData { get; set; }
+        public string productName { get; set; }
+        public string productCategories { get; set; }
+        public string productType { get; set; }
+        public Nullable<int> originalPrice { get; set; }
+        public Nullable<int> offerPrice { get; set; }
+        public string offerImg { get; set; }
     }
 }

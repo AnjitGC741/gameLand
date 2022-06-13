@@ -128,46 +128,48 @@
 
             </div>
         </nav>@*navbar content ends*@
-        <div class="pageContent">
+    <div class="pageContent">
 
-            @*Header part start*@
-            @*Form Box*@
-            <div class="addGameBox" id="addGameBox">
-                <button onclick="hide();"><i class="fa fa-close"></i></button>
-                <div class="addGameForm">
-                    @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
-                    {
-                        <label> Movie Name</label>
+        @*Header part start*@
+        @*Form Box*@
+        <div class="addGameBox" id="addGameBox">
+            <button onclick="hideAddBox();"><i class="fa fa-close"></i></button>
+            <div class="addGameForm">
+                @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                {
+                    <label> Movie Name</label>
 
-                        <input type="text" class="forForm" placeholder="Game Name" name="gameName">
+                    <input type="text" class="forForm" placeholder="Game Name" name="gameName">
 
-                        <label>Price</label>
+                    <label>Price</label>
 
-                        <input type="text" class="forForm" placeholder="Game Price" name="gamePrice">
+                    <input type="text" class="forForm" placeholder="Game Price" name="gamePrice">
 
-                        <label>Type</label>
+                    <label>Type</label>
 
-                        <input type="text" class="forForm" placeholder="Game Type" name="gameType">
+                    <input type="text" class="forForm" placeholder="Game Type" name="gameType">
 
-                        <label>Type</label>
+                    <label>Type</label>
 
-                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
+                    <input type="text" class="forForm" placeholder="Product Categories" name="productType">
 
-                        <label> choose Image</label>
+                    <label> choose Image</label>
 
-                        <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+                    <input type="file" value="Choose a Image" name="SelectedImg">
 
 
-                    }
-                </div>
+                    <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
 
+
+                }
             </div>
 
-            <div class="editGameBox1" id="editGameBox1">
-                <button onclick="hideEditBox();"><i class="fa fa-close"></i></button>
+        </div>
+
+        @foreach (var data in Model)
+        {
+            <div class="editGameBox1" id="editGameBox1_@data.gameName">
+                <button id="editGameBox1_@data.gameName"  onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
                 <div class="addGameForm">
 
                     @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
@@ -175,19 +177,19 @@
                         <form action="saveData">
                             <label> Game Name</label>
 
-                            <input type="text" class="forForm" placeholder="Game Name" name="gameName" />
+                            <input type="text" class="forForm" placeholder="Game Name" name="gameName" value="@data.gameName" />
 
                             <label>Price</label>
 
-                            <input type="text" class="forForm" placeholder="Game Price" name="gamePrice" />
+                            <input type="text" class="forForm" placeholder="Game Price" name="gamePrice" value="@data.gamePrice" />
+
+                            <label>Categories</label>
+
+                            <input type="text" class="forForm" placeholder="Game Type" name="gameType" value="@data.gameType" />
 
                             <label>Type</label>
 
-                            <input type="text" class="forForm" placeholder="Game Type" name="gameType" />
-
-                            <label>Type</label>
-
-                            <input type="text" class="forForm" placeholder="Product Categories" name="productType">
+                            <input type="text" class="forForm" placeholder="Product Categories" name="productType" value="@data.productType">
 
                             <label> choose Image</label>
 
@@ -201,113 +203,114 @@
 
                 </div>
             </div>
+        }
 
 
-            @*Form Box ends*@
-            <div class="header">
-                <div class="searchBox">
+        @*Form Box ends*@
+        <div class="header">
+            <div class="searchBox">
 
-                    @using (Html.BeginForm("Search", "gameTable", FormMethod.Post))
-                    {
-                        <div class="searchbar">
-                            <input type="text" class="searchbar__input" name="name1" placeholder="Search Games">
-                            <button type="submit" class="searchbar__button">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                    }
-
-                </div>
-                <div class="messageBox">
-                    <button type="button" class="icon-button">
-                        <a href="#">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                            <span class="icon-button__badge">2</span>
-                        </a>
-                    </button>
-                </div>
-                <div class="adminBox">
-                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
-
-                    <div class="list">
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
-
+                @using (Html.BeginForm("Search", "gameTable", FormMethod.Post))
+                {
+                    <div class="searchbar">
+                        <input type="text" class="searchbar__input" name="name1" placeholder="Search Games">
+                        <button type="submit" class="searchbar__button">
+                            <i class="material-icons">search</i>
+                        </button>
                     </div>
-                    <script>
+                }
 
-                        let click = document.querySelector('.click');
+            </div>
+            <div class="messageBox">
+                <button type="button" class="icon-button">
+                    <a href="#">
+                        <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                        <span class="icon-button__badge">2</span>
+                    </a>
+                </button>
+            </div>
+            <div class="adminBox">
+                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
 
-                        let list = document.querySelector('.list');
+                <div class="list">
 
-                        click.addEventListener("click", () => {
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
 
-                            list.classList.toggle('newlist');
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
 
-                        });
-                    </script>
                 </div>
+                <script>
+
+                    let click = document.querySelector('.click');
+
+                    let list = document.querySelector('.list');
+
+                    click.addEventListener("click", () => {
+
+                        list.classList.toggle('newlist');
+
+                    });
+                </script>
             </div>
-            @*header part ends*@
-            @*recent Purchase table starts*@
-            <div class="forTable">
-                <h1>Games</h1>
-                <table class="table" border="1">
-                    <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
+        </div>
+        @*header part ends*@
+        @*recent Purchase table starts*@
+        <div class="forTable">
+            <h1>Games</h1>
+            <table class="table" border="1">
+                <caption> <button class="btn btn-success" onclick="showAddBox();" style="width:100px;">Add</button></caption>
+                <tr>
+                    <th rowspan="2" class="rowSpan">Game Name</th>
+                    <th rowspan="2">Price</th>
+                    <th rowspan="2">Type</th>
+                    <th rowspan="2">Product Type</th>
+                    <th rowspan="2">Image</th>
+                    <th rowspan="2">Downloads</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <tr>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                @foreach (var data in Model)
+                {
                     <tr>
-                        <th rowspan="2" class="rowSpan">Game Name</th>
-                        <th rowspan="2">Price</th>
-                        <th rowspan="2">Type</th>
-                        <th rowspan="2">Product Type</th>
-                        <th rowspan="2">Image</th>
-                        <th rowspan="2">Downloads</th>
-                        <th colspan="2">Action</th>
-                    </tr>
-                    <tr>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                   @foreach (var data in Model)
-                      {
-                     <tr>
-                    <td>@(data.gameName)</td>
-                    <td>@(data.gamePrice)</td>
-                    <td>@(data.gameType)</td>
-                    <td>@(data.productType)</td>
-                    <td><img src="@(data.gamesImg!=null?Url.Content(data.gamesImg):"")" height="100" width="50" /></td>
-                    <td>@(data.downloads)</td>
-                    <td><button onclick="showEditBox();"><a href="#"><i class="material-icons" style="color:green;">edit</i></a></button></td>
-                    <td><button><a href="@Url.Action("Delete1", new {name=data.gameName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+                        <td>@(data.gameName)</td>
+                        <td>@(data.gamePrice)</td>
+                        <td>@(data.gameType)</td>
+                        <td>@(data.productType)</td>
+                        <td><img src="@(data.gamesImg!=null?Url.Content(data.gamesImg):"")" height="100" width="50" /></td>
+                        <td>@(data.downloads)</td>
+                        <td><button id="@data.gameName" onclick="showEditBox(this.id);"><a href="#"><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                        <td><button><a href="@Url.Action("Delete1", new {name=data.gameName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
 
 
                     </tr>
 
-                       }
-                </table>
-            </div>
+                }
+            </table>
+        </div>
 
-            @*recent purchase table ends*@
+        @*recent purchase table ends*@
 
 
-        </div>@*pageContent*@
+    </div>@*pageContent*@
 
     </div>@*mainBox ends*@
     <script>
-        function show() {
+        function showAddBox() {
             document.getElementById("addGameBox").style.visibility = "visible";
         }
 
-        function hide() {
+        function hideAddBox() {
             document.getElementById("addGameBox").style.visibility = "hidden";
         }
-        function showEditBox()
+        function showEditBox(id)
             {
-            document.getElementById("editGameBox1").style.visibility = "visible";
+            document.getElementById("editGameBox1_"+id).style.visibility = "visible";
         }
-        function hideEditBox() {
-            document.getElementById("editGameBox1").style.visibility = "hidden";
+        function hideEditBox(id) {
+            document.getElementById(id).style.visibility = "hidden";
         }
 
     </script>

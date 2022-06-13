@@ -40,5 +40,33 @@ namespace Gameland.Controllers
             db.SaveChanges();
             return RedirectToAction("gameTable");
         }
+        public ActionResult updateData(gamesData games, HttpPostedFileBase SelectedImg)
+        {
+            gamesData value1 = db.gamesDatas.Find(games.gameName);
+            value1.gameName = games.gameName;
+            value1.gamePrice = games.gamePrice;
+            value1.gameType = games.gameType;
+            value1.productType = games.productType;
+            string path = Server.MapPath("~/uploads");
+            string file_name = SelectedImg.FileName;
+            string new_path = path + "/" + file_name;
+            if (Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            SelectedImg.SaveAs(new_path);
+            value1.gamesImg = "~/uploads/" + file_name;
+
+            db.Entry(value1).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("gameTable");
+
+        }
+        public ActionResult Search(string name1)
+        {
+            var data1 = db.gamesDatas.Where(x => x.gameName == name1).ToList();
+            return View("gameTable", data1);
+        }
+
     }
 }

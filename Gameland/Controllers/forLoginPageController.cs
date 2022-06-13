@@ -13,7 +13,7 @@ namespace Gameland.Controllers
         // GET: forLoginPage
         public ActionResult loginPage()
         {
-
+            Session["totalUsers"]=db.usersDatas.Count(); 
             return View();
         }
         public ActionResult check(string userName, string password)

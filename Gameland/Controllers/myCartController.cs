@@ -18,7 +18,7 @@ namespace Gameland.Controllers.Front_end
             return View(all_data);
         }
 
-        public ActionResult AddToCart(string productName)
+        public ActionResult AddToCartMovie(string productName)
         {
             moviesData moviesData = db.moviesDatas.Find(productName);
             cartData mycart = new cartData();
@@ -27,6 +27,34 @@ namespace Gameland.Controllers.Front_end
             mycart.productImg = moviesData.movieImg;
             mycart.productType = moviesData.productType;
             mycart.price = moviesData.moviePrice;
+
+            db.cartDatas.Add(mycart);
+            db.SaveChanges();
+            return RedirectToAction("forCart");
+        }
+        public ActionResult AddToCartGame(string productName)
+        {
+            gamesData gamesData = db.gamesDatas.Find(productName);
+            cartData mycart = new cartData();
+            mycart.userName = (string)Session["userName"];
+            mycart.productName = gamesData.gameName;
+            mycart.productImg = gamesData.gamesImg;
+            mycart.productType = gamesData.productType;
+            mycart.price = gamesData.gamePrice;
+
+            db.cartDatas.Add(mycart);
+            db.SaveChanges();
+            return RedirectToAction("forCart");
+        }
+        public ActionResult AddToCartSeries(string productName)
+        {
+            seriesData seriesData = db.seriesDatas.Find(productName);
+            cartData mycart = new cartData();
+            mycart.userName = (string)Session["userName"];
+            mycart.productName = seriesData.seriesName;
+            mycart.productImg = seriesData.seriesImg;
+            mycart.productType = seriesData.productType;
+            mycart.price = seriesData.seriesPrice;
 
             db.cartDatas.Add(mycart);
             db.SaveChanges();

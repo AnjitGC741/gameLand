@@ -2,21 +2,21 @@
 
 @foreach (var data in Model)
 {
-    using (Html.BeginForm("AddToCart", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+    using (Html.BeginForm("AddToCartGame", "myCart", FormMethod.Post, new { @class = "", id = "" }))
     {
-        <input type="hidden" value="primary_key_column" name="primary_key_column" />
-        <div class="movieBox">
-            <div class="forMovieImage">
+        <input type="hidden" value="@data.gameName" name="productName" />
+        <div class="gameBox">
+            <div class="forGameImage">
                 <img src="@(data.gamesImg != null ? Url.Content(data.gamesImg) : "")" alt="image" />
             </div>
-            <div class="forMoviePrice">
-                <div class="MovieName">
+            <div class="forGamePrice">
+                <div class="gameName">
                     <p>@(data.gameName)</p>
                 </div>
-                <div class="movieOriginalPrice">
+                <div class="gameOriginalPrice">
                     <p>Rs<span>@(data.gamePrice) </span></p>
                 </div>
-                <div class="movieCart">
+                <div class="gameCart">
                     <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
                 </div>
             </div>
@@ -25,4 +25,3 @@
 }
 
 
-@*@(data.gamesImg != null ? Url.Content(data.gamesImg) : "")*@

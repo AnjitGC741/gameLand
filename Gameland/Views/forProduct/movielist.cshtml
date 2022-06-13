@@ -2,7 +2,7 @@
 
 @foreach (var data in Model)
 {
-    using (Html.BeginForm("AddToCart", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+    using (Html.BeginForm("AddToCartMovie", "myCart", FormMethod.Post, new { @class = "", id = "" }))
     {
         <input type="hidden" value="@data.movieName" name="productName" />
         <div class="movieBox">
@@ -17,7 +17,7 @@
                     <p>Rs<span> @(data.moviePrice)</span></p>
                 </div>
                 <div class="movieCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span >@(data.productType)</span>
                 </div>
             </div>
         </div>

@@ -11,7 +11,14 @@ namespace Gameland.Controllers
     {
         forGameLandEntities1 db = new forGameLandEntities1();
         // GET: movieList
+        // GET: movieList
+
         public ActionResult gamesPage()
+        {
+            List<gamesData> all_data = db.gamesDatas.ToList();
+            return PartialView(all_data);
+        }
+        public ActionResult gameContent()
         {
             List<gamesData> all_data = db.gamesDatas.ToList();
             return PartialView(all_data);

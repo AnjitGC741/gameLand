@@ -365,6 +365,10 @@ body {
     .seriesCart button:hover {
         background-color: black;
     }
+    .seriesCart span
+    {
+        visibility:hidden;
+    }
     /*movie content ends*/
 /*Footer containt starts*/
 

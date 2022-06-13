@@ -56,9 +56,9 @@
         </EntityType>
         <EntityType Name="recentlyPurchaseProduct">
           <Key>
-            <PropertyRef Name="orderID" />
+            <PropertyRef Name="purchaseID" />
           </Key>
-          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="purchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userName" Type="varchar" MaxLength="20" />
           <Property Name="purchaseName" Type="varchar" MaxLength="30" />
           <Property Name="purchaseImg" Type="varchar" MaxLength="255" />
@@ -75,6 +75,17 @@
           <Property Name="seriesType" Type="varchar" MaxLength="20" />
           <Property Name="seriesImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
+        </EntityType>
+        <EntityType Name="specialOfferData">
+          <Key>
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productCategories" Type="varchar" MaxLength="30" />
+          <Property Name="productType" Type="varchar" MaxLength="30" />
+          <Property Name="originalPrice" Type="int" />
+          <Property Name="offerPrice" Type="int" />
+          <Property Name="offerImg" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="specialOfferData1">
           <Key>
@@ -132,7 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__recentlyP__userN__339FAB6E">
+        <Association Name="FK__recentlyP__userN__3C34F16F">
           <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
           <End Role="recentlyPurchaseProduct" Type="Self.recentlyPurchaseProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,6 +163,7 @@
           <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
@@ -163,7 +175,7 @@
             <End Role="usersData" EntitySet="usersData" />
             <End Role="messageBoxData" EntitySet="messageBoxData" />
           </AssociationSet>
-          <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="Self.FK__recentlyP__userN__339FAB6E">
+          <AssociationSet Name="FK__recentlyP__userN__3C34F16F" Association="Self.FK__recentlyP__userN__3C34F16F">
             <End Role="usersData" EntitySet="usersData" />
             <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProduct" />
           </AssociationSet>
@@ -213,7 +225,7 @@
           <NavigationProperty Name="messageBoxDatas" Relationship="Self.FK__messageBo__userN__4D94879B" FromRole="usersData" ToRole="messageBoxData" />
           <Property Name="userImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="cartDatas" Relationship="forGameLandModel.FK__cartData__userNa__2DE6D218" FromRole="usersData" ToRole="cartData" />
-          <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
+          <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__3C34F16F" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
         </EntityType>
         <Association Name="FK__messageBo__userN__4D94879B">
           <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
@@ -246,10 +258,11 @@
             <End Role="cartData" EntitySet="cartDatas" />
           </AssociationSet>
           <EntitySet Name="recentlyPurchaseProducts" EntityType="forGameLandModel.recentlyPurchaseProduct" />
-          <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="forGameLandModel.FK__recentlyP__userN__339FAB6E">
+          <AssociationSet Name="FK__recentlyP__userN__3C34F16F" Association="forGameLandModel.FK__recentlyP__userN__3C34F16F">
             <End Role="usersData" EntitySet="usersDatas" />
             <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
           </AssociationSet>
+          <EntitySet Name="specialOfferDatas" EntityType="forGameLandModel.specialOfferData" />
         </EntityContainer>
         <EntityType Name="specialOfferData1">
           <Key>
@@ -319,17 +332,17 @@
         </Association>
         <EntityType Name="recentlyPurchaseProduct">
           <Key>
-            <PropertyRef Name="orderID" />
+            <PropertyRef Name="purchaseID" />
           </Key>
-          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="purchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="purchaseName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="purchaseImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="purchaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="purchasePrice" Type="Int32" />
-          <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="recentlyPurchaseProduct" ToRole="usersData" />
+          <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__recentlyP__userN__3C34F16F" FromRole="recentlyPurchaseProduct" ToRole="usersData" />
         </EntityType>
-        <Association Name="FK__recentlyP__userN__339FAB6E">
+        <Association Name="FK__recentlyP__userN__3C34F16F">
           <End Type="forGameLandModel.usersData" Role="usersData" Multiplicity="0..1" />
           <End Type="forGameLandModel.recentlyPurchaseProduct" Role="recentlyPurchaseProduct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,6 +354,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="specialOfferData">
+          <Key>
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="originalPrice" Type="Int32" />
+          <Property Name="offerPrice" Type="Int32" />
+          <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -456,7 +480,19 @@
                 <ScalarProperty Name="purchaseImg" ColumnName="purchaseImg" />
                 <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specialOfferDatas">
+            <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
+              <MappingFragment StoreEntitySet="specialOfferData">
+                <ScalarProperty Name="offerImg" ColumnName="offerImg" />
+                <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
+                <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="productCategories" ColumnName="productCategories" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

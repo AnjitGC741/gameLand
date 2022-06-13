@@ -1,0 +1,28 @@
+﻿
+@model List<Gameland.Models.seriesData>
+
+@foreach (var data in Model)
+{
+    using (Html.BeginForm("AddToCartSeries", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+    {
+        <input type="hidden" value="@data.seriesName" name="productName" />
+        <div class="seriesBox">
+            <div class="forGameImage">
+                <img src="@(data.seriesImg != null ? Url.Content(data.seriesImg) : "")" alt="image" />
+            </div>
+            <div class="forSeriesPrice">
+                <div class="seriesName">
+                    <p>@(data.seriesName)</p>
+                </div>
+                <div class="seriesOriginalPrice">
+                    <p>Rs<span>@(data.seriesPrice) </span></p>
+                </div>
+                <div class="seriesCart">
+                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+

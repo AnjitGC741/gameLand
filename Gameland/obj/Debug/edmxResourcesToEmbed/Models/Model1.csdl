@@ -41,7 +41,7 @@
     <NavigationProperty Name="messageBoxDatas" Relationship="Self.FK__messageBo__userN__4D94879B" FromRole="usersData" ToRole="messageBoxData" />
     <Property Name="userImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="cartDatas" Relationship="forGameLandModel.FK__cartData__userNa__2DE6D218" FromRole="usersData" ToRole="cartData" />
-    <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
+    <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__3C34F16F" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
   </EntityType>
   <Association Name="FK__messageBo__userN__4D94879B">
     <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
@@ -74,10 +74,11 @@
       <End Role="cartData" EntitySet="cartDatas" />
     </AssociationSet>
     <EntitySet Name="recentlyPurchaseProducts" EntityType="forGameLandModel.recentlyPurchaseProduct" />
-    <AssociationSet Name="FK__recentlyP__userN__339FAB6E" Association="forGameLandModel.FK__recentlyP__userN__339FAB6E">
+    <AssociationSet Name="FK__recentlyP__userN__3C34F16F" Association="forGameLandModel.FK__recentlyP__userN__3C34F16F">
       <End Role="usersData" EntitySet="usersDatas" />
       <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
     </AssociationSet>
+    <EntitySet Name="specialOfferDatas" EntityType="forGameLandModel.specialOfferData" />
   </EntityContainer>
   <EntityType Name="specialOfferData1">
     <Key>
@@ -147,17 +148,17 @@
   </Association>
   <EntityType Name="recentlyPurchaseProduct">
     <Key>
-      <PropertyRef Name="orderID" />
+      <PropertyRef Name="purchaseID" />
     </Key>
-    <Property Name="orderID" Type="Int32" Nullable="false" />
+    <Property Name="purchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="purchaseName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="purchaseImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="purchaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="purchasePrice" Type="Int32" />
-    <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__recentlyP__userN__339FAB6E" FromRole="recentlyPurchaseProduct" ToRole="usersData" />
+    <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__recentlyP__userN__3C34F16F" FromRole="recentlyPurchaseProduct" ToRole="usersData" />
   </EntityType>
-  <Association Name="FK__recentlyP__userN__339FAB6E">
+  <Association Name="FK__recentlyP__userN__3C34F16F">
     <End Type="forGameLandModel.usersData" Role="usersData" Multiplicity="0..1" />
     <End Type="forGameLandModel.recentlyPurchaseProduct" Role="recentlyPurchaseProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,4 +170,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="specialOfferData">
+    <Key>
+      <PropertyRef Name="productName" />
+    </Key>
+    <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="originalPrice" Type="Int32" />
+    <Property Name="offerPrice" Type="Int32" />
+    <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

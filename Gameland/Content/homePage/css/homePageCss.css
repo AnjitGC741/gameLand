@@ -386,7 +386,10 @@ body {
     .gameCart button:hover {
         background-color: black;
     }
-
+.gameCart span {
+    visibility: hidden;
+    font-size: 5px;
+}
 
 /*game content ends*/
 /*Subscription content starts*/
@@ -658,6 +661,10 @@ body {
     .seriesCart button:hover {
         background-color: black;
     }
+.seriesCart span {
+    visibility: hidden;
+    font-size: 5px;
+}
 
 /*Series content ends*/
 /*Customer review contain starts*/

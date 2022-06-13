@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @*Css links*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/dashboardCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/dashboardCss1.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -248,7 +248,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>50</p>
+                            <p>@Model.Count()</p>
                         </div>
                         <div class="forName">
                             <p>Sales</p>
@@ -264,7 +264,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@(Model.Sum(x=>x.purchasePrice))</p>
                         </div>
                         <div class="forName">
                             <p>Earning</p>
@@ -320,40 +320,41 @@
             </div>
             @*Graph and pie chart ends*@
             @*recent Purchase table starts*@
-            <div class="forTable">
-                <h2>Recently purchase</h2>
-                <table>
-                    <tr id="header">
-                        <th>orderId</th>
-                        <th>User name</th>
-                        <th>Purchase Name</th>
-                        <th>Purchase Img</th>
-                        <th>type</th>
-                        <th>price</th>
-                    </tr>
-                    @foreach (var data in Model)
-                    {
-                <tr>
-                    <td>@(data.orderID)</td>
-                    <td>@(data.userName)</td>
-                    <td>@(data.purchaseName)</td>
-                    <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="50" /</td>
-                    <td>@(data.purchaseType)</td>
-                    <td>@(data.purchasePrice)</td>
-
-
-
-
+            
+        <div class="forTable">
+            <h1>Recently purchase</h1>
+            <table class="table" border="1">
+                <tr id="header">
+                    <th>orderId</th>
+                    <th>User name</th>
+                    <th>Purchase Name</th>
+                    <th>Purchase Img</th>
+                    <th>type</th>
+                    <th>price</th>
                 </tr>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@(data.purchaseID)</td>
+                        <td>@(data.userName)</td>
+                        <td>@(data.purchaseName)</td>
+                        <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="50" /</td>
+                        <td>@(data.purchaseType)</td>
+                        <td>@(data.purchasePrice)</td>
 
 
-                    }
 
 
+                    </tr>
 
 
-                </table>
-            </div>
+                }
+
+            </table>
+
+        </div>
+            
+               
             @*recent purchase table ends*@
         </div>@*Page Content ends*@
 
@@ -361,7 +362,7 @@
 
 
     </div>@*mainDiv ends ends*@
-    <script>
+<script>
         const ctx = document.getElementById("myChart").getContext('2d');
         const myChart = new Chart(ctx, {
             type: 'bar',
@@ -398,7 +399,7 @@
                 labels: ['Movies', 'Games', 'Subscription', 'Series'],
                 datasets: [{
                     label: 'Product Sales',
-                    data: [12, 19, 3, 5],
+                    data: [@Session["totalMovieDownload"],@Session["totalGameDownload1"],@Session["totalSubscriptionDownload"], @Session["totalSeriesDownload"] ],
                     backgroundColor: [
                         '#28b779',
                         '#27a9e3',
@@ -412,7 +413,7 @@
                 Response: true,
             }
         });
-    </script>
+</script>
 
     <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
     <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
