@@ -38,36 +38,63 @@
 
     </div>
     @*navbar desing ends*@
+    <div>
+
+    </div>
+    <div class="yourOrderBox">
+       <p>Your Order @Model.Count()</p>
+    </div>
     @*Cart body*@
-    <table class="table" border="1">
-        <tr>
-            <th>UserName</th>
-            <th>Product Image</th>
-            <th>Product</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Remove</th>
-        </tr>
-        @foreach (var data in Model)
-        {
+<div class="cartBox" id="cartBox">
+    <div class="emptyCartMsgBox" id="emptyCartMsgBox">
+        <img src="~/Content/cart/emptyCart.jpg" height="300" width="300" />
+        <p>Your Cart is empty</p>
+        <button class="btn btn-secondary"><a href="@Url.Action("homePage","forHomePage")">Goto Shop</a></button>
+    </div>
+    <div class="tableBox" id="tableBox">
+        <table class="table" border="1">
             <tr>
-                <td>@(data.userName)</td>
-                <td><img src="@(data.productImg!=null?Url.Content(data.productImg):"")" height="100" width="50" /></td>
-                <td>@(data.productName)</td>
-                <td>@(data.productType)</td>
-                <td>@(data.price)</td>
-
-
+                <th>UserName</th>
+                <th>Product Image</th>
+                <th>Product</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Remove</th>
             </tr>
-
-
-        }
+            @foreach (var data in Model)
+            {
         <tr>
-            <td>Total</td>
-            <td>@(Model.Sum(x=>x.price))</td>
+            <td>@(data.userName)</td>
+            <td><img src="@(data.productImg!=null?Url.Content(data.productImg):"")" height="100" width="50" /></td>
+            <td>@(data.productName)</td>
+            <td>@(data.productType)</td>
+            <td>@(data.price)</td>
+            <td><a href="@Url.Action("Delete1", new {name=data.productName})"><i class="fa fa-trash"></i></a></td>
+            @* <td><button><a href="@Url.Action("Delete", new {name=data.productName})"></td>*@
+          
+
+
         </tr>
-    </table>
-    <button ><a href="@Url.Action("MakePayment")">Make payment</a></button>
+
+
+            }
+            <tr>
+                <td>Total</td>
+                <td>@(Model.Sum(x=>x.price))</td>
+            </tr>
+        </table>
+        <button class="btn btn-success "><a href="@Url.Action("MakePayment")">Make payment</a></button>
+    </div>
+</div>
+    <script>
+        if (@Model.Count()== 0) {
+            document.getElementById("emptyCartMsgBox").style.visibility = "visible";
+            document.getElementById("cartBox").style.height = "400px";
+        }
+        else {
+            document.getElementById("tableBox").style.visibility = "visible";
+        }
+    </script>
     @*Cart body ends*@
     @*Footer Contain start*@
     <footer class="footer">

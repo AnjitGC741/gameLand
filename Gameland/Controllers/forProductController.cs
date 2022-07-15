@@ -16,10 +16,6 @@ namespace Gameland.Controllers
             List<moviesData> all_data = db.moviesDatas.ToList();
             return PartialView(all_data);
         }
-        public ActionResult seriesPage()
-        {
-            return View();
-        }
         public ActionResult subscriptionPage()
         {
             return View();

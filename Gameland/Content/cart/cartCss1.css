@@ -66,8 +66,82 @@ body {
     color: #E7A14A;
 }
 /*style for navbar finish*/
+/*your order Box css start*/
+.yourOrderBox {
+    height: 50px;
+    margin-top:50px;
+  
+}
+.yourOrderBox p {
+       font-size:40px;
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: #696969;
+        margin-left:40px;
+ }
+/*your order Box css ends*/
+/*cart css*/
+.cartBox{
+    margin-top:15px;
+  
+}
+.emptyCartMsgBox{
+    height:400px;
+    position:absolute;
+    margin-left:600px;
+    visibility:hidden;
+}
+ .emptyCartMsgBox p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: #696969;
+        font-size:28px;
+        text-align:center;
+    }
+    .emptyCartMsgBox button
+    {
+        margin-left:100px;
+    }
 
-
+    .emptyCartMsgBox button a {
+        text-decoration: none;
+        color: white;
+    }
+    .tableBox{
+        width:93%;
+        margin-left:40px;
+        visibility:hidden;
+    }
+    .tableBox table th {
+            background-color: #696969;
+            color: white;
+    }
+    .tableBox table th{
+            padding-left:20px;
+    }
+        .tableBox table td {
+            padding-left: 20px;
+        }
+    .tableBox button
+    {
+      margin-left:1280px;
+    }
+        .tableBox table td a {
+            text-decoration: none;
+            color:black;
+            margin-left:15px;
+        }
+            .tableBox table td a i{
+                font-size:30px;
+            }
+                .tableBox table td a i:hover{
+                    color:red;
+                }
+                .tableBox button a {
+                    text-decoration: none;
+                    color: white;
+                }
+/*cart css ends*/
 /*Footer containt starts*/
 
 
@@ -101,7 +175,7 @@ ul {
         text-transform: capitalize;
         margin-bottom: 35px;
         font-weight: 500;
-        position: relative;
+        position:relative;
     }
 
         .footerCol h4::before {
@@ -195,4 +269,5 @@ ul {
     display: flex;
 }
 /*Footer containt ends*/
+
 

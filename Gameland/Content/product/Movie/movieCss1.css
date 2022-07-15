@@ -128,7 +128,7 @@ body {
         font-size: 40px;
     }
     .searchButton{
-        margin-left:280px;
+        margin-left:295px;
         margin-top:7px;
     }
 .searchbar {
@@ -201,16 +201,84 @@ body {
     color: #696969;
     margin-left:5px;
 }
+.categories {
+    width: 200px;
+    position: relative;
+    margin-left: 999px;
+    height: 200px;
+}
 
+.sortBy1 {
+    width: 200px;
+    position: relative;
+    height: 100px;
+}
+
+.click {
+    background-color: white;
+    border-radius: 10px;
+    border-style: none;
+}
+
+
+
+.click, .links {
+    padding: 12px;
+    font-size: 1.2em;
+    font-family: futura Md BT;
+    border: none;
+    outline: none;
+    width: 200px;
+    color: black;
+    transition: 0.3s;
+}
+
+.list {
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+}
+
+.newlist {
+    transform: scaleY(1);
+}
+
+.links {
+    background-color: white;
+}
+
+    .links:hover {
+        padding-left: 30px;
+    }
+    
 /*mainDiv content ends*/
 /*movie content starts*/
 .movieContent {
     width: 86%;
     margin-left: 105px;
+}
+.emptyBox{
+    height:350px;
+    width:500px;
+    position:absolute;
+    margin-left:400px;
+    visibility:hidden;
+
+  
+}
+    .emptyBox p {
+        font-size: 35px;
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: #696969;
+        text-align:center;
+    }
+.forMovie {
     display: flex;
     flex-wrap: wrap;
+    visibility:hidden;
 }
-
 .movieBox {
     height: 620px;
     width: 316px;
@@ -218,6 +286,8 @@ body {
     border-radius: 10px;
     margin-left: 10px;
     margin-top: 20px;
+   
+    
 }
 
 .forMovieImage {

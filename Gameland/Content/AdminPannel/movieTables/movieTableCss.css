@@ -204,10 +204,11 @@ tr:nth-child(even) {
     height: 560px;
     width: 30%;
     background-color: #F2F4F6;
-    margin-top: 100px;
+    margin-top: 40px;
     margin-left: 400px;
     position: fixed;
     visibility:hidden;
+
 }
 .editMovieBox1 button {
     margin-left: 406px;

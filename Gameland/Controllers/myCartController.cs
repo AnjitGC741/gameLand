@@ -27,7 +27,6 @@ namespace Gameland.Controllers.Front_end
             mycart.productImg = moviesData.movieImg;
             mycart.productType = moviesData.productType;
             mycart.price = moviesData.moviePrice;
-
             db.cartDatas.Add(mycart);
             db.SaveChanges();
             return RedirectToAction("forCart");
@@ -55,7 +54,6 @@ namespace Gameland.Controllers.Front_end
             mycart.productImg = seriesData.seriesImg;
             mycart.productType = seriesData.productType;
             mycart.price = seriesData.seriesPrice;
-
             db.cartDatas.Add(mycart);
             db.SaveChanges();
             return RedirectToAction("forCart");
@@ -78,6 +76,13 @@ namespace Gameland.Controllers.Front_end
             db.cartDatas.RemoveRange(dataList);
             db.SaveChanges();
             return RedirectToAction("homePage","forHomePage");
+        }
+        public ActionResult Delete1(string name)
+        {
+            cartData data1 = db.cartDatas.Find(name);
+            db.cartDatas.Remove(data1);
+            db.SaveChanges();
+            return RedirectToAction("forCart");
         }
     }
 

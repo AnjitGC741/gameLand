@@ -19,7 +19,8 @@
 
 </head>
 <body>
-    <button class="cartButton"><a href="#"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(0)</span></a></button>
+    <button class="cartButton"><a href="@Url.Action("forCart","myCart")"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(@Session["totalOrder"])</span></a></button>
+
     @*navbar design begins*@
     <div class="navbar1">
         <div class="forLogo">
@@ -54,10 +55,10 @@
         <div class="productCategoriesList">
             <div>
                 <div class="productCategoriesListButton">
-                    <button><a href="@Url.Action("gamePage","forGamePage")"><img src="~/Content/homePage/image/assassins.jpg" alt="">  </a></button>
+                    <button><a href="@Url.Action("gamePage","forGame")"><img src="~/Content/homePage/image/assassins.jpg" alt="">  </a></button>
                 </div>
                 <div class="productCategoriesListText">
-                    <a href="@Url.Action("gamePage","forGamePage")"> <p>Games</p></a>
+                    <a href="@Url.Action("gamePage","forGame")"> <p>Games</p></a>
                 </div>
             </div>
             <div>
@@ -89,140 +90,7 @@
     @*content Categories ends*@
 
     @*special offer contain starts*@
-    <div class="specialOfferText">
-        <p>Special Offers</p>
-    </div>
-    <div class="owl-carousel owl-theme" id="specialOfferContent">
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/newrdr23.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Red Dead Redemption II</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1500</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 1000</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/squidGame.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Netflix Subscription(1 Month)</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1448</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 999</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/fifa.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Fifa 2022</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1500</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 1000</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/Ghost of Tsushima 2020 4K Ultra HD Mobile Wallpaper.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Ghost of Tsushima</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1500</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 1000</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/pubg.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Pubg Pc</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1500</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 1000</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="specialOfferBox">
-            <div class="forImage">
-                <img src="~/Content/homePage/image/nfs.jpg" alt="image" />
-            </div>
-            <div class="forPrice">
-                <div class="specialOfferName">
-                    <p>Need for Speed</p>
-                </div>
-                <div class="specialOfferPrice">
-                    <div class="originalPrice">
-                        <p style=" color: #696969;"><s>Rs 1500</s></p>
-                    </div>
-                    <div class="offeredPrice">
-                        <p style="color:red">Rs 1000</p>
-                    </div>
-                </div>
-                <div class="specialOfferCart">
-                    <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
+   
 
     @*special offer contain ends*@
     @*Games contain starts*@
@@ -230,7 +98,7 @@
         <p>Games</p>
     </div>
     <div class="owl-carousel owl-theme" id="gameContent">
-        @{ Html.RenderAction("game1List", "forHomeGames");}
+        @{ Html.RenderAction("gameList", "forGame");}
     </div>
 
 
@@ -248,7 +116,7 @@
             <div class="forVideoDescribe">
                 <p>Set three years after the conclusion of Drake's Deception, A Thief's End follows Nathan Drake, now a retired fortune hunter, as he reunites with his long-lost brother, Samuel, and seeks to save him from a ruthless tyrant by setting off on another adventure that involves finding Captain Henry Avery's fabled pirate treasure.</p>
             </div>
-            
+
             <div class="forVideoButton">
                 <button>Find a Treasure</button>
             </div>
@@ -534,6 +402,7 @@
                         <li><a href="#">Cart</a></li>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Contact</a></li>
+                        <li><a href="@Url.Action("loginPageForAdmin","adminLoginPage")">Admin</a></li>
                     </ul>
                 </div>
                 <div class="footerCol">
@@ -575,7 +444,6 @@
         </div>
     </footer>
     @*Footer Contain Ends*@
-    <h1>@Session["totalUsers"]</h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

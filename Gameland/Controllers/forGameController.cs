@@ -7,31 +7,29 @@ using System.Web.Mvc;
 
 namespace Gameland.Controllers
 {
-    public class forGameListController : Controller
+    public class forGameController : Controller
     {
         forGameLandEntities1 db = new forGameLandEntities1();
-        // GET: movieList
-        // GET: movieList
-
-        public ActionResult gamesPage()
+        // GET: forGame
+        public ActionResult gameList()
         {
             List<gamesData> all_data = db.gamesDatas.ToList();
             return PartialView(all_data);
         }
-        public ActionResult gameContent()
+        public ActionResult gamePage()
         {
             List<gamesData> all_data = db.gamesDatas.ToList();
             return PartialView(all_data);
         }
-        public ActionResult gamelist()
+        public ActionResult Search(string name1)
         {
-            List<gamesData> all_data = db.gamesDatas.ToList();
-            return PartialView(all_data);
+            var data1 = db.gamesDatas.Where(x => x.gameName == name1).ToList();
+            return View("gamePage", data1);
         }
-        public ActionResult Search(string name)
+        public ActionResult Sort(string name2)
         {
-            var data = db.gamesDatas.Where(x => x.gameName == name).ToList();
-            return View("gamesPage", data);
+            var data1 = db.gamesDatas.Where(x => x.gameName == name2).ToList();
+            return View("gamePage", data1);
         }
     }
 }

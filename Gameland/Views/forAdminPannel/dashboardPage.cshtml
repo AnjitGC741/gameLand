@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @*Css links*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/dashboardCss1.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/dashboardCss.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -62,19 +62,16 @@
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Table</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">User</a>
+                                <a href="@Url.Action("movieTable","movieTable")">Movies</a>
                             </li>
                             <li>
-                                <a href="#">Movies</a>
-                            </li>
-                            <li>
-                                <a href="#">Games</a>
+                                <a href="@Url.Action("gameTable","gameTable")">Games</a>
                             </li>
                             <li>
                                 <a href="#">Subscription</a>
                             </li>
                             <li>
-                                <a href="#">Series</a>
+                                <a href="@Url.Action("seriesTable","seriesTable")">Series</a>
                             </li>
                         </ul>
                     </li>
@@ -179,7 +176,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@Session["totalGames"]</p>
                         </div>
                         <div class="forName">
                             <p>Games</p>
@@ -195,7 +192,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@Session["totalMovies"]</p>
                         </div>
                         <div class="forName">
                             <p>Movies</p>
@@ -212,7 +209,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@Session["totalSubs"]</p>
                         </div>
                         <div class="forName">
                             <p style="margin-left: 20px;"> Subscription</p>
@@ -228,7 +225,7 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@Session["totalSeries"]</p>
                         </div>
                         <div class="forName">
                             <p>Series</p>
@@ -237,6 +234,7 @@
                 </div>@*box 4 ends*@
             </div>
             @*Product count ends*@
+        <hr />
             @*Business Details starts*@
             <div class="businessBox">
                 <div class="box5">
@@ -281,35 +279,21 @@
 
                     <div class="forText">
                         <div class="forCount">
-                            <p>40</p>
+                            <p>@Session["totalUsers"]</p>
                         </div>
                         <div class="forName">
                             <p>Users</p>
                         </div>
                     </div>
                 </div>@*box 3 ends*@
-                <div class="box8">
-                    <div class="forIcon">
-                        <span class="material-icons">
-                            notifications
-                        </span>
-                    </div>
-
-                    <div class="forText">
-                        <div class="forCount">
-                            <p>40</p>
-                        </div>
-                        <div class="forName">
-                            <p style="margin-left: 20px;">Notifitcations</p>
-                        </div>
-                    </div>
-                </div>@*box 4 ends*@
+               
             </div>
             @*Businesss Details ends*@
+       
             @*Graph and Pie Chart starts*@
             <div class="mainChartBox">
                 <div class="graphBox">
-                    <p>Sales Per Month</p>
+                    <p>Product Count</p>
                     <canvas id="myChart"></canvas>
                 </div>
                 <div class="pieBox">
@@ -367,23 +351,16 @@
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['January', 'Februray', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                labels: ['Games', 'Movies', 'Series', 'Subscription'],
                 datasets: [{
-                    label: 'Sales per Month',
-                    data: [12, 19, 3, 5, 2, 31, 1, 22, 3, 4, 5, 6],
+                    label: '',
+                    data: [@Session["totalGames"], @Session["totalMovies"], @Session["totalSeries"], @Session["totalSubs"]],
                     backgroundColor: [
-                        '#da542e',
+                        'red',
                         '#27a9e3',
                         '#808080',
                         '#28b779',
-                        '#2255a4',
-                        '#FF0000',
-                        '#006400',
-                        '#FF1493',
-                        '#FFFF00',
-                        '#8A2BE2',
-                        'rgb(0, 0, 0)',
-                        '#ffb848'
+
                     ],
 
                 }]

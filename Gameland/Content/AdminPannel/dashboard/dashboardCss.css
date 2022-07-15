@@ -241,17 +241,18 @@
     justify-content: space-around;
 }
 .box5 {
-    height: 120px;
-    width: 20%;
+    height: 130px;
+    width: 30%;
     background-color: #e9ddb3;
     margin-top: 15px;
     border-radius: 20px;
     display: flex;
+    padding-left:50px;
 }
 
 .box6 {
-    height: 120px;
-    width: 20%;
+    height: 130px;
+    width: 30%;
     background-color: #c150ff;
     margin-top: 15px;
     border-radius: 20px;
@@ -259,22 +260,16 @@
 }
 
 .box7 {
-    height: 120px;
-    width: 20%;
+    height: 130px;
+    width: 30%;
     background-color: #79ff7a;
     margin-top: 15px;
     border-radius: 20px;
     display: flex;
+    padding-left: 50px;
 }
 
-.box8 {
-    height: 120px;
-    width: 20%;
-    background-color: #fea28b;
-    margin-top: 15px;
-    border-radius: 20px;
-    display: flex;
-}
+
 
 /*Business box ends*/
 /*Graph and Pie chart design*/
@@ -335,3 +330,11 @@ tr:nth-child(even) {
     background-color: #fedbb0;
 }
 /*table design ends*/
+/*second columns starts*/
+.secondCol {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    background-color: red;
+}
+/*second columns ends*/

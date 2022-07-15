@@ -128,13 +128,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\adminLoginPageController.cs" />
     <Compile Include="Controllers\forCreateAccountController.cs" />
-    <Compile Include="Controllers\forGamePageController.cs" />
-    <Compile Include="Controllers\forHomeGamesController.cs" />
+    <Compile Include="Controllers\forGameController.cs" />
     <Compile Include="Controllers\forSeriesController.cs" />
     <Compile Include="Controllers\myCartController.cs" />
     <Compile Include="Controllers\gameTableController.cs" />
-    <Compile Include="Controllers\forGameListController.cs" />
     <Compile Include="Controllers\movieTableController.cs" />
     <Compile Include="Controllers\contactUsController.cs" />
     <Compile Include="Controllers\forAdminPannelController.cs" />
@@ -198,11 +197,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminPannel\adminLoginPage\adminLoginPageCss.css" />
     <Content Include="Content\AdminPannel\gameTable\gameTableCss1.css" />
-    <Content Include="Content\AdminPannel\movieTables\movieTableCss1.css" />
+    <Content Include="Content\AdminPannel\movieTables\movieTableCss.css" />
     <Content Include="Content\AdminPannel\dashboard\bootstrap.min.js" />
     <Content Include="Content\AdminPannel\dashboard\jquery.min.js" />
-    <Content Include="Content\AdminPannel\dashboard\dashboardCss1.css" />
+    <Content Include="Content\AdminPannel\dashboard\dashboardCss.css" />
     <Content Include="Content\AdminPannel\dashboard\main.js" />
     <Content Include="Content\AdminPannel\dashboard\popper.js" />
     <Content Include="Content\AdminPannel\dashboard\sideBarCss.css" />
@@ -212,6 +212,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cart\cartCss1.css" />
+    <Content Include="Content\cart\emptyCart.jpg" />
     <Content Include="Content\ContactUs\contactus.gif" />
     <Content Include="Content\ContactUs\contactUsCss.css" />
     <Content Include="Content\ContactUs\mailbox3.gif" />
@@ -228,6 +229,7 @@
     <Content Include="Content\homePage\image\customer\cartoon-girl-limages-2.jpg" />
     <Content Include="Content\homePage\image\customer\cat.jpg" />
     <Content Include="Content\homePage\image\customer\dark-dog-animals-portrait-wallpaper-preview.jpg" />
+    <Content Include="Content\homePage\image\customer\nothing found.png" />
     <Content Include="Content\homePage\image\Cyberpunk 2077 — from the creators of The Witcher 3_ Wild Hunt.jpg" />
     <Content Include="Content\homePage\image\daysGone.png" />
     <Content Include="Content\homePage\image\disney hotstar.jpg" />
@@ -289,7 +291,7 @@
     <Content Include="Content\loginPage\image\fifa.jpg" />
     <Content Include="Content\loginPage\image\gameland.jpg" />
     <Content Include="Content\product\games\gameCss.css" />
-    <Content Include="Content\product\Movie\movieCss.css" />
+    <Content Include="Content\product\Movie\movieCss1.css" />
     <Content Include="Content\product\Series\seriesCss.css" />
     <Content Include="Content\product\subscription\subscriptionCss.css" />
     <Content Include="Content\speicalOfferTable\specialOfferTableCss.css" />
@@ -344,7 +346,6 @@
     <Content Include="Views\forLoginPage\loginPage.cshtml" />
     <Content Include="Views\forHomePage\homePage.cshtml" />
     <Content Include="Views\forProduct\moviePage.cshtml" />
-    <Content Include="Views\forProduct\series1Page.cshtml" />
     <Content Include="Views\forProduct\subscriptionPage.cshtml" />
     <Content Include="Views\contactUs\contactUsPage.cshtml" />
     <Content Include="Views\forAdminPannel\dashboardPage.cshtml" />
@@ -354,12 +355,12 @@
     <Content Include="Views\forCreateAccount\createAccountPage.cshtml" />
     <Content Include="Views\specialOfferTable\specialOfferTable.cshtml" />
     <Content Include="Views\gameTable\gameTable.cshtml" />
-    <Content Include="Views\forHomeGames\game1List.cshtml" />
-    <Content Include="Views\forGameContent\game1Content.cshtml" />
-    <Content Include="Views\forGamePage\gamePage.cshtml" />
     <Content Include="Views\seriesTable\seriesTable.cshtml" />
     <Content Include="Views\forSeries\seriesList.cshtml" />
     <Content Include="Views\forSeries\seriesPage.cshtml" />
+    <Content Include="Views\forGame\gamePage.cshtml" />
+    <Content Include="Views\forGame\gameList.cshtml" />
+    <Content Include="Views\adminLoginPage\loginPageForAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
