@@ -7,17 +7,6 @@
     <Property Name="adminId" Type="Int32" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="messageBoxData">
-    <Key>
-      <PropertyRef Name="messageId" />
-    </Key>
-    <Property Name="messageId" Type="Int32" Nullable="false" />
-    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="message" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="usersData" Relationship="Self.FK__messageBo__userN__4D94879B" FromRole="messageBoxData" ToRole="usersData" />
-  </EntityType>
   <EntityType Name="moviesData">
     <Key>
       <PropertyRef Name="movieName" />
@@ -38,32 +27,15 @@
     <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="messageBoxDatas" Relationship="Self.FK__messageBo__userN__4D94879B" FromRole="usersData" ToRole="messageBoxData" />
     <Property Name="userImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="cartDatas" Relationship="forGameLandModel.FK__cartData__userNa__2DE6D218" FromRole="usersData" ToRole="cartData" />
     <NavigationProperty Name="recentlyPurchaseProducts" Relationship="forGameLandModel.FK__recentlyP__userN__3C34F16F" FromRole="usersData" ToRole="recentlyPurchaseProduct" />
+    <NavigationProperty Name="messageBoxData1" Relationship="forGameLandModel.FK__messageBo__userN__4F47C5E3" FromRole="usersData" ToRole="messageBoxData1" />
   </EntityType>
-  <Association Name="FK__messageBo__userN__4D94879B">
-    <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
-    <End Role="messageBoxData" Type="Self.messageBoxData" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usersData">
-        <PropertyRef Name="userName" />
-      </Principal>
-      <Dependent Role="messageBoxData">
-        <PropertyRef Name="userName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="forGameLandEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="adminDatas" EntityType="Self.adminData" />
-    <EntitySet Name="messageBoxDatas" EntityType="Self.messageBoxData" />
     <EntitySet Name="moviesDatas" EntityType="Self.moviesData" />
     <EntitySet Name="usersDatas" EntityType="Self.usersData" />
-    <AssociationSet Name="FK__messageBo__userN__4D94879B" Association="Self.FK__messageBo__userN__4D94879B">
-      <End Role="usersData" EntitySet="usersDatas" />
-      <End Role="messageBoxData" EntitySet="messageBoxDatas" />
-    </AssociationSet>
     <EntitySet Name="specialOfferData1" EntityType="forGameLandModel.specialOfferData1" />
     <EntitySet Name="gamesDatas" EntityType="forGameLandModel.gamesData" />
     <EntitySet Name="seriesDatas" EntityType="forGameLandModel.seriesData" />
@@ -79,6 +51,11 @@
       <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
     </AssociationSet>
     <EntitySet Name="specialOfferDatas" EntityType="forGameLandModel.specialOfferData" />
+    <EntitySet Name="messageBoxData1" EntityType="forGameLandModel.messageBoxData1" />
+    <AssociationSet Name="FK__messageBo__userN__4F47C5E3" Association="forGameLandModel.FK__messageBo__userN__4F47C5E3">
+      <End Role="usersData" EntitySet="usersDatas" />
+      <End Role="messageBoxData1" EntitySet="messageBoxData1" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="specialOfferData1">
     <Key>
@@ -181,4 +158,27 @@
     <Property Name="offerPrice" Type="Int32" />
     <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="messageBoxData1">
+    <Key>
+      <PropertyRef Name="messageId" />
+    </Key>
+    <Property Name="messageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usersData" Relationship="forGameLandModel.FK__messageBo__userN__4F47C5E3" FromRole="messageBoxData1" ToRole="usersData" />
+  </EntityType>
+  <Association Name="FK__messageBo__userN__4F47C5E3">
+    <End Type="forGameLandModel.usersData" Role="usersData" Multiplicity="0..1" />
+    <End Type="forGameLandModel.messageBoxData1" Role="messageBoxData1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usersData">
+        <PropertyRef Name="userName" />
+      </Principal>
+      <Dependent Role="messageBoxData1">
+        <PropertyRef Name="userName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

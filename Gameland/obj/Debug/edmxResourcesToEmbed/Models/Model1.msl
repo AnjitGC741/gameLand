@@ -9,17 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="messageBoxDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.messageBoxData">
-        <MappingFragment StoreEntitySet="messageBoxData">
-          <ScalarProperty Name="messageId" ColumnName="messageId" />
-          <ScalarProperty Name="userName" ColumnName="userName" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="subject" ColumnName="subject" />
-          <ScalarProperty Name="message" ColumnName="message" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="moviesDatas">
       <EntityTypeMapping TypeName="forGameLandModel.moviesData">
         <MappingFragment StoreEntitySet="moviesData">
@@ -123,6 +112,17 @@
           <ScalarProperty Name="productType" ColumnName="productType" />
           <ScalarProperty Name="productCategories" ColumnName="productCategories" />
           <ScalarProperty Name="productName" ColumnName="productName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messageBoxData1">
+      <EntityTypeMapping TypeName="forGameLandModel.messageBoxData1">
+        <MappingFragment StoreEntitySet="messageBoxData1">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="messageId" ColumnName="messageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

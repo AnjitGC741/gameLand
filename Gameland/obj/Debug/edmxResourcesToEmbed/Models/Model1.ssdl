@@ -28,11 +28,11 @@
     <Property Name="gamesImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
-  <EntityType Name="messageBoxData">
+  <EntityType Name="messageBoxData1">
     <Key>
       <PropertyRef Name="messageId" />
     </Key>
-    <Property Name="messageId" Type="int" Nullable="false" />
+    <Property Name="messageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userName" Type="varchar" MaxLength="20" />
     <Property Name="email" Type="varchar" MaxLength="30" />
     <Property Name="subject" Type="varchar" MaxLength="20" />
@@ -126,14 +126,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__messageBo__userN__656C112C">
+  <Association Name="FK__messageBo__userN__4F47C5E3">
     <End Role="usersData" Type="Self.usersData" Multiplicity="0..1" />
-    <End Role="messageBoxData" Type="Self.messageBoxData" Multiplicity="*" />
+    <End Role="messageBoxData1" Type="Self.messageBoxData1" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="usersData">
         <PropertyRef Name="userName" />
       </Principal>
-      <Dependent Role="messageBoxData">
+      <Dependent Role="messageBoxData1">
         <PropertyRef Name="userName" />
       </Dependent>
     </ReferentialConstraint>
@@ -154,7 +154,7 @@
     <EntitySet Name="adminData" EntityType="Self.adminData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cartData" EntityType="Self.cartData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="gamesData" EntityType="Self.gamesData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="messageBoxData" EntityType="Self.messageBoxData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="messageBoxData1" EntityType="Self.messageBoxData1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
@@ -166,9 +166,9 @@
       <End Role="usersData" EntitySet="usersData" />
       <End Role="cartData" EntitySet="cartData" />
     </AssociationSet>
-    <AssociationSet Name="FK__messageBo__userN__656C112C" Association="Self.FK__messageBo__userN__656C112C">
+    <AssociationSet Name="FK__messageBo__userN__4F47C5E3" Association="Self.FK__messageBo__userN__4F47C5E3">
       <End Role="usersData" EntitySet="usersData" />
-      <End Role="messageBoxData" EntitySet="messageBoxData" />
+      <End Role="messageBoxData1" EntitySet="messageBoxData1" />
     </AssociationSet>
     <AssociationSet Name="FK__recentlyP__userN__3C34F16F" Association="Self.FK__recentlyP__userN__3C34F16F">
       <End Role="usersData" EntitySet="usersData" />

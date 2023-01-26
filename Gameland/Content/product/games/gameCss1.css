@@ -108,29 +108,32 @@ body {
     color: #E7A14A;
 }
 /*style for navbar finish*/
-/*movie Topic and search bar*/
-.seriesNameAndSearch {
+/*movie Topic*/
+.gameNameAndSearch {
     height: 100px;
     width: 100%;
     padding-top: 20px;
-    display:flex;
+    display: flex;
 }
-.seriesText {
+
+.gameText {
     height: 100px;
     width: 55%;
 }
 
-    .seriesText p {
+    .gameText p {
         text-align: right;
         font-family: 'Advent Pro', sans-serif;
         font-family: 'Signika Negative', sans-serif;
         color: #696969;
         font-size: 40px;
     }
-    .searchButton{
-        margin-left:280px;
-        margin-top:7px;
-    }
+
+.searchButton {
+    margin-left: 280px;
+    margin-top: 7px;
+}
+
 .searchbar {
     width: 100%;
     max-width: 300px;
@@ -173,9 +176,10 @@ body {
     cursor: pointer;
     user-select: none;
 }
-.searchbar__button:hover{
-    background-color:black;
-}
+
+    .searchbar__button:hover {
+        background-color: black;
+    }
 
     .searchbar__button:active {
         box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
@@ -186,26 +190,28 @@ body {
     height: 50px;
     width: 85%;
     margin-left: 115px;
-    display:flex;
-    
+    display: flex;
+}
 
-}
-.totalSeries p {
+.totalGames p {
     font-size: 25px;
-    color:black;
-    margin-top:5px;
+    color: black;
+    margin-top: 5px;
 }
-.totalSeries span {
+
+.totalGames span {
     font-size: 20px;
     color: #696969;
-    margin-left:5px;
+    margin-left: 5px;
 }
+
 .categories {
     width: 200px;
     position: relative;
-    margin-left:803px;
+    margin-left: 999px;
     height: 200px;
 }
+
 .sortBy1 {
     width: 200px;
     position: relative;
@@ -216,7 +222,6 @@ body {
     background-color: white;
     border-radius: 10px;
     border-style: none;
-   
 }
 
 
@@ -232,7 +237,7 @@ body {
     transition: 0.3s;
 }
 
-.list{
+.list {
     position: absolute;
     transform: scaleY(0);
     transform-origin: top;
@@ -248,9 +253,9 @@ body {
 }
 
     .links:hover {
-       
-        padding-left:30px;
+        padding-left: 30px;
     }
+
 .click1 {
     background-color: white;
     border-radius: 10px;
@@ -285,50 +290,53 @@ body {
     background-color: white;
 }
 
- .links1:hover {
+    .links1:hover {
         padding-left: 30px;
- }
+    }
 /*mainDiv content ends*/
-/*movie content starts*/
-.seriesContent {
+/*Games content starts*/
+.gameContent {
+   
     width: 86%;
     margin-left: 105px;
-    display: flex;
-    flex-wrap: wrap;
+    display:flex;
+    flex-wrap:wrap;
+    
 }
 
-.seriesBox {
+.gameBox {
     height: 620px;
-    width: 316px;
-    background-color: rgba(186, 234, 186, 0.399);
+    width:316px;
+    background-color: #c8d8e4;
     border-radius: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin-left:10px;
+    margin-top:20px;
 }
 
-.forSeriesImage {
+.forGameImage {
     width: 316px;
     height: 500px;
-    overflow: hidden;
+    overflow:hidden;
+ 
 }
 
-    .forSeriesImage img {
+.forGameImage img {
         height: 500px;
         width: 316px;
         transition: transform 2s;
     }
 
-    .forSeriesImage:hover img {
+.forGameImage:hover img {
         transform: scale(1.3);
     }
 
-.seriesName {
+.gameName {
     height: 30px;
     width: 100%;
     padding-top: 5px;
 }
 
-    .seriesName p {
+    .gameName p {
         font-family: 'Advent Pro', sans-serif;
         font-family: 'Signika Negative', sans-serif;
         font-size: 20px;
@@ -336,13 +344,13 @@ body {
         color: #696969;
     }
 
-.seriesOriginalPrice {
+.gameOriginalPrice {
     height: 30px;
     width: 100%;
     padding-top: 5px;
 }
 
-    .seriesOriginalPrice p {
+    .gameOriginalPrice p {
         font-family: 'Advent Pro', sans-serif;
         font-family: 'Signika Negative', sans-serif;
         font-size: 20px;
@@ -350,7 +358,7 @@ body {
         color: #696969;
     }
 
-.seriesCart button {
+.gameCart button {
     width: 150px;
     margin-left: 75px;
     border-radius: 10px;
@@ -361,15 +369,15 @@ body {
     margin-top: 10px;
     border-style: none;
 }
-
-    .seriesCart button:hover {
+.gameCart span{
+    font-size:5px;
+    visibility:hidden;
+}
+    .gameCart button:hover {
         background-color: black;
     }
-    .seriesCart span
-    {
-        visibility:hidden;
-    }
-    /*movie content ends*/
+
+/*Games content ends*/
 /*Footer containt starts*/
 
 

@@ -1,4 +1,4 @@
-﻿@model List<Gameland.Models.seriesData>
+﻿@model List<Gameland.Models.messageBoxData1>
 @{
     ViewBag.Title = "dashboardPage";
     Layout = null;
@@ -9,7 +9,7 @@
 <head>
     <title>Movies Table</title>
     @*Css*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/seriesTable/seriesTableCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/movieTables/movieTableCss.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -111,39 +111,7 @@
 
             @*Header part start*@
             @*Form Box*@
-            <div class="addSeriesBox" id="addSeriesBox">
-                <button onclick="hide();"><i class="fa fa-close"></i></button>
-                <div class="addMovieForm">
-                    @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
-                    {
-                        <label> Movie Name</label>
-
-                        <input type="text" class="forForm" placeholder="Series Name" name="seriesName">
-
-                        <label>Price</label>
-
-                        <input type="text" class="forForm" placeholder="Series Price" name="seriesPrice">
-
-                        <label>Type</label>
-
-                        <input type="text" class="forForm" placeholder="Series Type" name="seriesType">
-
-                        <label>Type</label>
-
-                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
-
-                        <label> choose Image</label>
-
-                        <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
-
-
-                    }
-                </div>
-
-            </div>
+        
 
 
 
@@ -152,10 +120,10 @@
             <div class="header">
                 <div class="searchBox">
 
-                    @using (Html.BeginForm("Search", "seriesTable", FormMethod.Post))
+                    @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
                     {
                         <div class="searchbar">
-                            <input type="text" class="searchbar__input" name="name1" placeholder="Search Series">
+                            <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
                             <button type="submit" class="searchbar__button">
                                 <i class="material-icons">search</i>
                             </button>
@@ -164,12 +132,12 @@
 
                 </div>
                 <div class="messageBox">
-                    <a href="@Url.Action("userMessage","forMessage")">
-                        <button type="button" class="icon-button">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
-                            <span class="icon-button__badge">@Session["totalMessage"]</span>
-                        </button>
-                    </a>
+                    <button type="button" class="icon-button">
+                        <a href="#">
+                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                            <span class="icon-button__badge">@Model.Count()</span>
+                        </a>
+                    </button>
                 </div>
                 <div class="adminBox">
                     <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
@@ -197,76 +165,31 @@
             </div>
             @*header part ends*@
 
-            @foreach (var data in Model)
-            {
-                <div class="editSeriesBox1" id="editSeriesBox_@data.seriesName">
-                    <button id="editSeriesBox_@data.seriesName" onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
-                    <div class="addMovieForm">
-
-                        @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
-                        {
-                            <form action="saveData">
-                                <label> Series Name</label>
-
-                                <input type="text" class="forForm" placeholder="Series Name" name="seriesName" value="@data.seriesName" />
-
-                                <label>Price</label>
-
-                                <input type="text" class="forForm" placeholder="Series Price" name="seriesPrice" Value="@data.seriesPrice" />
-
-                                <label>Type</label>
-
-                                <input type="text" class="forForm" placeholder="Series Type" name="seriesType" value="@data.seriesType" />
-
-                                <label>Type</label>
-
-                                <input type="text" class="forForm" placeholder="Product Categories" name="productType" value="@data.productType">
-
-                                <label> choose Image</label>
-
-                                <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                                <input type="submit" value="Update" class="btn btn-warning" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
-
-                            </form>
-                        }
-
-                    </div>
-                </div>
-            }
+           
 
 
             @*recent Purchase table starts*@
             <div class="forTable">
-                <p>@Model.Count()</p>
-                <h1>Series</h1>
+               
+                <h1>Message</h1>
                 <table class="table" border="1">
-                    <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
+                  
                     <tr>
-                        <th rowspan="2" class="rowSpan">Movie Name</th>
-                        <th rowspan="2">Price</th>
-                        <th rowspan="2">Type</th>
-                        <th rowspan="2">Product Type</th>
-                        <th rowspan="2">Image</th>
-                        <th rowspan="2">Downloads</th>
-                        <th colspan="2">Action</th>
+                        <th  class="rowSpan">User Name</th>
+                        <th >Email</th>
+                        <th >Subject</th>
+                        <th >Message</th>
+                        <th >Delete</th>
                     </tr>
-                    <tr>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
+                   
                     @foreach (var data in Model)
                     {
                         <tr>
-                            <td>@(data.seriesName)</td>
-                            <td>@(data.seriesPrice)</td>
-                            <td>@(data.seriesType)</td>
-                            <td>@(data.productType)</td>
-                            <td><img src="@(data.seriesImg!=null?Url.Content(data.seriesImg):"")" height="100" width="50" /></td>
-                            <td>@(data.downloads)</td>
-                            <td><button id="@data.seriesName" onclick="showEditBox(this.id);"><a @*href="@Url.Action("Edit", new {name=data.movieName})"*@><i class="material-icons" style="color:green;">edit</i></a></button></td>
-                            <td><button><a href="@Url.Action("Delete", new {name=data.seriesName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+                            <td>@(data.userName)</td>
+                            <td>@(data.email)</td>
+                            <td>@(data.subject)</td>
+                            <td>@(data.message)</td>
+                            <td><button><a href="@Url.Action("Delete", new {name=data.messageId})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
 
                         </tr>
 
@@ -281,23 +204,7 @@
         </div>@*pageContent*@
 
     </div>@*mainBox ends*@
-    <script>
-        function show() {
-            document.getElementById("addSeriesBox").style.visibility = "visible";
-        }
-
-        function hide() {
-            document.getElementById("addSeriesBox").style.visibility = "hidden";
-        }
-        function showEditBox(id)
-            {
-            document.getElementById("editSeriesBox_"+id).style.visibility = "visible";
-        }
-        function hideEditBox(id) {
-            document.getElementById(id).style.visibility = "hidden";
-        }
-
-    </script>
+   
     <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
     <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
     <script src="~/Content/AdminPannel/dashboard/bootstrap.min.js"></script>

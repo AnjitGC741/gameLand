@@ -17,9 +17,9 @@ namespace Gameland.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public usersData()
         {
-            this.messageBoxDatas = new HashSet<messageBoxData>();
             this.cartDatas = new HashSet<cartData>();
             this.recentlyPurchaseProducts = new HashSet<recentlyPurchaseProduct>();
+            this.messageBoxData1 = new HashSet<messageBoxData1>();
         }
     
         public string userName { get; set; }
@@ -30,10 +30,10 @@ namespace Gameland.Models
         public string userImg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<messageBoxData> messageBoxDatas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cartData> cartDatas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<recentlyPurchaseProduct> recentlyPurchaseProducts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<messageBoxData1> messageBoxData1 { get; set; }
     }
 }

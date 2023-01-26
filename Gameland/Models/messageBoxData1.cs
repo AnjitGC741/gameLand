@@ -12,7 +12,7 @@ namespace Gameland.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class messageBoxData
+    public partial class messageBoxData1
     {
         public int messageId { get; set; }
         public string userName { get; set; }

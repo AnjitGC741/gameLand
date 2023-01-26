@@ -1,0 +1,394 @@
+﻿@model List<Gameland.Models.messageBoxData1>
+@{
+    ViewBag.Title = "dashboardPage";
+    Layout = null;
+
+
+}
+<html>
+<head>
+    <title>Movies Table</title>
+    @*Css*@
+    <link rel="stylesheet" href="~/Content/AdminPannel/movieTables/movieTableCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
+    @*Font awesome*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*font family*@
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .mainBox {
+            width: 100%;
+            display: flex;
+        }
+        html {
+            font-size: 62.5%;
+        }
+
+        .pageContent {
+            width: 1270px;
+            height: 800px;
+        }
+
+        .dummyBox {
+            width: 250px;
+            height: 780px;
+        }
+
+        .editMovieBox {
+            height: 500px;
+            width: 30%;
+            background-color: #F2F4F6;
+            position: absolute;
+            margin-top: 150px;
+            margin-left: 400px;
+            visibility: hidden;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calendar {
+            width: 45rem;
+            height: 52rem;
+            background-color: #222227;
+            box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+        }
+
+        .month {
+            width: 100%;
+            height: 12rem;
+            background-color: #167e56;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            text-align: center;
+            text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+        }
+
+            .month i {
+                font-size: 2.5rem;
+                cursor: pointer;
+            }
+
+            .month h1 {
+                font-size: 3rem;
+                font-weight: 400;
+                text-transform: uppercase;
+                letter-spacing: 0.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .month p {
+                font-size: 1.6rem;
+            }
+
+        .weekdays {
+            width: 100%;
+            height: 5rem;
+            padding: 0 0.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .weekdays div {
+                font-size: 1.5rem;
+                font-weight: 400;
+                letter-spacing: 0.1rem;
+                width: calc(44.2rem / 7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+            }
+
+        .days {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0.2rem;
+        }
+
+            .days div {
+                font-size: 1.4rem;
+                margin: 0.3rem;
+                width: calc(40.2rem / 7);
+                height: 5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+                transition: background-color 0.2s;
+            }
+
+                .days div:hover:not(.today) {
+                    background-color: #262626;
+                    border: 0.2rem solid #777;
+                    cursor: pointer;
+                }
+
+        .prev-date,
+        .next-date {
+            opacity: 0.5;
+        }
+
+        .today {
+            background-color: #167e56;
+        }
+      
+    </style>
+</head>
+
+<body>
+    <div class="mainBox">
+        <div class="dummyBox">
+
+        </div>
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <h2 style="background-color: #696969; color:white; margin-bottom:60px; margin-top:30px">GameLand</h2>
+                <ul class="list-unstyled components mb-5">
+
+
+                    <li>
+                        <a href="@Url.Action("dashboardPage","forAdminPannel")">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Table</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="@Url.Action("movieTable","movieTable")">Movies</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("gameTable","gameTable")">Games</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("seriesTable","seriesTable")">Series</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("calender","forMessage")">Calender</a>
+                    </li>
+
+
+
+                </ul>
+                <div class="mb-5">
+                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <form action="#" class="colorlib-subscribe-form">
+                        <div class="form-group d-flex">
+                            <div class="icon"><span class="icon-paper-plane"></span></div>
+                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="footer">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+
+            </div>
+        </nav>@*navbar content ends*@
+    <div class="pageContent">
+
+        @*Header part start*@
+        @*Form Box*@
+
+
+
+
+
+        @*Form Box ends*@
+        <div class="header">
+            <div class="searchBox">
+
+                @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
+                {
+                    <div class="searchbar">
+                        <input type="text" class="searchbar__input" name="name1" placeholder="Search....">
+                        <button type="submit" class="searchbar__button">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                }
+
+            </div>
+            <div class="messageBox">
+                <button type="button" class="icon-button">
+                    <a href="#">
+                        <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
+                        <span class="icon-button__badge">@Model.Count()</span>
+                    </a>
+                </button>
+            </div>
+            <div class="adminBox">
+                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
+
+                <div class="list">
+
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
+
+                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+
+                </div>
+                <script>
+
+                    let click = document.querySelector('.click');
+
+                    let list = document.querySelector('.list');
+
+                    click.addEventListener("click", () => {
+
+                        list.classList.toggle('newlist');
+
+                    });
+                </script>
+            </div>
+        </div>
+        @*header part ends*@
+
+
+    <div class="mainBox">
+        <div class="container">
+            <div class="calendar">
+                <div class="month">
+                    <i class="fas fa-angle-left prev"></i>
+                    <div class="date">
+                        <h1></h1>
+                        <p></p>
+                    </div>
+                    <i class="fas fa-angle-right next"></i>
+                </div>
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days"></div>
+            </div>
+        </div>
+    </div>
+
+        <script>
+            const date = new Date();
+
+            const renderCalendar = () => {
+                date.setDate(1);
+
+                const monthDays = document.querySelector(".days");
+
+                const lastDay = new Date(
+                    date.getFullYear(),
+                    date.getMonth() + 1,
+                    0
+                ).getDate();
+
+                const prevLastDay = new Date(
+                    date.getFullYear(),
+                    date.getMonth(),
+                    0
+                ).getDate();
+
+                const firstDayIndex = date.getDay();
+
+                const lastDayIndex = new Date(
+                    date.getFullYear(),
+                    date.getMonth() + 1,
+                    0
+                ).getDay();
+
+                const nextDays = 7 - lastDayIndex - 1;
+
+                const months = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                ];
+
+                document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+
+                document.querySelector(".date p").innerHTML = new Date().toDateString();
+
+                let days = "";
+
+                for (let x = firstDayIndex; x > 0; x--) {
+                    days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+                }
+
+                for (let i = 1; i <= lastDay; i++) {
+                    if (
+                        i === new Date().getDate() &&
+                        date.getMonth() === new Date().getMonth()
+                    ) {
+                        days += `<div class="today">${i}</div>`;
+                    } else {
+                        days += `<div>${i}</div>`;
+                    }
+                }
+
+                for (let j = 1; j <= nextDays; j++) {
+                    days += `<div class="next-date">${j}</div>`;
+                    monthDays.innerHTML = days;
+                }
+            };
+
+            document.querySelector(".prev").addEventListener("click", () => {
+                date.setMonth(date.getMonth() - 1);
+                renderCalendar();
+            });
+
+            document.querySelector(".next").addEventListener("click", () => {
+                date.setMonth(date.getMonth() + 1);
+                renderCalendar();
+            });
+
+            renderCalendar();
+        </script>
+
+
+
+
+
+    </div>@*pageContent*@
+
+    </div>@*mainBox ends*@
+
+    <script src="~/Content/AdminPannel/dashboard/jquery.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/popper.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/bootstrap.min.js"></script>
+    <script src="~/Content/AdminPannel/dashboard/main.js"></script>
+</body>
+</html>
+

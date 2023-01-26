@@ -1,0 +1,41 @@
+﻿@model List<Gameland.Models.gamesData>
+@{
+    ViewBag.Title = "projectDemo";
+}
+
+<div class="forTable">
+    <h1>Games</h1>
+    <table class="table" border="1">
+        <caption> <button class="btn btn-success" onclick="showAddBox();" style="width:100px;">Add</button></caption>
+        <tr>
+            <th rowspan="2" class="rowSpan">Game Name</th>
+            <th rowspan="2">Price</th>
+            <th rowspan="2">Type</th>
+            <th rowspan="2">Product Type</th>
+            <th rowspan="2">Image</th>
+            <th rowspan="2">Downloads</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>@(data.gameName)</td>
+                <td>@(data.gamePrice)</td>
+                <td>@(data.gameType)</td>
+                <td>@(data.productType)</td>
+                <td><img src="@(data.gamesImg!=null?Url.Content(data.gamesImg):"")" height="100" width="50" /></td>
+                <td>@(data.downloads)</td>
+                <td><button id="@data.gameName" onclick="showEditBox(this.id);"><a href="#"><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                <td><button><a href="@Url.Action("Delete1", new {name=data.gameName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+
+
+            </tr>
+
+        }
+    </table>
+</div>
+

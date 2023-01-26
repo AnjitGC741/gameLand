@@ -56,7 +56,7 @@
 
 
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="@Url.Action("dashboardPage","forAdminPannel")">Dashboard</a>
                     </li>
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Table</a>
@@ -68,34 +68,16 @@
                                 <a href="@Url.Action("gameTable","gameTable")">Games</a>
                             </li>
                             <li>
-                                <a href="#">Subscription</a>
-                            </li>
-                            <li>
                                 <a href="@Url.Action("seriesTable","seriesTable")">Series</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Calender</a>
+                        <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
+               
 
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                   
                 </ul>
 
                 <div class="mb-5">
@@ -133,12 +115,14 @@
                     </form>
                 </div>
                 <div class="messageBox">
-                    <button type="button" class="icon-button">
-                        <a href="#">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                            <span class="icon-button__badge">2</span>
-                        </a>
-                    </button>
+                  
+                    <a href="@Url.Action("userMessage","forMessage")">
+                        <button type="button" class="icon-button">
+                            <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
+                            <span class="icon-button__badge">@Session["totalMessage"]</span>
+                           </button>
+                    </a>
+                   
                 </div>
                 <div class="adminBox">
                     <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
@@ -147,7 +131,7 @@
 
                         <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
 
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="@Url.Action("homePage","forHomePage")"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
 
                     </div>
                     <script>
@@ -373,10 +357,10 @@
         const myPie = new Chart(ctx1, {
             type: 'doughnut',
             data: {
-                labels: ['Movies', 'Games', 'Subscription', 'Series'],
+                labels: ['Movies', 'Games', 'Series'],
                 datasets: [{
                     label: 'Product Sales',
-                    data: [@Session["totalMovieDownload"],@Session["totalGameDownload1"],@Session["totalSubscriptionDownload"], @Session["totalSeriesDownload"] ],
+                    data: [@Session["totalMovieDownload"],@Session["totalGameDownload1"], @Session["totalSeriesDownload"] ],
                     backgroundColor: [
                         '#28b779',
                         '#27a9e3',

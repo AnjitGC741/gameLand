@@ -67,6 +67,11 @@ namespace Gameland.Controllers
             var data1 = db.gamesDatas.Where(x => x.gameName == name1).ToList();
             return View("gameTable", data1);
         }
+        public ActionResult projectDemo()
+        {
+            List<gamesData> all_data = db.gamesDatas.ToList();
+            return View(all_data);
+        }
 
     }
 }

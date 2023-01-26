@@ -28,7 +28,7 @@ namespace Gameland.Controllers
         }
         public ActionResult Sort(string name2)
         {
-            var data1 = db.gamesDatas.Where(x => x.gameName == name2).ToList();
+            var data1 = db.gamesDatas.Where(x => x.gameType == name2).ToList();
             return View("gamePage", data1);
         }
     }

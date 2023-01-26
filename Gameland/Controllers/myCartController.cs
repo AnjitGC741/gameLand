@@ -75,7 +75,7 @@ namespace Gameland.Controllers.Front_end
 
             db.cartDatas.RemoveRange(dataList);
             db.SaveChanges();
-            return RedirectToAction("homePage","forHomePage");
+            return RedirectToAction("forCart");
         }
         public ActionResult Delete1(string name)
         {

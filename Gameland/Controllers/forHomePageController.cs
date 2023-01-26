@@ -16,6 +16,10 @@ namespace Gameland.Controllers
             Session["totalOrder"] = db.cartDatas.Count();
             return View();
         }
-       
+        public ActionResult aboutUs()
+        {
+         
+            return View();
+        }
     }
 }

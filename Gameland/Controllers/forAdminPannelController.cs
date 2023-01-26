@@ -22,6 +22,7 @@ namespace Gameland.Controllers
             Session["totalGameDownload1"] = countGame.Count();
             Session["totalSeriesDownload"] = countSeries.Count();
             Session["totalSubscriptionDownload"] = countSubscription.Count();
+            Session["totalMessage"] = db.messageBoxData1.Count();
             return View(all_data);
         }
     }

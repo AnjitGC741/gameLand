@@ -115,12 +115,15 @@ body {
     .tableBox table th {
             background-color: #696969;
             color: white;
+            height:50px;
     }
-    .tableBox table th{
-            padding-left:20px;
-    }
+        .tableBox table th {
+            padding-left: 20px;
+            font-family: font-family: 'Poppins', sans-serif;
+        }
         .tableBox table td {
             padding-left: 20px;
+            font-family: font-family: 'Poppins', sans-serif;
         }
     .tableBox button
     {
@@ -141,6 +144,14 @@ body {
                     text-decoration: none;
                     color: white;
                 }
+                td img{
+                    height:150px;
+                    width:100px;
+                }
+td {
+    font-size: 25px;
+    font-family: font-family: 'Poppins', sans-serif;
+}
 /*cart css ends*/
 /*Footer containt starts*/
 
@@ -269,5 +280,58 @@ ul {
     display: flex;
 }
 /*Footer containt ends*/
+/*purchase Box  css*/
+#close1 {
+    border-style: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #696969;
+    margin-left:280px;
+    margin-top:5px;
+}
+    #close1:hover {
+        background-color: black;
+    }
+.purchaseSuccessful {
+    height: 400px;
+    width:330px;
+    position: absolute;
+    margin-left: 600px;
+    background-color:white;
+    visibility:hidden;
+    border:2px solid green;
+    border-radius:10px;
+    
+   
+}
+ .purchaseSuccessful img{
+     margin-left:70px;
+   
+ }
+    .purchaseSuccessful h4 {
+        font-family: 'Advent Pro', sans-serif;
+      /*  font-family: 'Signika Negative', sans-serif;*/
+        text-align: center;
+        margin-bottom:0;
+        margin-top:10px;
+    }
+    .purchaseSuccessful p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: #696969;
+        font-size: 25px;
+        text-align: center;
+    }
 
+    .purchaseSuccessful button {
+        margin-left: 120px;
+        width:80px;
+    }
+
+        .purchaseSuccessful button a {
+            text-decoration: none;
+            color: white;
+        }
+/*purchase Box css ends*/
 

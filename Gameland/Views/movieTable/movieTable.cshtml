@@ -62,49 +62,28 @@
 
 
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="@Url.Action("dashboardPage","forAdminPannel")">Dashboard</a>
                     </li>
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Table</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">User</a>
+                                <a href="@Url.Action("movieTable","movieTable")">Movies</a>
                             </li>
                             <li>
-                                <a href="#">Movies</a>
+                                <a href="@Url.Action("gameTable","gameTable")">Games</a>
                             </li>
                             <li>
-                                <a href="#">Games</a>
-                            </li>
-                            <li>
-                                <a href="#">Subscription</a>
-                            </li>
-                            <li>
-                                <a href="#">Series</a>
+                                <a href="@Url.Action("seriesTable","seriesTable")">Series</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Calender</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
+                        <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
 
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+
+
                 </ul>
 
                 <div class="mb-5">
@@ -185,12 +164,12 @@
 
             </div>
             <div class="messageBox">
-                <button type="button" class="icon-button">
-                    <a href="#">
-                        <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                        <span class="icon-button__badge">2</span>
-                    </a>
-                </button>
+                <a href="@Url.Action("userMessage","forMessage")">
+                    <button type="button" class="icon-button">
+                        <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
+                        <span class="icon-button__badge">@Session["totalMessage"]</span>
+                    </button>
+                </a>
             </div>
             <div class="adminBox">
                 <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>

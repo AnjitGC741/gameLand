@@ -1,17 +1,14 @@
 ﻿
 
-@model List<Gameland.Models.seriesData>
 @{
-    ViewBag.Title = "moviePage";
+    ViewBag.Title = "GamesPage";
     Layout = null;
 }
-
 <html>
 <head>
-    <title>Series</title>
     @*css*@
 
-    <link rel="stylesheet" href="~/Content/product/Series/seriesCss1.css" />
+    <link rel="stylesheet" href="~/Content/ContactUs/contactUsCss1.css" />
     @*css ends*@
     @*Bootstrap link*@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,9 +24,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
     @*Font style link ends*@
+    <title>Games</title>
+    <style>
+        .aboutUs {
+            height: 800px;
+            width: 100%;
+            background-color: #F6F7FC;
+            display: flex;
+        }
+
+        .aboutUsImg {
+            margin-top: 70px;
+            margin-left: 245px;
+            position:absolute;
+        }
+
+        .aboutUsBox {
+            height: 540px;
+            width: 600px;
+            background-color: white;
+            margin-top: 70px;
+            margin-left: 600px;
+            border-radius: 20px;
+            padding-left: 70px;
+            padding-top: 25px;
+            box-shadow: 10px 10px 30px 10px #DDDEE3;
+        }
+        h1{
+            font-family: 'Poppins', sans-serif;
+            margin-left:110px;
+        }
+        .content{
+            height:400px;
+            width:87%;
+            padding-top:15px;
+       
+        }
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size:20px;
+        }
+    </style>
+
 </head>
 <body>
-    <button class="cartButton"><a href="#"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(0)</span></a></button>
     @*navbar design begins*@
     <div class="navbar1">
         <div class="forLogo">
@@ -50,103 +88,20 @@
 
     </div>
     @*navbar desing ends*@
-    @*movies name and search button starts*@
-    <div class="seriesNameAndSearch">
-        <div class="seriesText">
-            <p>Series</p>
+    @*Contact Us form starts*@
+    <div class="aboutUs">
+        <div class="aboutUsImg">
+            <img src="~/Content/ContactUs/pngegg (4).png" height="600" width="400" alt="">
         </div>
-        <div class="searchButton">
-            @using (Html.BeginForm("Search", "forSeries", FormMethod.Post))
-            {
-                <div class="searchbar">
-                    <input type="text" class="searchbar__input" name="name1" placeholder="Search Series">
-                    <button type="submit" class="searchbar__button">
-                        <i class="material-icons">search</i>
-                    </button>
-                </div>
-            }
+        <div class="aboutUsBox">
+           <h1>About Us</h1>
+            <div class="content">
+                <p>Our website is E-commerce site where you can purchase different popular games,movies and series.You can completely trust our website for 
+                purchasing those things.The payment method you can use here are accepted world wide.</p>
+            </div>
         </div>
     </div>
-
-    @*movies name and search button ends*@
-    @*Total product content starts*@
-<div class="mainDiv">
-    <div class="totalSeries">
-        <p>@Model.Count()<span>series</span></p>
-    </div>
-    <div class="categories">
-        <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; ">Categories<i class="fa fa-angle-down" style="margin-left:10px;"></i></button>
-
-        <div class="list">
-            @using (Html.BeginForm("Sort", "forSeries", FormMethod.Post))
-            {
-                <input type="text" hidden value="War" name="name2" />
-                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">War</button>
-            }
-            @using (Html.BeginForm("Sort", "forSeries", FormMethod.Post))
-            {
-                <input type="text" hidden value="Action" name="name2" />
-                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Action</button>
-            }
-            @using (Html.BeginForm("Sort", "forSeries", FormMethod.Post))
-            {
-                <input type="text" hidden value="Horror" name="name2" />
-                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Horror</button>
-            }
-           
-
-
-
-
-
-        </div>
-
-    </div>
-
-
-    <script>
-
-        let click = document.querySelector('.click');
-
-        let list = document.querySelector('.list');
-
-        click.addEventListener("click", () => {
-
-            list.classList.toggle('newlist');
-
-        });
-    </script>
-
-</div>
-    @*Total poduct content ends*@
-    @*movie content starts*@
-    <div class="seriesContent">
-        @foreach (var data in Model)
-        {
-            using (Html.BeginForm("AddToCartSeries", "myCart", FormMethod.Post, new { @class = "", id = "" }))
-            {
-                <input type="hidden" value="@data.seriesName" name="productName" />
-                <div class="seriesBox">
-                    <div class="forSeriesImage">
-                        <img src="@(data.seriesImg != null ? Url.Content(data.seriesImg) : "")" alt="image" />
-                    </div>
-                    <div class="forSeriesPrice">
-                        <div class="seriesName">
-                            <p>@(data.seriesName)</p>
-                        </div>
-                        <div class="seriesOriginalPrice">
-                            <p>Rs<span style="visibility:hidden;">.</span><span>@(data.seriesPrice) </span></p>
-                        </div>
-                        <div class="seriesCart">
-                            <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-
-    </div>@*movie content end div*@
-    @*movie content ends*@
+    @*Contact Us form ends*@
     @*Footer Contain start*@
     <footer class="footer11">
         <div class="container11">
@@ -201,6 +156,12 @@
         </div>
     </footer>
     @*Footer Contain Ends*@
+
 </body>
 </html>
+
+
+
+
+
 
