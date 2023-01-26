@@ -132,6 +132,7 @@
     <Compile Include="Controllers\forAboutUsController.cs" />
     <Compile Include="Controllers\forCreateAccountController.cs" />
     <Compile Include="Controllers\forGameController.cs" />
+    <Compile Include="Controllers\forHeaderController.cs" />
     <Compile Include="Controllers\forMessageController.cs" />
     <Compile Include="Controllers\forSeriesController.cs" />
     <Compile Include="Controllers\myCartController.cs" />
@@ -369,6 +370,7 @@
     <Content Include="Views\forMessage\userMessage.cshtml" />
     <Content Include="Views\forMessage\calender.cshtml" />
     <Content Include="Views\forHomePage\aboutUs.cshtml" />
+    <Content Include="Views\forHeader\header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

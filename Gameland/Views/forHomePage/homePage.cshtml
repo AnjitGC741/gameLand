@@ -19,28 +19,8 @@
 
 </head>
 <body>
-    <button class="cartButton"><a href="@Url.Action("forCart","myCart")"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(@Session["totalOrder"])</span></a></button>
-
-    @*navbar design begins*@
-    <div class="navbar1">
-        <div class="forLogo">
-            <img src="~/Content/homePage/image/gameland.jpg" alt="logo" />
-        </div>
-        <div class="forTopic">
-            <ul>
-                <li><a href="@Url.Action("homePage","forHomePage")">Home</a></li>
-                <li><a href="#productCategories">Product</a></li>
-                <li><a href="@Url.Action("forCart","myCart")">Cart</a></li>
-                <li><a href="@Url.Action("contactUsPage","contactUs")">Contact</a></li>
-                <li><a href="@Url.Action("aboutUs","forHomePage")">About Us</a></li>
-            </ul>
-        </div>
-        <div class="forLogOut">
-            <button type="button" class="btn btn-secondary"><a href="@Url.Action("loginPage","forLoginPage")"> Sign Out</a></button>
-        </div>
-
-    </div>
-    @*navbar desing ends*@
+    <button class="cartButton"><a href="@Url.Action("forCart", "myCart")"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(@Session["totalOrder"])</span></a></button>
+    @{Html.RenderAction("header", "forHeader");}
     @*contain 1 div begins*@
     <div class="contain1">
 
