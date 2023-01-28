@@ -6,27 +6,54 @@
 <html>
 <head>
     <title>Home page</title>
-    <link rel="stylesheet" href="~/Content/homePage/css/homePageCss1.css" />
+    @*css link*@
+    <link rel="stylesheet" href="~/Content/homePage/css/homePageCss.css" />
+    @*font awesome link*@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    @*carousel link*@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @*font link*@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <button class="cartButton"><a href="@Url.Action("forCart", "myCart")"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(@Session["totalOrder"])</span></a></button>
+    <button class="cartButton"><a href="@Url.Action("forCart", "myCart")"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">@Session["totalOrder"]</span></a></button>
     @{Html.RenderAction("header", "forHeader");}
-    @*contain 1 div begins*@
-    <div class="contain1">
+    @*hero section starts*@
+    @*hero section ends*@
+    <section class="hero-section">
+        <div class="hero">
+            <div class="hero-text-box">
+                <h3 class="text-2">Join the</h3>
+                <h1 class="text-3">Gaming Revolution</h1>
+                <p class="text-4">Welcome to our video game store! We offer a wide selection of the latest and greatest video games for all major platforms including PlayStation, Xbox, Nintendo, and PC. Our inventory is constantly updated to include the newest releases, as well as classic favorites. We pride ourselves on offering competitive prices and excellent customer service. </p>
+                <a href="#" class="order-now-link">View Games</a>
+                <div class="delivered-meals">
+                    <div class="delivered-imgs">
+                        <img src="~/Content/homePage/image/hero-section/img-1.jpg" alt="">
+                        <img src="~/Content/homePage/image/hero-section/img-2.jpg" alt="">
+                        <img src="~/Content/homePage/image/hero-section/img-3.jpg" alt="">
+                        <img src="~/Content/homePage/image/hero-section/img-4.jpg" alt="">
+                        <img src="~/Content/homePage/image/hero-section/img-5.jpg" alt="">
+                        <img src="~/Content/homePage/image/hero-section/img-6.jpg" alt="">
 
-        <button><a href="#"> Order Now</a></button>
-    </div>
-    @*contain 1 div ends*@
+                    </div>
+                    <p class="delivered-text"><span>10,000+</span> download!</p>
+                </div>
+            </div>
+            <div class="hero-img-box">
+                <img src="~/Content/homePage/image/hero-section/img2.png" class="hero-img" alt="a burger image">
+            </div>
+        </div>
+
+
+    </section>
+    <hr class="dotted" />
     @*content Categories starts*@
     <div class="productCategories" id="productCategories">
         <div class="productCategoriesTopic">
@@ -60,11 +87,7 @@
         </div>
     </div>
     @*content Categories ends*@
-
-    @*special offer contain starts*@
-   
-
-    @*special offer contain ends*@
+    <hr class="dotted" />
     @*Games contain starts*@
     <div class="gameText">
         <p>Games</p>
@@ -95,13 +118,6 @@
         </div>
     </div>
     @*For video ends*@
-    @*Subscription contain starts*@
-
-   
-
-
-
-    @*Subscription contain ends*@
     @*Movie Contain starts*@
 
 
