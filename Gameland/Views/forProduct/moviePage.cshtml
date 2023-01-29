@@ -4,140 +4,138 @@
     Layout = null;
 }
 
-<html>
-<head>
-    <title>Movies</title>
-    @*css*@
 
-    <link rel="stylesheet" href="~/Content/product/Movie/movieCss.css" />
-    @*css ends*@
-    @*Bootstrap link*@
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    @*Bootstrap link ends*@
-    @*Font awesome link*@
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @*Font awesome link ends*@
-    @*Font style link*@
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
-    @*Font style link ends*@
-</head>
-<body>
-    <button class="cartButton"><a href="#"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(0)</span></a></button>
-    @{ Html.RenderAction("header","forHeader");}
-    @*movies name and search button starts*@
-    <div class="movieNameAndSearch">
-        <div class="movieText">
-            <p>Movies</p>
-        </div>
-        <div class="searchButton">
-            @using (Html.BeginForm("Search", "forProduct", FormMethod.Post))
-            {
-                <div class="searchbar">
-                    <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
-                    <button type="submit" class="searchbar__button">
-                        <i class="material-icons">search</i>
-                    </button>
-                </div>
-            }
-        </div>
+<title>Movies</title>
+@*css*@
+<link rel="stylesheet" href="~/Content/product/Movie/movieCss1.css" />
+<link rel="stylesheet" href="~/Content/homePage/css/headerAndFooter.css" />
+@*css ends*@
+@*Bootstrap link*@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+@*Bootstrap link ends*@
+@*Font awesome link*@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@*Font awesome link ends*@
+@*font link*@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+@*Font style link ends*@
+
+<button class="cartButton"><a href="#"><i class="fa fa-shopping-cart" id="cart"></i><span class="cartSpan">(0)</span></a></button>
+@{ Html.RenderAction("header", "forHeader");}
+@*movies name and search button starts*@
+<div class="movieNameAndSearch">
+    <div class="movieText">
+        <p>Movies</p>
     </div>
-
-    @*movies name and search button ends*@
-    @*Total product content starts*@
-    <div class="mainDiv">
-        <div class="totalMovies">
-            <p>@Model.Count()<span>movies</span></p>
-        </div>
-
-        <div class="categories">
-            <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; ">Categories<i class="fa fa-angle-down" style="margin-left:10px;"></i></button>
-
-            <div class="list">
-                @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
-                {
-                    <input type="text" hidden value="Animated" name="name2" />
-                    <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Animated</button>
-                }
-                @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
-                {
-                    <input type="text" hidden value="Horror" name="name2" />
-                    <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Horror</button>
-                }
-                @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
-                {
-                    <input type="text" hidden value="Crime" name="name2" />
-                    <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Crime</button>
-                }
-                @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
-                {
-                    <input type="text" hidden value="Adventure" name="name2" />
-                    <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Adventure</button>
-                }
-
-
-
-
-
+    <div class="searchButton">
+        @using (Html.BeginForm("Search", "forProduct", FormMethod.Post))
+        {
+            <div class="searchbar">
+                <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
+                <button type="submit" class="searchbar__button">
+                    <i class="material-icons">search</i>
+                </button>
             </div>
-
-        </div>
-
-
-        <script>
-
-            let click = document.querySelector('.click');
-
-            let list = document.querySelector('.list');
-
-            click.addEventListener("click", () => {
-
-                list.classList.toggle('newlist');
-
-            });
-        </script>
+        }
     </div>
-    @*Total poduct content ends*@
-    @*movie content starts*@
-    <div class="movieContent" id="mainBox">
-        <div class="emptyBox" id="nothingBox">
-            <img src="~/Content/homePage/image/customer/nothing found.png" width="500" height="300" />
-            <p>Nothing Found</p>
-        </div>
-        <div class="forMovie" id="movieBox">
-            @foreach (var data in Model)
-            {
-                using (Html.BeginForm("AddToCartMovie", "myCart", FormMethod.Post, new { @class = "", id = "" }))
-                {
-                    <input type="hidden" value="@data.movieName" name="productName" />
+</div>
 
-                    <div class="movieBox">
-                        <div class="forMovieImage">
-                            <img src="@(data.movieImg != null ? Url.Content(data.movieImg) : "")" alt="image" />
+@*movies name and search button ends*@
+@*Total product content starts*@
+<div class="mainDiv">
+    <div class="totalMovies">
+        <p>@Model.Count()<span>movies</span></p>
+    </div>
+
+    <div class="categories">
+        <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; ">Categories<i class="fa fa-angle-down" style="margin-left:10px;"></i></button>
+
+        <div class="list">
+            @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
+            {
+                <input type="text" hidden value="Animated" name="name2" />
+                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Animated</button>
+            }
+            @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
+            {
+                <input type="text" hidden value="Horror" name="name2" />
+                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Horror</button>
+            }
+            @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
+            {
+                <input type="text" hidden value="Crime" name="name2" />
+                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Crime</button>
+            }
+            @using (Html.BeginForm("Sort", "forProduct", FormMethod.Post))
+            {
+                <input type="text" hidden value="Adventure" name="name2" />
+                <button type="submit" class="links" style="color: #696969; font-family:'Poppins', sans-serif;">Adventure</button>
+            }
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let click = document.querySelector('.click');
+
+        let list = document.querySelector('.list');
+
+        click.addEventListener("click", () => {
+
+            list.classList.toggle('newlist');
+
+        });
+    </script>
+</div>
+@*Total poduct content ends*@
+@*movie content starts*@
+<div class="movieContent" id="mainBox">
+    <div class="emptyBox" id="nothingBox">
+        <img src="~/Content/homePage/image/customer/nothing found.png" width="500" height="300" />
+        <p>Nothing Found</p>
+    </div>
+    <div class="forMovie" id="movieBox">
+        @foreach (var data in Model)
+        {
+            using (Html.BeginForm("AddToCartMovie", "myCart", FormMethod.Post, new { @class = "", id = "" }))
+            {
+                <input type="hidden" value="@data.movieName" name="productName" />
+
+                <div class="movieBox">
+                    <div class="forMovieImage">
+                        <img src="@(data.movieImg != null ? Url.Content(data.movieImg) : "")" alt="image" />
+                    </div>
+                    <div class="forMoviePrice">
+                        <div class="MovieName">
+                            <p>@(data.movieName)</p>
                         </div>
-                        <div class="forMoviePrice">
-                            <div class="MovieName">
-                                <p>@(data.movieName)</p>
-                            </div>
-                            <div class="movieOriginalPrice">
-                                <p>Rs<span> @(data.moviePrice)</span></p>
-                            </div>
-                            <div class="movieCart">
-                                <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
-                            </div>
+                        <div class="movieOriginalPrice">
+                            <p>Rs<span> @(data.moviePrice)</span></p>
+                        </div>
+                        <div class="movieCart">
+                            <button>Add To Cart <i class="fa fa-shopping-cart" style="color:white ;"></i></button><span>@(data.productType)</span>
                         </div>
                     </div>
+                </div>
 
-                }
             }
-        </div>
-    </div>@*movie content end div*@
-    @*movie content ends*@
-    <script>
+        }
+    </div>
+</div>@*movie content end div*@
+@*movie content ends*@
+<script>
             if (@Model.Count()== 0) {
                 document.getElementById("mainBox").style.height = "350px";
                 document.getElementById("nothingBox").style.visibility = "visible";
@@ -146,60 +144,59 @@
             else {
                 document.getElementById("movieBox").style.visibility = "visible";
             }
-    </script>
-    @*Footer Contain start*@
-    <footer class="footer11">
-        <div class="container11">
-            <div class="row11">
+</script>
+@*Footer Contain start*@
+<footer class="footer11">
+    <div class="container11">
+        <div class="row11">
 
-                <div class="footerCol11">
-                    <h4>Quick Link</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+            <div class="footerCol11">
+                <h4>Quick Link</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footerCol11">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Condition</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footerCol11">
+                <h4>Install App</h4>
+                <div class="iconImg11" style="margin-top: 10px;">
+                    <button><a href="#"><i class="fab fa-app-store"></i></a></button>
+                    <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
                 </div>
-                <div class="footerCol11">
-                    <h4>Get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol11">
-                    <h4>Install App</h4>
-                    <div class="iconImg11" style="margin-top: 10px;">
-                        <button><a href="#"><i class="fab fa-app-store"></i></a></button>
-                        <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
-                    </div>
-                    <h4 style="margin-top: 10px;">Secured payment gateway</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
-                        <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
-                        <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
-
-                    </div>
-
+                <h4 style="margin-top: 10px;">Secured payment gateway</h4>
+                <div class="iconImg11">
+                    <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
+                    <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
+                    <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
 
                 </div>
-                <div class="footerCol11" style="margin-left: 60px;">
-                    <h4>follow us</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
-                        <button><a href="#"><i class="fab fa-twitter"></i></a></button>
-                        <button><a href="#"><i class="fab fa-instagram"></i></a></button>
-                        <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
-                    </div>
+
+
+            </div>
+            <div class="footerCol11" style="margin-left: 60px;">
+                <h4>follow us</h4>
+                <div class="iconImg11">
+                    <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
+                    <button><a href="#"><i class="fab fa-twitter"></i></a></button>
+                    <button><a href="#"><i class="fab fa-instagram"></i></a></button>
+                    <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
                 </div>
             </div>
         </div>
-    </footer>
-    @*Footer Contain Ends*@
-</body>
-</html>
+    </div>
+</footer>
+@*Footer Contain Ends*@
+

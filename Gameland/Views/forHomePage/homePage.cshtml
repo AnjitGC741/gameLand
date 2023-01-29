@@ -8,6 +8,7 @@
     <title>Home page</title>
     @*css link*@
     <link rel="stylesheet" href="~/Content/homePage/css/homePageCss.css" />
+    <link rel="stylesheet" href="~/Content/homePage/css/headerAndFooter.css" />
     @*font awesome link*@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     @*carousel link*@
@@ -32,7 +33,7 @@
                 <h3 class="text-2">Join the</h3>
                 <h1 class="text-3">Gaming Revolution</h1>
                 <p class="text-4">Welcome to our video game store! We offer a wide selection of the latest and greatest video games for all major platforms including PlayStation, Xbox, Nintendo, and PC. Our inventory is constantly updated to include the newest releases, as well as classic favorites. We pride ourselves on offering competitive prices and excellent customer service. </p>
-                <a href="#" class="order-now-link">View Games</a>
+                <a href="@Url.Action("gamePage","forGame")" class="order-now-link">View Games</a>
                 <div class="delivered-meals">
                     <div class="delivered-imgs">
                         <img src="~/Content/homePage/image/hero-section/img-1.jpg" alt="">
@@ -47,7 +48,7 @@
                 </div>
             </div>
             <div class="hero-img-box">
-                <img src="~/Content/homePage/image/hero-section/img2.png" class="hero-img" alt="a burger image">
+                <img src="~/Content/homePage/image/hero-section/img2.png" class="hero-img" alt="a pubg character holding ak-47 gun">
             </div>
         </div>
 
@@ -276,59 +277,7 @@
 
     @*Customer Review contain ends*@
     @*Footer Contain start*@
-    <footer class="footer">
-        <div class="container1">
-            <div class="row1">
-
-                <div class="footerCol">
-                    <h4>Quick Link</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="@Url.Action("loginPageForAdmin","adminLoginPage")">Admin</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol">
-                    <h4>Get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol">
-                    <h4>Install App</h4>
-                    <div class="iconImg" style="margin-top: 10px;">
-                        <button><a href="#"><i class="fab fa-app-store"></i></a></button>
-                        <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
-                    </div>
-                    <h4 style="margin-top: 10px;">Secured payment gateway</h4>
-                    <div class="iconImg">
-                        <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
-                        <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
-                        <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
-
-                    </div>
-
-
-                </div>
-                <div class="footerCol" style="margin-left: 60px;">
-                    <h4>follow us</h4>
-                    <div class="iconImg">
-                        <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
-                        <button>	<a href="#"><i class="fab fa-twitter"></i></a></button>
-                        <button><a href="#"><i class="fab fa-instagram"></i></a></button>
-                        <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+     @{Html.RenderAction("footer", "forFooter"); }
     @*Footer Contain Ends*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

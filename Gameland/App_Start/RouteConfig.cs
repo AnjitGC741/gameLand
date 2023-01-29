@@ -16,7 +16,7 @@ namespace Gameland
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "forLoginPage", action = "loginPage", id = UrlParameter.Optional }
+                defaults: new { controller = "forHomePage", action = "homePage", id = UrlParameter.Optional }
             );
         }
     }

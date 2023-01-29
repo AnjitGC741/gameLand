@@ -15,9 +15,9 @@
         <AssociationConnector Association="forGameLandModel.FK__cartData__userNa__2DE6D218" />
         <EntityTypeShape EntityType="forGameLandModel.recentlyPurchaseProduct" Width="1.5" PointX="9.875" PointY="3.875" />
         <AssociationConnector Association="forGameLandModel.FK__recentlyP__userN__3C34F16F" />
-        <EntityTypeShape EntityType="forGameLandModel.specialOfferData" Width="1.5" PointX="0.5" PointY="3.75" />
         <EntityTypeShape EntityType="forGameLandModel.messageBoxData1" Width="1.5" PointX="7.75" PointY="3.875" />
         <AssociationConnector Association="forGameLandModel.FK__messageBo__userN__4F47C5E3" />
+        
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

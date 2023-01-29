@@ -36,7 +36,6 @@
     <EntitySet Name="adminDatas" EntityType="Self.adminData" />
     <EntitySet Name="moviesDatas" EntityType="Self.moviesData" />
     <EntitySet Name="usersDatas" EntityType="Self.usersData" />
-    <EntitySet Name="specialOfferData1" EntityType="forGameLandModel.specialOfferData1" />
     <EntitySet Name="gamesDatas" EntityType="forGameLandModel.gamesData" />
     <EntitySet Name="seriesDatas" EntityType="forGameLandModel.seriesData" />
     <EntitySet Name="subscriptionsDatas" EntityType="forGameLandModel.subscriptionsData" />
@@ -50,24 +49,12 @@
       <End Role="usersData" EntitySet="usersDatas" />
       <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
     </AssociationSet>
-    <EntitySet Name="specialOfferDatas" EntityType="forGameLandModel.specialOfferData" />
     <EntitySet Name="messageBoxData1" EntityType="forGameLandModel.messageBoxData1" />
     <AssociationSet Name="FK__messageBo__userN__4F47C5E3" Association="forGameLandModel.FK__messageBo__userN__4F47C5E3">
       <End Role="usersData" EntitySet="usersDatas" />
       <End Role="messageBoxData1" EntitySet="messageBoxData1" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="specialOfferData1">
-    <Key>
-      <PropertyRef Name="productName" />
-    </Key>
-    <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="originalPrice" Type="Int32" />
-    <Property Name="offerPrice" Type="Int32" />
-    <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="gamesData">
     <Key>
       <PropertyRef Name="gameName" />
@@ -147,17 +134,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="specialOfferData">
-    <Key>
-      <PropertyRef Name="productName" />
-    </Key>
-    <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="originalPrice" Type="Int32" />
-    <Property Name="offerPrice" Type="Int32" />
-    <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="messageBoxData1">
     <Key>
       <PropertyRef Name="messageId" />

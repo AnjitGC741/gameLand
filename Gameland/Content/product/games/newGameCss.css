@@ -1,0 +1,322 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+/*sticky cart*/
+#cart1 {
+    color: white;
+    font-size: 30px;
+}
+
+.cartButton1 {
+    border-radius: 80px;
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    margin-left: 1430px;
+    margin-top: 650px;
+    background-color: #9C4100;
+    border-color: #f0a04b;
+    border-style: none;
+}
+
+    .cartButton1 a {
+        text-decoration: none;
+    }
+
+.cartSpan1 {
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.cartButton1:hover {
+    border-style: dotted;
+    border-color: #9C4100;
+    background-color: white;
+}
+
+    .cartbutton1:hover #cart1 {
+        color: #9C4100;
+    }
+
+    .cartbutton1:hover .cartSpan1 {
+        color: #9C4100;
+    }
+
+
+/*ends sticky cart*/
+/*movie Topic*/
+.gameNameAndSearch {
+    height: 100px;
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    margin-top:30px;
+}
+
+.gameText {
+    height: 100px;
+    width: 55%;
+}
+
+    .gameText p {
+        text-align: right;
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: #696969;
+        font-size: 40px;
+    }
+
+/*game topic ends*/
+/*MainDiv content*/
+.mainDiv {
+    height: 50px;
+    width: 130rem;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:0 auto;
+}
+
+.totalGames p {
+    font-size: 25px;
+    color: black;
+    margin-top: 5px;
+}
+
+.totalGames span {
+    font-size: 20px;
+    color: #696969;
+    margin-left: 5px;
+}
+.controller {
+    display: flex;
+    gap:100px;
+}
+.categories {
+    width: 200px;
+    position: relative;
+}
+.click {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    transition: 0.3s;
+    padding: 12px;
+    line-height: 1;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    background-color: white;
+    width: 250px;
+    color: #696969;
+}
+
+.sortBy1 {
+    width: 200px;
+    position: relative;
+    height: 100px;
+}
+
+.list {
+    width: 250px;
+    background-color:white;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    top: 50px;
+    padding:10px 0;
+}
+.links {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #696969;
+    width: 100%;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    transition: 0.3s;
+    padding: 12px;
+}
+.newlist {
+    transform: scaleY(1);
+}
+
+
+.links:hover {
+    background-color: rgba(203, 203, 203, 0.5);
+}
+
+.searchbar {
+    width: 100%;
+    width: 250px;
+    display: inline-flex;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #696969;
+    border-radius: 5px 0 0 5px;
+    transition: background 0.25s, box-shadow 0.25s;
+    height: 40px;
+    font-size: 1.6rem;
+}
+
+    .searchbar__input:focus {
+        background: white;
+        box-shadow: 0 0 2px #696969;
+    }
+
+    .searchbar__input::placeholder {
+        color: #696969;
+        font-size: 1.6rem;
+    }
+
+.searchbar__button {
+    width: 40px;
+    background: #9C4100;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .searchbar__button:hover {
+        background-color: black;
+    }
+
+    .searchbar__button:active {
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+    }
+/*mainDiv content ends*/
+/*Games content starts*/
+.gameContent {
+   
+    width: 86%;
+    margin-left: 105px;
+    display:flex;
+    flex-wrap:wrap;
+    
+}
+
+.gameBox {
+    height: 620px;
+    width:316px;
+    background-color: #c8d8e4;
+    border-radius: 10px;
+    margin-left:10px;
+    margin-top:20px;
+}
+
+.forGameImage {
+    width: 316px;
+    height: 500px;
+    overflow:hidden;
+ 
+}
+
+.forGameImage img {
+        height: 500px;
+        width: 316px;
+        transition: transform 2s;
+    }
+
+.forGameImage:hover img {
+        transform: scale(1.3);
+    }
+
+.gameName {
+    height: 30px;
+    width: 100%;
+    padding-top: 5px;
+}
+
+    .gameName p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #696969;
+    }
+
+.gameOriginalPrice {
+    height: 30px;
+    width: 100%;
+    padding-top: 5px;
+}
+
+    .gameOriginalPrice p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #696969;
+    }
+
+.gameCart button {
+    width: 150px;
+    margin-left: 75px;
+    border-radius: 10px;
+    border-color: #696969;
+    font-size: 20px;
+    background-color: #696969;
+    color: white;
+    margin-top: 10px;
+    border-style: none;
+}
+.gameCart span{
+    font-size:5px;
+    visibility:hidden;
+}
+    .gameCart button:hover {
+        background-color: black;
+    }
+
+/*Games content ends*/
+.emptyBox {
+    height: 350px;
+    width: 500px;
+    position: relative;
+    margin:0 auto;
+}
+
+.emptyBox p {
+    font-size: 2.6rem;
+    color: #696969;
+    text-align: center;
+}

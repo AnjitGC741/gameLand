@@ -71,28 +71,6 @@
     <Property Name="seriesImg" Type="varchar" MaxLength="255" />
     <Property Name="downloads" Type="int" />
   </EntityType>
-  <EntityType Name="specialOfferData">
-    <Key>
-      <PropertyRef Name="productName" />
-    </Key>
-    <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="productCategories" Type="varchar" MaxLength="30" />
-    <Property Name="productType" Type="varchar" MaxLength="30" />
-    <Property Name="originalPrice" Type="int" />
-    <Property Name="offerPrice" Type="int" />
-    <Property Name="offerImg" Type="varchar" MaxLength="255" />
-  </EntityType>
-  <EntityType Name="specialOfferData1">
-    <Key>
-      <PropertyRef Name="productName" />
-    </Key>
-    <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="productCategories" Type="varchar" MaxLength="30" />
-    <Property Name="productType" Type="varchar" MaxLength="30" />
-    <Property Name="originalPrice" Type="int" />
-    <Property Name="offerPrice" Type="int" />
-    <Property Name="offerImg" Type="varchar" MaxLength="255" />
-  </EntityType>
   <EntityType Name="subscriptionsData">
     <Key>
       <PropertyRef Name="subscriptionName" />
@@ -158,8 +136,6 @@
     <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__cartData__userNa__2DE6D218" Association="Self.FK__cartData__userNa__2DE6D218">

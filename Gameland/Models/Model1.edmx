@@ -76,28 +76,6 @@
           <Property Name="seriesImg" Type="varchar" MaxLength="255" />
           <Property Name="downloads" Type="int" />
         </EntityType>
-        <EntityType Name="specialOfferData">
-          <Key>
-            <PropertyRef Name="productName" />
-          </Key>
-          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="productCategories" Type="varchar" MaxLength="30" />
-          <Property Name="productType" Type="varchar" MaxLength="30" />
-          <Property Name="originalPrice" Type="int" />
-          <Property Name="offerPrice" Type="int" />
-          <Property Name="offerImg" Type="varchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="specialOfferData1">
-          <Key>
-            <PropertyRef Name="productName" />
-          </Key>
-          <Property Name="productName" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="productCategories" Type="varchar" MaxLength="30" />
-          <Property Name="productType" Type="varchar" MaxLength="30" />
-          <Property Name="originalPrice" Type="int" />
-          <Property Name="offerPrice" Type="int" />
-          <Property Name="offerImg" Type="varchar" MaxLength="255" />
-        </EntityType>
         <EntityType Name="subscriptionsData">
           <Key>
             <PropertyRef Name="subscriptionName" />
@@ -163,8 +141,6 @@
           <EntitySet Name="moviesData" EntityType="Self.moviesData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="recentlyPurchaseProduct" EntityType="Self.recentlyPurchaseProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seriesData" EntityType="Self.seriesData" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="specialOfferData" EntityType="Self.specialOfferData" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="specialOfferData1" EntityType="Self.specialOfferData1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subscriptionsData" EntityType="Self.subscriptionsData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usersData" EntityType="Self.usersData" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__cartData__userNa__2DE6D218" Association="Self.FK__cartData__userNa__2DE6D218">
@@ -220,7 +196,6 @@
           <EntitySet Name="adminDatas" EntityType="Self.adminData" />
           <EntitySet Name="moviesDatas" EntityType="Self.moviesData" />
           <EntitySet Name="usersDatas" EntityType="Self.usersData" />
-          <EntitySet Name="specialOfferData1" EntityType="forGameLandModel.specialOfferData1" />
           <EntitySet Name="gamesDatas" EntityType="forGameLandModel.gamesData" />
           <EntitySet Name="seriesDatas" EntityType="forGameLandModel.seriesData" />
           <EntitySet Name="subscriptionsDatas" EntityType="forGameLandModel.subscriptionsData" />
@@ -234,24 +209,12 @@
             <End Role="usersData" EntitySet="usersDatas" />
             <End Role="recentlyPurchaseProduct" EntitySet="recentlyPurchaseProducts" />
           </AssociationSet>
-          <EntitySet Name="specialOfferDatas" EntityType="forGameLandModel.specialOfferData" />
           <EntitySet Name="messageBoxData1" EntityType="forGameLandModel.messageBoxData1" />
           <AssociationSet Name="FK__messageBo__userN__4F47C5E3" Association="forGameLandModel.FK__messageBo__userN__4F47C5E3">
             <End Role="usersData" EntitySet="usersDatas" />
             <End Role="messageBoxData1" EntitySet="messageBoxData1" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="specialOfferData1">
-          <Key>
-            <PropertyRef Name="productName" />
-          </Key>
-          <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="originalPrice" Type="Int32" />
-          <Property Name="offerPrice" Type="Int32" />
-          <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="gamesData">
           <Key>
             <PropertyRef Name="gameName" />
@@ -331,17 +294,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="specialOfferData">
-          <Key>
-            <PropertyRef Name="productName" />
-          </Key>
-          <Property Name="productName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="productCategories" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="productType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="originalPrice" Type="Int32" />
-          <Property Name="offerPrice" Type="Int32" />
-          <Property Name="offerImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="messageBoxData1">
           <Key>
             <PropertyRef Name="messageId" />
@@ -403,18 +355,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="specialOfferData1">
-            <EntityTypeMapping TypeName="forGameLandModel.specialOfferData1">
-              <MappingFragment StoreEntitySet="specialOfferData1">
-                <ScalarProperty Name="offerImg" ColumnName="offerImg" />
-                <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-                <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
-                <ScalarProperty Name="productCategories" ColumnName="productCategories" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="gamesDatas">
             <EntityTypeMapping TypeName="forGameLandModel.gamesData">
               <MappingFragment StoreEntitySet="gamesData">
@@ -470,18 +410,6 @@
                 <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="specialOfferDatas">
-            <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
-              <MappingFragment StoreEntitySet="specialOfferData">
-                <ScalarProperty Name="offerImg" ColumnName="offerImg" />
-                <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-                <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-                <ScalarProperty Name="productType" ColumnName="productType" />
-                <ScalarProperty Name="productCategories" ColumnName="productCategories" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

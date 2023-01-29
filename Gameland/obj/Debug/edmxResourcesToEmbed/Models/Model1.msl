@@ -33,18 +33,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="specialOfferData1">
-      <EntityTypeMapping TypeName="forGameLandModel.specialOfferData1">
-        <MappingFragment StoreEntitySet="specialOfferData1">
-          <ScalarProperty Name="offerImg" ColumnName="offerImg" />
-          <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-          <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
-          <ScalarProperty Name="productCategories" ColumnName="productCategories" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="gamesDatas">
       <EntityTypeMapping TypeName="forGameLandModel.gamesData">
         <MappingFragment StoreEntitySet="gamesData">
@@ -100,18 +88,6 @@
           <ScalarProperty Name="purchaseName" ColumnName="purchaseName" />
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="specialOfferDatas">
-      <EntityTypeMapping TypeName="forGameLandModel.specialOfferData">
-        <MappingFragment StoreEntitySet="specialOfferData">
-          <ScalarProperty Name="offerImg" ColumnName="offerImg" />
-          <ScalarProperty Name="offerPrice" ColumnName="offerPrice" />
-          <ScalarProperty Name="originalPrice" ColumnName="originalPrice" />
-          <ScalarProperty Name="productType" ColumnName="productType" />
-          <ScalarProperty Name="productCategories" ColumnName="productCategories" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

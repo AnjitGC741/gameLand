@@ -1,12 +1,24 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-body {
-    font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    background-color:red;
+}
+
+a {
+    text-decoration: none;
 }
 /*sticky cart*/
 #cart {
@@ -53,60 +65,77 @@ body {
 
 /*ends sticky cart*/
 /*style for nav bar start*/
-.navbar1 {
+.navbar {
+    max-width: 140rem;
+    padding: 0 5rem;
     height: 90px;
-    background-color: #ffffff;
     display: flex;
-    width: 100%;
-    /*position:fixed;*/
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    border-bottom: 1px solid #9C4100;
 }
 
-.forLogo {
-    height: 70px;
-    background-color: black;
-    margin-left: 100px;
-    margin-top: 10px
+.logo {
+    width: 60px;
+    height: 60px;
 }
 
-.forTopic {
-    height: 70px;
-    width: 700px;
-    margin-left: 500px;
-    margin-top: 10px;
-    padding-top: 15px;
-}
-
-.forLogOut {
-    height: 70px;
-    margin-top: 25px;
-}
-
-.forLogo img {
-    height: 70px;
-    width: 70px;
-}
-
-.forTopic ul {
+.nav-links ul {
     display: flex;
-    justify-content: space-around;
-    list-style: none;
+    gap: 4rem;
 }
 
-.forTopic a {
-    text-decoration: none;
-    font-size: 23px;
-    color: #696969;
+.nav-links ul li {
+        list-style: none;
+    }
+
+.nav-links ul li a {
+            font-size: 1.8rem!important;
+            color: black;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
 }
 
-.forLogOut button a {
-    text-decoration: none;
+  .nav-links ul li a:hover {
+                color: #9C4100 !important;
+}
+
+.signIn {
+    font-size: 1.6rem;
+    color: #000;
+    font-weight: 400;
+    background-color: #8a8988;
     color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    text-decoration: none;
 }
 
-.forTopic a:hover {
-    text-decoration: underline;
-    color: #E7A14A;
+    .signIn:hover {
+        background-color: #181818;
+        color: white;
+    }
+
+.logIn {
+    font-size: 1.6rem;
+    font-weight: 400;
+    background-color: #9C4100;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 5px;
+    transition: all 0.3s;
+    text-decoration: none;
 }
+
+    .logIn:hover {
+        background-color: #ba7a4d;
+        color: white;
+    }
 /*style for navbar finish*/
 /*movie Topic and search bar*/
 .movieNameAndSearch {

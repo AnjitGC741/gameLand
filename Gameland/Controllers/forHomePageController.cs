@@ -13,6 +13,7 @@ namespace Gameland.Controllers
         // GET: forHomePage
         public ActionResult homePage()
         {
+            
             Session["totalOrder"] = db.cartDatas.Count();
             return View();
         }
