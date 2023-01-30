@@ -21,5 +21,10 @@ namespace Gameland.Controllers
         { 
             return View();
         }
+        public ActionResult logout()
+        {
+            Session["userName"] = null;
+            return RedirectToAction("homePage", "forHomePage");
+        }
     }
 }

@@ -11,7 +11,6 @@
         <ul>
             <li><a href="@Url.Action("homePage","forHomePage")">Home</a></li>
             <li><a href="#productCategories">Product</a></li>
-            @*<li><a href="@Url.Action("forCart","myCart")">Cart</a></li>*@
             <li><a href="@Url.Action("contactUsPage","contactUs")">Contact</a></li>
             <li><a href="@Url.Action("aboutUs","forHomePage")">About Us</a></li>
         </ul>
@@ -44,7 +43,7 @@
             <hr>
             <a href="#" class="sub-menu-link"><ion-icon name="person-outline"></ion-icon> <p>Profile</p></a>
             <a href="#" class="sub-menu-link"><ion-icon name="heart-outline"></ion-icon><p>Favourite</p> </a>
-            <a href="#" class="sub-menu-link"><ion-icon name="log-out-outline"></ion-icon><p>Log out</p> </a>
+            <a href="@Url.Action("logout","forHeader")" class="sub-menu-link"><ion-icon name="log-out-outline"></ion-icon><p>Log out</p> </a>
         </div>
     </div>
     }
