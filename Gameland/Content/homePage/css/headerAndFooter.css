@@ -89,6 +89,132 @@ a {
         background-color: #ba7a4d;
         color: white;
     }
+.for-logined-user {
+    display: flex;
+    gap: 1rem;
+}
+
+.favorite {
+    color: black;
+    font-size: 3.2rem;
+    margin-right: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.cart {
+    color: black;
+    font-size: 3.2rem;
+    margin-right: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.favorite:hover {
+    color: #9C4100;
+}
+
+.cart:hover {
+    color: #9C4100;
+}
+
+.user-btn {
+    background-color: #9C4100;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.user-btn p{
+    font-size:2.2rem;
+    color:white;
+    margin-top:10px;
+}
+    .user-btn:hover .user {
+        color: #9C4100;
+    }
+
+.user {
+    color: black;
+    font-size: 3.8rem;
+}
+
+.user2 {
+    color: #000;
+    font-size: 3.8rem;
+    color: #525252;
+}
+
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    right: 5px;
+    min-width: 200px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+    .sub-menu-wrap.open-menu {
+        max-height: 400px;
+        border: 1px solid black;
+    }
+
+.sub-menu {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .user-info p {
+        font-weight: 300;
+        font-size: 1.6rem;
+        color:black;
+    }
+
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: black;
+    margin: 15px 0 10px;
+}
+
+.sub-menu-link {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 12px;
+    margin-left: 5px;
+    transition: all 0.3s;
+}
+
+    .sub-menu-link:hover {
+        padding-left: 10px;
+    }
+
+    .sub-menu-link ion-icon {
+        font-size: 2.2rem;
+    }
+
+    .sub-menu-link p {
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
 /*Footer containt starts*/
 
 

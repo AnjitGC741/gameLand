@@ -16,10 +16,38 @@
             <li><a href="@Url.Action("aboutUs","forHomePage")">About Us</a></li>
         </ul>
     </div>
+    @if (Session["userName"] == null)
+    {
     <div class="login-and-signup">
-        <a href="#" class="signIn">Sign in</a>
-        <a href="#" class="logIn">Log in</a>
+        <a href="@Url.Action("createAccountPage","forCreateAccount")" class="signIn">Sign in</a>
+        <a href="@Url.Action("loginPage","forLoginPage")" class="logIn">Log in</a>
     </div>
+    }
+    else
+    {
+        string sessionValue = Session["userName"].ToString();
+        char firstLetter = sessionValue[0];
+        char upperCase = char.ToUpper(firstLetter);
+    <div class="for-logined-user">
+      <a><ion-icon name="heart-outline" class="favorite"></ion-icon></a>
+      <a href="@Url.Action("forCart", "myCart")"><ion-icon name="cart-outline" class="cart"></ion-icon></a>
+      <div>
+          <div onclick="toggleMenu();" class="user-btn"><p>@upperCase</p></div>
+      </div>
+    </div>
+    <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+            <div class="user-info">
+                <div class="user-btn"><p>@upperCase</p></div>
+                <p>@Session["userName"]</p>
+            </div>
+            <hr>
+            <a href="#" class="sub-menu-link"><ion-icon name="person-outline"></ion-icon> <p>Profile</p></a>
+            <a href="#" class="sub-menu-link"><ion-icon name="heart-outline"></ion-icon><p>Favourite</p> </a>
+            <a href="#" class="sub-menu-link"><ion-icon name="log-out-outline"></ion-icon><p>Log out</p> </a>
+        </div>
+    </div>
+    }
 </section>
 @*<button type="button" class="btn btn-secondary"><a href="@Url.Action("loginPage","forLoginPage")"> Sign Out</a></button>*@
 @*navbar desing ends*@

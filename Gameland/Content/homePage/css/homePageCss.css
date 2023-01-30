@@ -19,14 +19,6 @@ a {
     text-decoration: none;
 }
 /*sticky cart*/
-.dotted {
-   
-    border: 8px dotted #9C4100;
-    width: 6%;
-    border-bottom: none;
-    margin: 3rem auto;
-    background: none;
-}
 #cart {
     color:white;
     font-size: 30px;

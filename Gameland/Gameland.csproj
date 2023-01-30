@@ -240,7 +240,7 @@
     <Content Include="Content\loginPage\css\loginPageCss1.css" />
     <Content Include="Content\loginPage\image\fifa.jpg" />
     <Content Include="Content\loginPage\image\gameland.jpg" />
-    <Content Include="Content\product\games\newGameCss.css" />
+    <Content Include="Content\product\games\newGameCss1.css" />
     <Content Include="Content\product\Movie\movieCss1.css" />
     <Content Include="Content\product\Series\seriesCss1.css" />
     <Content Include="Content\product\subscription\subscriptionCss.css" />
