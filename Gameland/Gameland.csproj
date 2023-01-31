@@ -209,7 +209,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\cart\cartCss.css" />
+    <Content Include="Content\cart\cartCss1.css" />
     <Content Include="Content\cart\emptyCart.jpg" />
     <Content Include="Content\cart\tick.png" />
     <Content Include="Content\ContactUs\contactus.gif" />
@@ -241,7 +241,7 @@
     <Content Include="Content\loginPage\image\fifa.jpg" />
     <Content Include="Content\loginPage\image\gameland.jpg" />
     <Content Include="Content\product\games\newGameCss1.css" />
-    <Content Include="Content\product\Movie\movieCss1.css" />
+    <Content Include="Content\product\Movie\newMovieCss.css" />
     <Content Include="Content\product\Series\seriesCss1.css" />
     <Content Include="Content\product\subscription\subscriptionCss.css" />
     <Content Include="Content\speicalOfferTable\specialOfferTableCss.css" />

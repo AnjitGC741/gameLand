@@ -260,6 +260,7 @@ ul {
             height: 2px;
             box-sizing: border-box;
             width: 50px;
+            z-index:1;
         }
 
     .footerCol ul li:not(:last-child) {

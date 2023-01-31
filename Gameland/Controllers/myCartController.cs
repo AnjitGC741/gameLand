@@ -20,6 +20,10 @@ namespace Gameland.Controllers.Front_end
 
         public ActionResult AddToCartMovie(string productName)
         {
+            if (Session["userName"] == null)
+            {
+                return RedirectToAction("loginPage", "forLoginPage");
+             }
             moviesData moviesData = db.moviesDatas.Find(productName);
             cartData mycart = new cartData();
             mycart.userName = (string)Session["userName"];
@@ -33,6 +37,10 @@ namespace Gameland.Controllers.Front_end
         }
         public ActionResult AddToCartGame(string productName)
         {
+            if (Session["userName"] == null)
+            {
+                return RedirectToAction("loginPage", "forLoginPage");
+            }
             gamesData gamesData = db.gamesDatas.Find(productName);
             cartData mycart = new cartData();
             mycart.userName = (string)Session["userName"];
@@ -47,6 +55,10 @@ namespace Gameland.Controllers.Front_end
         }
         public ActionResult AddToCartSeries(string productName)
         {
+            if (Session["userName"] == null)
+            {
+                return RedirectToAction("loginPage", "forLoginPage");
+            }
             seriesData seriesData = db.seriesDatas.Find(productName);
             cartData mycart = new cartData();
             mycart.userName = (string)Session["userName"];

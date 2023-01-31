@@ -1,0 +1,190 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*your order Box css start*/
+.yourOrderBox {
+    height: 50px;
+    margin-top:50px;
+  
+}
+.yourOrderBox p {
+       font-size:2.4rem;
+        color: #696969;
+        margin-left:40px;
+ }
+/*your order Box css ends*/
+/*cart css*/
+.blur-box {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    visibility:hidden;
+}
+.download-started{
+    position:absolute;
+    z-index:3;
+    margin:250px 600px;
+    width:300px;
+    height:120px;
+    background-color:white;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    visibility:hidden;
+}
+
+.download-started p
+{
+    font-size:1.8rem;
+}
+.cartBox{
+    margin-top:15px;
+  
+}
+.gotoShop {
+    background-color: #9C4100;
+    width:10rem;
+    height:4rem;
+    color:white;
+    border-radius:5px;
+    border-style:none;
+    font-size:1.4rem;
+    letter-spacing:1px;
+
+}
+.emptyCartMsgBox {
+    height: 400px;
+    position: absolute;
+    margin-left: 600px;
+    visibility: hidden;
+}
+ .emptyCartMsgBox p {
+        color: #696969;
+        font-size:28px;
+        text-align:center;
+    }
+    .emptyCartMsgBox button
+    {
+        margin-left:100px;
+    }
+
+    .emptyCartMsgBox button a {
+        text-decoration: none;
+        color: white;
+    }
+    .tableBox{
+        width:93%;
+        margin-left:40px;
+        visibility:hidden;
+    }
+    .tableBox table th {
+            background-color: #696969;
+            color: white;
+            height:50px;
+    }
+        .tableBox table th {
+            padding-left: 20px;
+            font-family: font-family: 'Poppins', sans-serif;
+        }
+        .tableBox table td {
+            padding-left: 20px;
+            font-family: font-family: 'Poppins', sans-serif;
+        }
+    .tableBox button
+    {
+      margin-left:1280px;
+    }
+        .tableBox table td a {
+            text-decoration: none;
+            color:black;
+            margin-left:15px;
+        }
+            .tableBox table td a i{
+                font-size:30px;
+            }
+                .tableBox table td a i:hover{
+                    color:red;
+                }
+                .tableBox button a {
+                    text-decoration: none;
+                    color: white;
+                }
+                td img{
+                    height:150px;
+                    width:100px;
+                }
+td {
+    font-size: 25px;
+    font-family: font-family: 'Poppins', sans-serif;
+}
+/*cart css ends*/
+/*purchase Box  css*/
+.purchaseSuccessful {
+    height: 350px;
+    width:330px;
+    position: absolute;
+    margin-left: 600px;
+    background-color:white;
+    z-index:4;
+    border-radius:5px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    visibility:hidden;
+
+    
+   
+}
+ .purchaseSuccessful img{
+     height:90px;
+     width:90px;
+   
+ }
+    .purchaseSuccessful h4 {
+     font-size:3.2rem;
+    }
+    .purchaseSuccessful p {
+        color: #696969;
+        font-size: 1.6rem;
+    }
+
+    .purchaseSuccessful button {
+        width:90%;
+        height:50px;
+        font-size:2rem;
+        letter-spacing:1px;
+    }
+
+        .purchaseSuccessful button a {
+            text-decoration: none;
+            color: white;
+        }
+/*purchase Box css ends*/
+

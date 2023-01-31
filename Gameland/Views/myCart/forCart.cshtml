@@ -3,11 +3,13 @@
     ViewBag.Title = "forCart";
     Layout = null;
     int sn = 0;
+    int sn1 = 0;
 }
 <html>
 <head>
     <title>Cart</title>
-    <link rel="stylesheet" href="~/Content/cart/cartCss.css" />
+    <link rel="stylesheet" href="~/Content/cart/cartCss1.css" />
+    <link rel="stylesheet" href="~/Content/homePage/css/headerAndFooter.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -21,46 +23,33 @@
 <body>
 
     @*navbar design begins*@
-    <div class="navbar1">
-        <div class="forLogo">
-            <img src="~/Content/homePage/image/gameland.jpg" alt="logo" />
-        </div>
-        <div class="forTopic">
-            <ul>
-                <li><a href="@Url.Action("homePage","forHomePage")">Home</a></li>
-                <li><a href="#productCategories">Product</a></li>
-                <li><a href="@Url.Action("forCart","myCart")">Cart</a></li>
-                <li><a href="@Url.Action("contactUsPage","contactUs")">Contact</a></li>
-                <li><a href="@Url.Action("aboutUs","forHomePage")">About Us</a></li>
-            </ul>
-        </div>
-        <div class="forLogOut">
-            <button type="button" class="btn btn-secondary"><a href="@Url.Action("loginPage","forLoginPage")"> Sign Out</a></button>
-        </div>
-
-    </div>
+    @{ Html.RenderAction("header", "forHeader");}
     @*navbar desing ends*@
     <div>
 
     </div>
     <div class="yourOrderBox">
-        <p>Your Order @Model.Count()</p>
+        <p>Total Order @Model.Count()</p>
     </div>
     @*Cart body*@
+    <div class="blur-box" id="blurBox">
+        <div class="download-started" id="downloadStarted">
+            <p>Your download has started</p>
+            <button class="gotoShop" onclick="return visibleThankyouBox();">Got it</button>
+        </div>
+    </div>
     <div class="cartBox" id="cartBox">
-        <div class="purchaseSuccessful" id="purchaseSuccessful">
-            <button id="close1" onclick=" return close11();"><i class="fa fa-times" style="font-size:24px;color:white"></i></button>
-            <img src="~/Content/cart/tick.png" height="180" width="180" />
-            <h4>@Session["userName"]</h4>
-            <p>your purchase is Successful.<br />Thank You!! </p>
 
-            @*<button class="btn btn-secondary"><a href="@Url.Action("homePage","forHomePage")">Goto Shop</a></button>*@
-            <button class="btn btn-success "><a href="@Url.Action("MakePayment")">Okay</a></button>
+        <div class="purchaseSuccessful" id="purchaseSuccessful">
+            <img src="~/Content/cart/tick.png" />
+            <h4>Thank you!</h4>
+            <p>@Session["userName"], your purchase is Successful.</p>
+            <button class="btn btn-success"><a href="@Url.Action("MakePayment")">OK</a></button>
         </div>
         <div class="emptyCartMsgBox" id="emptyCartMsgBox">
             <img src="~/Content/cart/emptyCart.jpg" height="300" width="300" />
             <p>Your Cart is empty</p>
-            <button class="btn btn-secondary"><a href="@Url.Action("homePage","forHomePage")">Goto Shop</a></button>
+            <button class="gotoShop"><a href="@Url.Action("homePage","forHomePage")">Goto Shop</a></button>
         </div>
 
         <div class="tableBox" id="tableBox">
@@ -82,10 +71,6 @@
                         <td style="padding-top:15px;">@(data.productType)</td>
                         <td style="padding-top:15px;">@(data.price)</td>
                         <td style="padding-top:15px;"><a href="@Url.Action("Delete1", new {name=data.productName})"><i class="fa fa-trash"></i></a></td>
-                        @* <td><button><a href="@Url.Action("Delete", new {name=data.productName})"></td>*@
-
-
-
                     </tr>
 
 
@@ -96,89 +81,64 @@
                     <td>@(Model.Sum(x=>x.price))</td>
                 </tr>
             </table>
-            @*<button class="btn btn-success " onclick=" return purchase();"><a href="@Url.Action("MakePayment")">Make payment</a></button>*@
-            <button class="btn btn-success" onclick=" return purchase();">Purchase</button>
+            @* <button class="btn btn-success"><a href="@Url.Action("MakePayment")">Purchase</a></button>*@
+            <button class="btn btn-success" onclick="return startDownload('myFile.pdf');">Purchase</button>
         </div>
     </div>
-    @*<script>
-        if (document.getElementById("purchaseSuccessful").style.visibility = "visible") {
+    <div  id="myDiv" style="visibility:hidden;">
+        <table class="table" border="1">
+            <tr>
+                <th>SN</th>
+                <th>Product</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td style="padding-top:15px;">@(++sn1)</td>
+                    <td style="padding-top:15px;">@(data.productName)</td>
+                    <td style="padding-top:15px;">@(data.productType)</td>
+                    <td style="padding-top:15px;">@(data.price)</td>
+                </tr>
+
+
+            }
+        </table>
+        <p>Total:<b>@(Model.Sum(x=>x.price))</b></p>
+        <p>Purchase By @Session["userName"]</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script>
+            var doc = new jsPDF();
+        function startDownload(fileName) {
+            document.getElementById("downloadStarted").style.visibility = "visible";
+            document.getElementById("blurBox").style.visibility = "visible";
+                const content = document.getElementById("myDiv").innerHTML;
+                doc.fromHTML(content, 15, 15, {
+                    'width': 170
+                });
+                doc.save(fileName);
+            }
+
+        function visibleThankyouBox() {
+            document.getElementById("downloadStarted").style.visibility = "hidden";
+            document.getElementById("purchaseSuccessful").style.visibility = "visible";
             document.getElementById("cartBox").style.height = "400px";
         }
-        function close() {
+        if (@Model.Count() == 0) {
+            document.getElementById("blurBox").style.visibility = "hidden";
             document.getElementById("purchaseSuccessful").style.visibility = "hidden";
-        }
-    </script>*@
-    <script>
-            function purchase() {
-                document.getElementById("purchaseSuccessful").style.visibility = "visible";
-                document.getElementById("cartBox").style.height = "400px";
-            }
-              function close11() {
-                document.getElementById("purchaseSuccessful").style.visibility = "hidden";
-            }
-            if (@Model.Count()== 0) {
                document.getElementById("emptyCartMsgBox").style.visibility = "visible";
                 document.getElementById("cartBox").style.height = "400px";
             }
             else {
                 document.getElementById("tableBox").style.visibility = "visible";
             }
-
-        </script>
+    </script>
     @*Cart body ends*@
     @*Footer Contain start*@
-    <footer class="footer">
-        <div class="container1">
-            <div class="row1">
-
-                <div class="footerCol">
-                    <h4>Quick Link</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol">
-                    <h4>Get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol">
-                    <h4>Install App</h4>
-                    <div class="iconImg" style="margin-top: 10px;">
-                        <button><a href="#"><i class="fab fa-app-store"></i></a></button>
-                        <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
-                    </div>
-                    <h4 style="margin-top: 10px;">Secured payment gateway</h4>
-                    <div class="iconImg">
-                        <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
-                        <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
-                        <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
-
-                    </div>
-
-
-                </div>
-                <div class="footerCol" style="margin-left: 60px;">
-                    <h4>follow us</h4>
-                    <div class="iconImg">
-                        <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
-                        <button>	<a href="#"><i class="fab fa-twitter"></i></a></button>
-                        <button><a href="#"><i class="fab fa-instagram"></i></a></button>
-                        <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @{Html.RenderAction("footer", "forFooter"); }
     @*Footer Contain Ends*@
 </body>
 </html>

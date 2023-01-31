@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "dashboardPage";
     Layout = null;
+   int SN = 1;
 }
 
 <!doctype html>
@@ -293,7 +294,7 @@
             <h1>Recently purchase</h1>
             <table class="table" border="1">
                 <tr id="header">
-                    <th>orderId</th>
+                    <th>SN</th>
                     <th>User name</th>
                     <th>Purchase Name</th>
                     <th>Purchase Img</th>
@@ -303,7 +304,7 @@
                 @foreach (var data in Model)
                 {
                     <tr>
-                        <td>@(data.purchaseID)</td>
+                        <td>@(SN++)</td>
                         <td>@(data.userName)</td>
                         <td>@(data.purchaseName)</td>
                         <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="50" /</td>

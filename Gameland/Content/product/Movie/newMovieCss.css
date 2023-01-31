@@ -14,52 +14,51 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1;
-    background-color:red;
 }
 
 a {
     text-decoration: none;
 }
 /*sticky cart*/
-#cart {
+#cart1 {
     color: white;
     font-size: 30px;
 }
 
-.cartButton {
+.cartButton1 {
     border-radius: 80px;
     width: 80px;
     height: 80px;
     position: fixed;
     margin-left: 1430px;
     margin-top: 650px;
-    background-color: #f0a04b;
+    background-color: #9C4100;
     border-color: #f0a04b;
     border-style: none;
 }
 
-    .cartButton a {
+    .cartButton1 a {
         text-decoration: none;
     }
 
-.cartSpan {
+.cartSpan1 {
     color: white;
     font-size: 20px;
     margin-left: 5px;
 }
 
-.cartButton:hover {
+.cartButton1:hover {
     border-style: dotted;
-    border-color: #f0a04b;
+    border-color: #9C4100;
     background-color: white;
 }
 
-    .cartbutton:hover #cart {
-        color: #f0a04b;
+    .cartbutton1:hover #cart1 {
+        color: #9C4100;
     }
 
-    .cartbutton:hover .cartSpan {
-        color: #f0a04b;
+    .cartbutton1:hover .cartSpan1 {
+        color: #9C4100;
     }
 
 
@@ -156,13 +155,104 @@ a {
         color: #696969;
         font-size: 40px;
     }
-    .searchButton{
-        margin-left:295px;
-        margin-top:7px;
-    }
+/*game topic ends*/
+/*MainDiv content*/
+.mainDiv {
+    height: 50px;
+    width: 130rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+.totalMovies p {
+    font-size: 25px;
+    color:black;
+    margin-top:5px;
+}
+.totalMovies span {
+    font-size: 20px;
+    color: #696969;
+    margin-left:5px;
+}
+.controller {
+    display: flex;
+    gap: 100px;
+}
+
+.categories {
+    width: 200px;
+    position: relative;
+}
+
+.sortBy1 {
+    width: 200px;
+    position: relative;
+    height: 100px;
+}
+
+.click {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    transition: 0.3s;
+    padding: 12px;
+    line-height: 1;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    background-color: white;
+    width: 250px;
+    color: #696969;
+}
+
+.sortBy1 {
+    width: 200px;
+    position: relative;
+    height: 100px;
+}
+
+.list {
+    width: 250px;
+    background-color: white;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    top: 50px;
+    padding: 10px 0;
+    z-index: 99;
+}
+
+.links {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #696969;
+    width: 100%;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    transition: 0.3s;
+    padding: 12px;
+}
+
+.newlist {
+    transform: scaleY(1);
+}
+
+
+.links:hover {
+    background-color: rgba(203, 203, 203, 0.5);
+}
+
 .searchbar {
     width: 100%;
-    max-width: 300px;
+    width: 250px;
     display: inline-flex;
 }
 
@@ -176,8 +266,9 @@ a {
     outline: none;
     border: 1px solid #696969;
     border-radius: 5px 0 0 5px;
-    background: #F4FAF9;
     transition: background 0.25s, box-shadow 0.25s;
+    height: 40px;
+    font-size: 1.6rem;
 }
 
     .searchbar__input:focus {
@@ -187,11 +278,12 @@ a {
 
     .searchbar__input::placeholder {
         color: #696969;
+        font-size: 1.6rem;
     }
 
 .searchbar__button {
     width: 40px;
-    background: #696969;
+    background: #9C4100;
     color: #ffffff;
     outline: none;
     border: none;
@@ -203,84 +295,13 @@ a {
     user-select: none;
 }
 
-.searchbar__button:hover{
-    background-color:black;
-}
+    .searchbar__button:hover {
+        background-color: black;
+    }
 
     .searchbar__button:active {
         box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
     }
-/*game topic ends*/
-/*MainDiv content*/
-.mainDiv {
-    height: 50px;
-    width: 85%;
-    margin-left: 115px;
-    display:flex;
-    
-
-}
-.totalMovies p {
-    font-size: 25px;
-    color:black;
-    margin-top:5px;
-}
-.totalMovies span {
-    font-size: 20px;
-    color: #696969;
-    margin-left:5px;
-}
-.categories {
-    width: 200px;
-    position: relative;
-    margin-left: 999px;
-    height: 200px;
-}
-
-.sortBy1 {
-    width: 200px;
-    position: relative;
-    height: 100px;
-}
-
-.click {
-    background-color: white;
-    border-radius: 10px;
-    border-style: none;
-}
-
-
-
-.click, .links {
-    padding: 12px;
-    font-size: 1.2em;
-    font-family: futura Md BT;
-    border: none;
-    outline: none;
-    width: 200px;
-    color: black;
-    transition: 0.3s;
-}
-
-.list {
-    position: absolute;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: 0.3s;
-}
-
-.newlist {
-    transform: scaleY(1);
-}
-
-.links {
-    background-color: white;
-}
-
-    .links:hover {
-        padding-left: 30px;
-    }
-    
 /*mainDiv content ends*/
 /*movie content starts*/
 .movieContent {
