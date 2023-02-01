@@ -7,13 +7,17 @@
 <head>
     @*css*@
 
-    <link rel="stylesheet" href="~/Content/ContactUs/contactUsCss.css" />
+    <link rel="stylesheet" href="~/Content/ContactUs/newContactUsCss.css" />
+    <link rel="stylesheet" href="~/Content/homePage/css/headerAndFooter.css" />
+
     @*css ends*@
     @*Bootstrap link*@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     @*Bootstrap link ends*@
     @*Font awesome link*@
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,31 +35,37 @@
     @{ Html.RenderAction("header", "forHeader");}
     @*navbar desing ends*@
     @*Contact Us form starts*@
+    <div class="blur-box" id="blurBox">
+        <div class="download-started" id="downloadStarted">
+            <p>Thank you for messaging us.</p>
+            <button class="gotoShop"><a href="@Url.Action("messageReceived","contactUs")">OK</a></button>
+        </div>
+    </div>
     <div class="contactUs">
         <div class="contactUsImg">
-            <img src="~/Content/ContactUs/tom-and-jerry-tom.gif" height="600" width="400" alt="">
+            <img src="~/Content/Cart/tom-and-jerry-tom.gif" height="600" width="400" alt="">
         </div>
         <div class="contactUsBox">
             @using (Html.BeginForm("saveMessage", "contactUS", FormMethod.Post))
             {
                 <label>Name</label>
                 <br>
-                <input type="text" placeholder="Enter your name" name="userName">
+                <input type="text" class="inputSection" placeholder="Enter your name" name="userName">
                 <br>
                 <br>
                 <label>Email</label>
                 <br>
-                <input type="text" placeholder="Enter your email" name="email">
+                <input type="text" class="inputSection" placeholder="Enter your email" name="email">
                 <br>
                 <br>
                 <label>Subject</label>
                 <br>
-                <input type="text" placeholder="Enter your subject topic" name="subject">
+                <input type="text" class="inputSection" placeholder="Enter your subject topic" name="subject">
                 <br>
                 <br>
                 <label>Message</label>
                 <br>
-                <textarea name="message" id="" cols="60" rows="10" placeholder="Enter your message"></textarea>
+                <textarea name="message" class="inputSection" id="" cols="60" rows="10" placeholder="Enter your message"></textarea>
                 <br>
                 <input type="submit" class="button" value="Send Message">
 
@@ -64,59 +74,23 @@
     </div>
     @*Contact Us form ends*@
     @*Footer Contain start*@
-    <footer class="footer11">
-        <div class="container11">
-            <div class="row11">
-
-                <div class="footerCol11">
-                    <h4>Quick Link</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol11">
-                    <h4>Get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol11">
-                    <h4>Install App</h4>
-                    <div class="iconImg11" style="margin-top: 10px;">
-                        <button><a href="#"><i class="fab fa-app-store"></i></a></button>
-                        <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
-                    </div>
-                    <h4 style="margin-top: 10px;">Secured payment gateway</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
-                        <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
-                        <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
-
-                    </div>
-
-
-                </div>
-                <div class="footerCol11" style="margin-left: 60px;">
-                    <h4>follow us</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
-                        <button><a href="#"><i class="fab fa-twitter"></i></a></button>
-                        <button><a href="#"><i class="fab fa-instagram"></i></a></button>
-                        <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @{Html.RenderAction("footer", "forFooter"); }
     @*Footer Contain Ends*@
+    <script>
+        if ("@Session["message"]" == "no") {
+            document.getElementById("downloadStarted").style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
+        }
+        if("@Session["message"]" == "yes")
+        {
+            document.getElementById("downloadStarted").style.visibility = "visible";
+            document.getElementById("blurBox").style.visibility = "visible";
+        }
+        function visibleThankyouBox() {
+            document.getElementById("downloadStarted").style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
+        }
+    </script>
 
 </body>
 </html>

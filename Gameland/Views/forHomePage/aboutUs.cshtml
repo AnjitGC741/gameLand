@@ -8,13 +8,16 @@
 <head>
     @*css*@
 
-    <link rel="stylesheet" href="~/Content/ContactUs/contactUsCss.css" />
+    <link rel="stylesheet" href="~/Content/homePage/css/headerAndFooter.css" />
+
     @*css ends*@
     @*Bootstrap link*@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     @*Bootstrap link ends*@
     @*Font awesome link*@
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,21 +29,40 @@
     @*Font style link ends*@
     <title>Games</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1;
+        }
+
+        a {
+            text-decoration: none;
+        }
         .aboutUs {
-            height: 800px;
+            min-height: 500px;
             width: 100%;
-            background-color: #F6F7FC;
+        @*    background-color: #F6F7FC;*@
             display: flex;
+            margin-bottom:50px;
         }
 
         .aboutUsImg {
-            margin-top: 70px;
+            margin-top: 210px;
             margin-left: 245px;
             position: absolute;
         }
 
         .aboutUsBox {
-            height: 540px;
+            min-height: 540px;
             width: 600px;
             background-color: white;
             margin-top: 70px;
@@ -52,19 +74,21 @@
         }
 
         h1 {
-            font-family: 'Poppins', sans-serif;
-            margin-left: 110px;
+            text-align: left;
+            color: #9C4100;
+            margin-left:14px;
         }
 
         .content {
-            height: 400px;
-            width: 87%;
-            padding-top: 15px;
+            min-height: 400px;
+            width: 95%;
+            padding: 15px;
         }
 
         p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 20px;
+            font-size: 1.8rem;
+            letter-spacing:1px;
+            line-height:1.5;
         }
     </style>
 
@@ -77,67 +101,23 @@
             <img src="~/Content/ContactUs/pngegg (4).png" height="600" width="400" alt="">
         </div>
         <div class="aboutUsBox">
-           <h1>About Us</h1>
+            <h1>About Us</h1>
             <div class="content">
-                <p>Our website is E-commerce site where you can purchase different popular games,movies and series.You can completely trust our website for 
-                purchasing those things.The payment method you can use here are accepted world wide.</p>
+                <p>
+                    We are a team of passionate entertainment enthusiasts who have come together to bring you the best selection of games, movies, and series from around the world. Our mission is to make it easy for you to find and enjoy your favorite forms of entertainment, all in one place.
+                    <br />
+                    <br />
+                    Our website offers a carefully curated collection of the latest and greatest in gaming, film, and television. Whether you're a fan of action-packed games, blockbuster movies, or edge-of-your-seat series, we have something for everyone. With a user-friendly interface and secure payment options, shopping with us is a seamless and enjoyable experience.
+                    <br />
+                    <br />
+                    At Gameland, we are committed to providing our customers with the highest level of service. If you have any questions or concerns, our friendly and knowledgeable support team is always available to assist you. So what are you waiting for? Start exploring and discover your next favorite game, movie, or series today!
+                </p>
             </div>
         </div>
     </div>
     @*Contact Us form ends*@
     @*Footer Contain start*@
-    <footer class="footer11">
-        <div class="container11">
-            <div class="row11">
-
-                <div class="footerCol11">
-                    <h4>Quick Link</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol11">
-                    <h4>Get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <div class="footerCol11">
-                    <h4>Install App</h4>
-                    <div class="iconImg11" style="margin-top: 10px;">
-                        <button><a href="#"><i class="fab fa-app-store"></i></a></button>
-                        <button> <a href="#"><i class="fab fa-google-play"></i></a></button>
-                    </div>
-                    <h4 style="margin-top: 10px;">Secured payment gateway</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fa fa-cc-mastercard" style="font-size:25px;"></i></a></button>
-                        <button><a href="#"><i class="fa fa-cc-visa"></i></a></button>
-                        <button> <a href="#"><i class="fa fa-credit-card"></i></a></button>
-
-                    </div>
-
-
-                </div>
-                <div class="footerCol11" style="margin-left: 60px;">
-                    <h4>follow us</h4>
-                    <div class="iconImg11">
-                        <button><a href="#"><i class="fab fa-facebook-f"></i></a></button>
-                        <button><a href="#"><i class="fab fa-twitter"></i></a></button>
-                        <button><a href="#"><i class="fab fa-instagram"></i></a></button>
-                        <button><a href="#"><i class="fab fa-linkedin-in"></i></a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @{Html.RenderAction("footer", "forFooter"); }
     @*Footer Contain Ends*@
 
 </body>

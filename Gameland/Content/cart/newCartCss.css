@@ -102,22 +102,27 @@ a {
         margin-left:40px;
         visibility:hidden;
     }
-    .tableBox table th {
-            background-color: #696969;
-            color: white;
-            height:50px;
+    .tableImg{
+        width:100px;
+        height:150px;
     }
         .tableBox table th {
-            padding-left: 20px;
-            font-family: font-family: 'Poppins', sans-serif;
+            background-color: #9C4100;
+            color: white;
+            height: 50px;
+            font-weight:400;
+            padding-top:10px;
         }
-        .tableBox table td {
+        .tableBox table th {
             padding-left: 20px;
-            font-family: font-family: 'Poppins', sans-serif;
         }
     .tableBox button
     {
       margin-left:1280px;
+    }
+    .tableBox table td{
+        font-size:1.8rem;
+        padding-left:2rem;
     }
         .tableBox table td a {
             text-decoration: none;
@@ -140,7 +145,6 @@ a {
                 }
 td {
     font-size: 25px;
-    font-family: font-family: 'Poppins', sans-serif;
 }
 /*cart css ends*/
 /*purchase Box  css*/

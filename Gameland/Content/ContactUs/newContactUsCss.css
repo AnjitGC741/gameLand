@@ -1,0 +1,139 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+.blur-box {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    visibility: hidden;
+}
+
+.download-started {
+    position: absolute;
+    z-index: 3;
+    margin: 250px 600px;
+    width: 300px;
+    height: 120px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    visibility: hidden;
+}
+
+    .download-started p {
+        font-size: 1.8rem;
+    }
+.gotoShop {
+    background-color: #9C4100;
+    width: 10rem;
+    height: 4rem;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+.gotoShop a{
+    text-decoration:none;
+    color:white;
+}
+/*style for contact us*/
+.contactUs {
+    height: 750px;
+    width: 70%;
+    margin:0 auto;
+    /* background-color: #F6F7FC;*/
+    display: flex;
+    gap:40px;
+    align-items:center;
+    margin-top:50px;
+    border-radius:10px;
+    box-shadow: 10px 10px 30px 10px #DDDEE3;
+}
+
+.contactUsImg {
+    margin-left: 40px;
+}
+
+.contactUsBox {
+    height: 600px;
+    width: 500px;
+    
+}
+
+label {
+    font-size: 1.6rem;
+    margin-bottom:5px;
+}
+
+input {
+    margin-top: 5px;
+    height: 45px;
+    font-size: 1.8rem;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border-color: #696969;
+    border-style: none;
+    background-color: #EFEFEF;
+}
+
+textarea {
+    margin-top: 5px;
+    width:100%;
+    padding-left: 10px;
+    border-style: none;
+    border-radius: 10px;
+    padding-top: 10px;
+    background-color: #EFEFEF;
+}
+
+input placeholder {
+    color: #696969;
+    font-size:4rem;
+}
+.inputSection{
+    font-size:1.6rem!important;
+}
+textarea placeholder {
+    color: #696969;
+}
+
+.button {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #9C4100;
+    color: white;
+    font-size:1.6rem;
+    margin-top:20px;
+}
+
+    .button:hover {
+        background-color: black;
+    }
+/*style for contact us ends*/
