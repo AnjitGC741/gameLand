@@ -31,9 +31,7 @@
 
 </head>
 <body>
-    @*navbar design begins*@
     @{ Html.RenderAction("header", "forHeader");}
-    @*navbar desing ends*@
     @*Contact Us form starts*@
     <div class="blur-box" id="blurBox">
         <div class="download-started" id="downloadStarted">
@@ -73,9 +71,7 @@
         </div>
     </div>
     @*Contact Us form ends*@
-    @*Footer Contain start*@
     @{Html.RenderAction("footer", "forFooter"); }
-    @*Footer Contain Ends*@
     <script>
         if ("@Session["message"]" == "no") {
             document.getElementById("downloadStarted").style.visibility = "hidden";
