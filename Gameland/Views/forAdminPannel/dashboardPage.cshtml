@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @*Css links*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/dashboardCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/newDashboardCss.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,6 +25,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Signika+Negative:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     @*Graph and Pie Chart*@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <style>
@@ -76,17 +79,23 @@
                     <li>
                         <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
-               
+                    <li>
+                        <a href="@Url.Action("userMessage","forMessage")">Message <span style="background-color:red; border-radius:100%;padding:2px 8px;color:white;margin-left:100px">@Session["totalMessage"]</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("homePage","forHomePage")">Logout</a>
+                    </li>
 
-                   
+
+
                 </ul>
 
                 <div class="mb-5">
-                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <h3 class="h6">Search</h3>
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
@@ -95,7 +104,7 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Dz Gameland</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -103,53 +112,6 @@
             </div>
         </nav>@*navbar content ends*@
         <div class="pageContent">
-            @*Header Part*@
-            <div class="header">
-                <div class="searchBox">
-                    <form action="#" method="get">
-                        <div class="searchbar">
-                            <input type="text" class="searchbar__input" name="q" placeholder="Search...">
-                            <button type="submit" class="searchbar__button">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="messageBox">
-                  
-                    <a href="@Url.Action("userMessage","forMessage")">
-                        <button type="button" class="icon-button">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
-                            <span class="icon-button__badge">@Session["totalMessage"]</span>
-                           </button>
-                    </a>
-                   
-                </div>
-                <div class="adminBox">
-                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
-
-                    <div class="list">
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="@Url.Action("homePage","forHomePage")"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
-
-                    </div>
-                    <script>
-
-                        let click = document.querySelector('.click');
-
-                        let list = document.querySelector('.list');
-
-                        click.addEventListener("click", () => {
-
-                            list.classList.toggle('newlist');
-
-                        });
-                    </script>
-                </div>
-            </div>
-            @*header part ends*@
             @*Product Count starts*@
             <div class="productBox">
                 <div class="box1">
@@ -307,7 +269,7 @@
                         <td>@(SN++)</td>
                         <td>@(data.userName)</td>
                         <td>@(data.purchaseName)</td>
-                        <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="50" </td>
+                        <td><img src="@(data.purchaseImg!=null?Url.Content(data.purchaseImg):"")" height="100" width="70" /> </td>
                         <td>@(data.purchaseType)</td>
                         <td>@(data.purchasePrice)</td>
 
@@ -336,15 +298,14 @@
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Games', 'Movies', 'Series', 'Subscription'],
+                labels: ['Games', 'Movies', 'Series'],
                 datasets: [{
                     label: '',
-                    data: [@Session["totalGames"], @Session["totalMovies"], @Session["totalSeries"], @Session["totalSubs"]],
+                    data: [@Session["totalGames"], @Session["totalMovies"], @Session["totalSeries"]],
                     backgroundColor: [
-                        'red',
-                        '#27a9e3',
-                        '#808080',
-                        '#28b779',
+                        '#3B5BA5',
+                        '#E87A5D',
+                        '#F3B941',
 
                     ],
 
@@ -363,10 +324,9 @@
                     label: 'Product Sales',
                     data: [@Session["totalMovieDownload"],@Session["totalGameDownload1"], @Session["totalSeriesDownload"] ],
                     backgroundColor: [
-                        '#28b779',
-                        '#27a9e3',
-                        '#ffb848',
-                        '#da542e',
+                        '#EC6B56',
+                        '#FFC154',
+                        '#47B39C',
                     ],
 
                 }]

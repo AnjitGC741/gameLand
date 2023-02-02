@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+/*Product Box design*/
+.productBox{
+    height:150px;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    margin-top:30px;
+
+}
+.box1 {
+    height: 120px;
+    width: 20%;
+    background-color: #27a9e3;
+    margin-top:15px;
+    border-radius:20px;
+    display:flex;
+}
+.box2 {
+    height: 120px;
+    width: 20%;
+    background-color: #28b779;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.box3 {
+    height: 120px;
+    width: 20%;
+    background-color: #ffb848;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.box4 {
+    height: 120px;
+    width: 20%;
+    background-color: #da542e;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.forIcon span{
+    font-size:80px;
+    color:white;
+    margin-left:20px;
+    margin-top:20px;
+}
+.forCount{
+    height:60px;
+}
+.forCount p{
+    font-size:60px;
+    margin-left:40px;
+    color:white;
+  
+    
+   
+}
+.forName p {
+    font-size:20px;
+    margin-top:15px;
+    margin-left:50px;
+    color:white;
+}
+/*Product Box design ends*/
+/*Business Box starts*/
+.businessBox {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.box5 {
+    height: 130px;
+    width: 25%;
+    background-color: #9a1750;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+    padding-left:50px;
+}
+
+.box6 {
+    height: 130px;
+    width: 25%;
+    background-color: #2d4159;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.box7 {
+    height: 130px;
+    width: 25%;
+    background-color: #3b945e;
+    margin-top: 15px;
+    border-radius: 20px;
+    display: flex;
+    padding-left: 50px;
+}
+
+
+
+/*Business box ends*/
+/*Graph and Pie chart design*/
+.mainChartBox{
+    height:550px;
+    width:100%;
+    display:flex;
+}
+.graphBox {
+    height: 500px;
+    width: 58%;
+    box-shadow: 0px 0px 10px 0px #DDDEE3;
+    margin-top:25px;
+    margin-left:30px;
+    border-radius:10px;
+}
+.pieBox {
+    height: 500px;
+    width: 35%;
+    box-shadow: 0px 0px 10px 0px #DDDEE3;
+    margin-top: 25px;
+    margin-left: 25px;
+    border-radius: 10px;
+}
+    .graphBox, .pieBox p {
+        font-family: 'Advent Pro', sans-serif;
+        font-family: 'Signika Negative', sans-serif;
+        color: red;
+        font-size:20px;
+        text-align:center;
+    }
+    #myChart{
+        margin-top:30px;
+    }
+
+/*Graph and pie Chart design ends*/
+/*table design starts*/
+.forTable table {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.forTable h1 {
+    text-align: center;
+    margin-top: 50px
+}
+
+table th, td {
+    text-align: center;
+}
+
+table th {
+    background-color: #9C4100;
+    color: white;
+    font-size:1.6rem;
+    font-weight:400;
+}
+
+tr:nth-child(even) {
+    background-color: #ebd9cc;
+}
+/*table design ends*/
+/*second columns starts*/
+.secondCol {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    background-color: red;
+}
+/*second columns ends*/

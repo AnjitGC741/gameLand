@@ -1,12 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*
-{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
 /*header design starts*/
 .header {
     height: 100px;
@@ -174,18 +185,20 @@
 }
 .forTable h1 {
     text-align: center;
-    margin-top: 100px
+    margin-top: 100px;
 }
 table th,td
 {
     text-align:center;
 }
 table th {
-    background-color: darkorange;
+    background-color: #9C4100;
     color: white;
+    font-size: 1.6rem;
+    font-weight: 400;
 }
 tr:nth-child(even) {
-    background-color: #fedbb0;
+    background-color: #ebd9cc;
 }
 
 /*table design ends*/

@@ -9,7 +9,7 @@
 <head>
     <title>Movies Table</title>
     @*Css*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/movieTables/movieTableCss.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/movieTables/newMovieTableCss.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -81,17 +81,23 @@
                     <li>
                         <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("userMessage","forMessage")">Message</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("homePage","forHomePage")">Logout</a>
+                    </li>
 
 
 
                 </ul>
 
                 <div class="mb-5">
-                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <h3 class="h6">Search</h3>
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
@@ -100,7 +106,7 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Dz Gameland</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -109,61 +115,6 @@
         </nav>@*navbar content ends*@
         <div class="pageContent">
 
-            @*Header part start*@
-            @*Form Box*@
-        
-
-
-
-
-            @*Form Box ends*@
-            <div class="header">
-                <div class="searchBox">
-
-                    @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
-                    {
-                        <div class="searchbar">
-                            <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
-                            <button type="submit" class="searchbar__button">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                    }
-
-                </div>
-                <div class="messageBox">
-                    <button type="button" class="icon-button">
-                        <a href="#">
-                            <span class="material-icons" style="font-size:30px; color:white; margin-top:8px;">mail</span>
-                            <span class="icon-button__badge">@Model.Count()</span>
-                        </a>
-                    </button>
-                </div>
-                <div class="adminBox">
-                    <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
-
-                    <div class="list">
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                        <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
-
-                    </div>
-                    <script>
-
-                    let click = document.querySelector('.click');
-
-                    let list = document.querySelector('.list');
-
-                    click.addEventListener("click", () => {
-
-                        list.classList.toggle('newlist');
-
-                    });
-                    </script>
-                </div>
-            </div>
-            @*header part ends*@
 
            
 
@@ -171,7 +122,7 @@
             @*recent Purchase table starts*@
             <div class="forTable">
                
-                <h1>Message</h1>
+                <h1 style="font-size:3.2rem;letter-spacing:2px;margin-bottom:10px">Message</h1>
                 <table class="table" border="1">
                   
                     <tr>
@@ -189,7 +140,7 @@
                             <td>@(data.email)</td>
                             <td>@(data.subject)</td>
                             <td>@(data.message)</td>
-                            <td><button><a href="@Url.Action("Delete", new {name=data.messageId})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+                            <td><button style="background:none;border-style:none;"><a href="@Url.Action("Delete", new {name=data.messageId})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
 
                         </tr>
 
