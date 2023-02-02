@@ -9,7 +9,7 @@
 <head>
     <title>Games Table</title>
     @*Css*@
-    <link rel="stylesheet" href="~/Content/AdminPannel/gameTable/gameTableCss1.css">
+    <link rel="stylesheet" href="~/Content/AdminPannel/gameTable/newGameTableCss.css">
     <link rel="stylesheet" href="~/Content/AdminPannel/dashboard/sideBarCss.css">
     @*Font awesome*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,6 +51,8 @@
 </head>
 
 <body>
+    <div class="blur-box" id="blurBox">
+    </div>
     <div class="mainBox">
         <div class="dummyBox">
 
@@ -81,17 +83,23 @@
                     <li>
                         <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("userMessage","forMessage")">Message <span style="background-color:red; border-radius:100%;padding:2px 8px;color:white;margin-left:100px">@Session["totalMessage"]</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("homePage","forHomePage")">Logout</a>
+                    </li>
 
 
 
                 </ul>
 
                 <div class="mb-5">
-                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <h3 class="h6">Search</h3>
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
@@ -100,7 +108,7 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Dz Gameland</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -148,7 +156,7 @@
         @foreach (var data in Model)
         {
             <div class="editGameBox1" id="editGameBox1_@data.gameName">
-                <button id="editGameBox1_@data.gameName"  onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
+                <button id="editGameBox1_@data.gameName" onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
                 <div class="addGameForm">
 
                     @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
@@ -186,65 +194,37 @@
 
 
         @*Form Box ends*@
-        <div class="header">
-            <div class="searchBox">
-
-                @using (Html.BeginForm("Search", "gameTable", FormMethod.Post))
-                {
-                    <div class="searchbar">
-                        <input type="text" class="searchbar__input" name="name1" placeholder="Search Games">
-                        <button type="submit" class="searchbar__button">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </div>
-                }
-
+        <h1 class="heading">Games</h1>
+        <div class="mainDiv">
+            <div class="totalMovies">
+                <p>@Model.Count<span>games</span></p>
             </div>
-            <div class="messageBox">
-                <a href="@Url.Action("userMessage","forMessage")">
-                    <button type="button" class="icon-button">
-                        <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
-                        <span class="icon-button__badge">@Session["totalMessage"]</span>
-                    </button>
-                </a>
-            </div>
-            <div class="adminBox">
-                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
+            <div class="controller">
+                <button class="gotoShop" onclick="showAddBox();" style="width:100px;">Add</button>
+                <div class="searchBox">
 
-                <div class="list">
-
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
+                    @using (Html.BeginForm("Search", "gameTable", FormMethod.Post))
+                    {
+                        <div class="searchbar">
+                            <input type="text" class="searchbar__input" name="name1" placeholder="Search Games">
+                            <button type="submit" class="searchbar__button">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    }
 
                 </div>
-                <script>
-
-                    let click = document.querySelector('.click');
-
-                    let list = document.querySelector('.list');
-
-                    click.addEventListener("click", () => {
-
-                        list.classList.toggle('newlist');
-
-                    });
-                </script>
             </div>
+
         </div>
-        @*header part ends*@
-        @*recent Purchase table starts*@
         <div class="forTable">
-            <h1>Games</h1>
             <table class="table" border="1">
-                <caption> <button class="btn btn-success" onclick="showAddBox();" style="width:100px;">Add</button></caption>
                 <tr>
-                    <th rowspan="2" class="rowSpan">Game Name</th>
-                    <th rowspan="2">Price</th>
-                    <th rowspan="2">Type</th>
-                    <th rowspan="2">Product Type</th>
-                    <th rowspan="2">Image</th>
-                    <th rowspan="2">Downloads</th>
+                    <th rowspan="2" class="rowSpan" style="padding-top:30px;">Game Name</th>
+                    <th rowspan="2" style="padding-top:30px;">Price</th>
+                    <th rowspan="2" style="padding-top:30px;">Type</th>
+                    <th rowspan="2" style="padding-top:30px;">Product Type</th>
+                    <th rowspan="2"style="padding-top:30px;">Image</th>
                     <th colspan="2">Action</th>
                 </tr>
                 <tr>
@@ -254,14 +234,13 @@
                 @foreach (var data in Model)
                 {
                     <tr>
-                        <td>@(data.gameName)</td>
-                        <td>@(data.gamePrice)</td>
-                        <td>@(data.gameType)</td>
-                        <td>@(data.productType)</td>
-                        <td><img src="@(data.gamesImg!=null?Url.Content(data.gamesImg):"")" height="100" width="50" /></td>
-                        <td>@(data.downloads)</td>
-                        <td><button id="@data.gameName" onclick="showEditBox(this.id);"><a href="#"><i class="material-icons" style="color:green;">edit</i></a></button></td>
-                        <td><button><a href="@Url.Action("Delete1", new {name=data.gameName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+                        <td style="padding-top:40px;">@(data.gameName)</td>
+                        <td style="padding-top:40px;">@(data.gamePrice)</td>
+                        <td style="padding-top:40px;">@(data.gameType)</td>
+                        <td style="padding-top:40px;">@(data.productType)</td>
+                        <td><img src="@(data.gamesImg!=null?Url.Content(data.gamesImg):"")" height="100" width="70" /></td>
+                        <td style="padding-top:40px;"><button style="background:none;border-style:none;" id="@data.gameName" onclick="showEditBox(this.id);"><a href="#"><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                        <td style="padding-top:40px;"><button style="background:none;border-style:none;"><a href="@Url.Action("Delete1", new {name=data.gameName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
 
 
                     </tr>
@@ -279,18 +258,20 @@
     <script>
         function showAddBox() {
             document.getElementById("addGameBox").style.visibility = "visible";
+            document.getElementById("blurBox").style.visibility = "visible";
         }
 
         function hideAddBox() {
             document.getElementById("addGameBox").style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
         }
-        function showEditBox(id)
-        {
-            alert(id);
-            document.getElementById("editGameBox1_"+id).style.visibility = "visible";
+        function showEditBox(id) {
+            document.getElementById("editGameBox1_" + id).style.visibility = "visible"
+            document.getElementById("blurBox").style.visibility = "visible";;
         }
         function hideEditBox(id) {
             document.getElementById(id).style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
         }
 
     </script>

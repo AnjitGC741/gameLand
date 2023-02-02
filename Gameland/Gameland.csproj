@@ -196,7 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminPannel\adminLoginPage\adminLoginPageCss.css" />
-    <Content Include="Content\AdminPannel\gameTable\gameTableCss1.css" />
+    <Content Include="Content\AdminPannel\gameTable\newGameTableCss.css" />
     <Content Include="Content\AdminPannel\movieTables\newMovieTableCss.css" />
     <Content Include="Content\AdminPannel\dashboard\bootstrap.min.js" />
     <Content Include="Content\AdminPannel\dashboard\jquery.min.js" />

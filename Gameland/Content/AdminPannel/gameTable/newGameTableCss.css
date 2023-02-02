@@ -1,27 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*
-{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html {
+    font-size: 10px;
+}
 
-/*header design starts*/
-.header {
-    height: 100px;
-    width: 1268px;
-    background-color: #F2F4F6;
-    display:flex;
-    padding-top:20px;
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
 }
-/*Style for search Button*/
-.searchBox{
-    margin-left:800px;
+
+a {
+    text-decoration: none;
 }
+
+.blur-box {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1000vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    visibility: hidden;
+}
+
+.heading {
+    font-size: 4.2rem;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.mainDiv {
+    height: 50px;
+    width: 113rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.totalMovies p {
+    font-size: 25px;
+    color: black;
+    margin-top: 5px;
+}
+
+.totalMovies span {
+    font-size: 20px;
+    color: #696969;
+    margin-left: 5px;
+}
+
+.controller {
+    display: flex;
+    gap: 40px;
+}
+
+.gotoShop {
+    background-color: #9C4100;
+    width: 10rem;
+    height: 4rem;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
 .searchbar {
     width: 100%;
-    max-width: 250px;
+    width: 250px;
     display: inline-flex;
 }
 
@@ -35,8 +88,9 @@
     outline: none;
     border: 1px solid #696969;
     border-radius: 5px 0 0 5px;
-    background: #F4FAF9;
     transition: background 0.25s, box-shadow 0.25s;
+    height: 40px;
+    font-size: 1.6rem;
 }
 
     .searchbar__input:focus {
@@ -46,11 +100,12 @@
 
     .searchbar__input::placeholder {
         color: #696969;
+        font-size: 1.6rem;
     }
 
 .searchbar__button {
     width: 40px;
-    background: #696969;
+    background: #9C4100;
     color: #ffffff;
     outline: none;
     border: none;
@@ -62,130 +117,40 @@
     user-select: none;
 }
 
+    .searchbar__button:hover {
+        background-color: black;
+    }
+
     .searchbar__button:active {
         box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
     }
 /*style for search button ends*/
-/* message icon style*/
-.messageBox{
-    margin-left:1070px;
-    position:absolute;
-}
-.icon-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #696969;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-}
 
-
-    .icon-button:active {
-        background: #cccccc;
-    }
-
-
-.icon-button__badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 25px;
-    height: 25px;
-    background: red;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
-.icon-button a {
-    text-decoration: none;
-    color: #333333;
-}
-/*message style ends*/
-/*admin icon style*/
-.adminBox {
-    width: 50px;
-    position: relative;
-    margin-left:50px;
-
-}
-
-.click {
-    background-color: #696969;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border-style: none;
-    margin-left: 75px;
-    margin-bottom:5px;
-}
-
-
-
-.links {
-    padding: 12px;
-    font-size: 1.2em;
-    font-family: futura Md BT;
-    border: none;
-    outline: none;
-    width: 200px;
-    color: black;
-    transition: 0.3s;
-   
-  
-}
-
-.list {
-    position: absolute;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: 0.3s;
-}
-
-.newlist {
-    transform: scaleY(1);
-}
-
-.links {
-    background-color: white;
-}
-
-    .links:hover {
-        padding-left: 30px;
-    }
-
-.list button a {
-    text-decoration: none;
-    color: #696969;
-}
-/*admin icon style ends*/
-/*header design ends*/
 /*table design starts*/
-.forTable table{
-    width:90%;
-    margin-left:5%;
-
+.forTable table {
+    margin-top: 20px;
+    width: 90%;
+    margin-left: 5%;
 }
+
 .forTable h1 {
     text-align: center;
-    margin-top: 100px
+    margin-top: 100px;
 }
-table th,td
-{
-    text-align:center;
+
+table th, td {
+    text-align: center;
 }
+
 table th {
-    background-color: darkorange;
+    background-color: #9C4100;
     color: white;
+    font-size: 1.6rem;
+    font-weight: 400;
 }
+
 tr:nth-child(even) {
-    background-color: #fedbb0;
+    background-color: #ebd9cc;
 }
 
 /*table design ends*/
@@ -198,6 +163,7 @@ tr:nth-child(even) {
     margin-top: 100px;
     margin-left: 400px;
     visibility:hidden;
+    z-index:1;
     
 }
 .editGameBox1 {
@@ -208,6 +174,7 @@ tr:nth-child(even) {
     margin-top: 100px;
     margin-left: 400px;
     visibility: hidden;
+    z-index:1;
 }
 .editGameBox1 button {
     margin-left: 406px;

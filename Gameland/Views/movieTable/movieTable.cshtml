@@ -51,6 +51,8 @@
 </head>
 
 <body>
+    <div class="blur-box" id="blurBox">
+    </div>
     <div class="mainBox">
         <div class="dummyBox">
 
@@ -84,14 +86,24 @@
 
 
 
+
+                    <li>
+                        <a href="@Url.Action("userMessage","forMessage")">Message <span style="background-color:red; border-radius:100%;padding:2px 8px;color:white;margin-left:100px">@Session["totalMessage"]</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("homePage","forHomePage")">Logout</a>
+                    </li>
+
+
+
                 </ul>
 
                 <div class="mb-5">
-                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <h3 class="h6">Search</h3>
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
@@ -100,201 +112,169 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Dz Gameland</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
 
             </div>
         </nav>@*navbar content ends*@
-    <div class="pageContent">
-
-        @*Header part start*@
-        @*Form Box*@
-        <div class="addMovieBox" id="addMovieBox">
-            <button onclick="hide();"><i class="fa fa-close"></i></button>
-            <div class="addMovieForm">
-                @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
-                {
-                    <label> Movie Name</label>
-
-                    <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
-
-                    <label>Price</label>
-
-                    <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
-
-                    <label>Type</label>
-
-                    <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
-
-                    <label>Type</label>
-
-                    <input type="text" class="forForm" placeholder="Product Categories" name="productType">
-
-                    <label> choose Image</label>
-
-                    <input type="file" value="Choose a Image" name="SelectedImg">
-
-
-                    <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
-
-
-                }
-            </div>
-
-        </div>
-
-
-
-
-        @*Form Box ends*@
-        <div class="header">
-            <div class="searchBox">
-
-                @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
-                {
-                    <div class="searchbar">
-                        <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
-                        <button type="submit" class="searchbar__button">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </div>
-                }
-
-            </div>
-            <div class="messageBox">
-                <a href="@Url.Action("userMessage","forMessage")">
-                    <button type="button" class="icon-button">
-                        <span class="material-icons" style="font-size:30px; color:white; margin-top:5px;">mail</span>
-                        <span class="icon-button__badge">@Session["totalMessage"]</span>
-                    </button>
-                </a>
-            </div>
-            <div class="adminBox">
-                <button class="click" style="color: #696969; font-family:'Poppins', sans-serif; "><i class="fa fa-user" style="color:white ; font-size:25px;"></i> </button>
-
-                <div class="list">
-
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-user-circle-o" style="color:green ; font-size:30px; margin-right: 20px;"></i>profile</a></button>
-
-                    <button class="links" style="color: #696969; font-family:'Poppins', sans-serif;"><a href="#"><i class="fa fa-sign-out" style="color:darkorange ; font-size:25px; margin-right: 10px;"></i>Log out</a></button>
-
-                </div>
-                <script>
-
-                    let click = document.querySelector('.click');
-
-                    let list = document.querySelector('.list');
-
-                    click.addEventListener("click", () => {
-
-                        list.classList.toggle('newlist');
-
-                    });
-                </script>
-            </div>
-        </div>
-        @*header part ends*@
-
-        @foreach (var data in Model)
-        {
-            <div class="editMovieBox1" id="editMovieBox_@data.movieName">
-                <button id="editMovieBox_@data.movieName" onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
+        <div class="pageContent">
+            @*Form Box*@
+            <div class="addMovieBox" id="addMovieBox">
+                <button onclick="hide();"><i class="fa fa-close"></i></button>
                 <div class="addMovieForm">
-
-                    @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("saveData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
                     {
-                        <form action="saveData">
-                            <label> Movie Name</label>
+                        <label> Movie Name</label>
 
-                            <input type="text" class="forForm" placeholder="Movie Name" name="movieName" value="@data.movieName" />
+                        <input type="text" class="forForm" placeholder="Movie Name" name="movieName">
 
-                            <label>Price</label>
+                        <label>Price</label>
 
-                            <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice" Value="@data.moviePrice" />
+                        <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice">
 
-                            <label>Type</label>
+                        <label>Type</label>
 
-                            <input type="text" class="forForm" placeholder="Movie Type" name="movieType" value="@data.movieType"/>
+                        <input type="text" class="forForm" placeholder="Movie Type" name="movieType">
 
-                            <label>Type</label>
+                        <label>Type</label>
 
-                            <input type="text" class="forForm" placeholder="Product Categories" name="productType" value="@data.productType">
+                        <input type="text" class="forForm" placeholder="Product Categories" name="productType">
 
-                            <label> choose Image</label>
+                        <label> choose Image</label>
 
-                            <input type="file" value="Choose a Image" name="SelectedImg" >
+                        <input type="file" value="Choose a Image" name="SelectedImg">
 
 
-                            <input type="submit" value="Update" class="btn btn-warning" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+                        <input type="submit" value="Add +" class="btn btn-success" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
 
-                        </form>
+
                     }
-
                 </div>
+
             </div>
-        }
 
 
-        @*recent Purchase table starts*@
-        <div class="forTable">
-            <p>@Model.Count()</p>
-            <h1>Movies</h1>
-            <table class="table" border="1">
-                <caption> <button class="btn btn-success" onclick="show();" style="width:100px;">Add</button></caption>
-                <tr>
-                    <th rowspan="2" class="rowSpan">Movie Name</th>
-                    <th rowspan="2">Price</th>
-                    <th rowspan="2">Type</th>
-                    <th rowspan="2">Product Type</th>
-                    <th rowspan="2">Image</th>
-                    <th rowspan="2">Downloads</th>
-                    <th colspan="2">Action</th>
-                </tr>
-                <tr>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-                @foreach (var data in Model)
-                {
+
+
+            @*Form Box ends*@
+
+            @foreach (var data in Model)
+            {
+                <div class="editMovieBox1" id="editMovieBox_@data.movieName">
+                    <button id="editMovieBox_@data.movieName" onclick="hideEditBox(this.id);"><i class="fa fa-close"></i></button>
+                    <div class="addMovieForm">
+
+                        @using (Html.BeginForm("updateData", null, FormMethod.Post, new { @class = "", @enctype = "multipart/form-data" }))
+                        {
+                            <form action="saveData">
+                                <label> Movie Name</label>
+
+                                <input type="text" class="forForm" placeholder="Movie Name" name="movieName" value="@data.movieName" />
+
+                                <label>Price</label>
+
+                                <input type="text" class="forForm" placeholder="Movie Price" name="moviePrice" Value="@data.moviePrice" />
+
+                                <label>Type</label>
+
+                                <input type="text" class="forForm" placeholder="Movie Type" name="movieType" value="@data.movieType" />
+
+                                <label>Type</label>
+
+                                <input type="text" class="forForm" placeholder="Product Categories" name="productType" value="@data.productType">
+
+                                <label> choose Image</label>
+
+                                <input type="file" value="Choose a Image" name="SelectedImg">
+
+
+                                <input type="submit" value="Update" class="btn btn-warning" style="width: 100%; margin-top: 20px; height: 50px; font-size: 20px;">
+
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            }
+            <h1 class="heading">Movies</h1>
+            <div class="mainDiv">
+                <div class="totalMovies">
+                    <p>@Model.Count<span>Movies</span></p>
+                </div>
+                <div class="controller">
+                    <button class="gotoShop" onclick="show();" style="width:100px;">Add</button>
+                    <div class="searchBox">
+                        @using (Html.BeginForm("Search", "movieTable", FormMethod.Post))
+                        {
+                            <div class="searchbar">
+                                <input type="text" class="searchbar__input" name="name1" placeholder="Search Movies">
+                                <button type="submit" class="searchbar__button">
+                                    <i class="material-icons">search</i>
+                                </button>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="forTable">
+                <table class="table" border="1">
                     <tr>
-                        <td>@(data.movieName)</td>
-                        <td>@(data.moviePrice)</td>
-                        <td>@(data.movieType)</td>
-                        <td>@(data.productType)</td>
-                        <td><img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" height="100" width="50" /></td>
-                        <td>@(data.downloads)</td>
-                        <td><button id="@data.movieName" onclick="showEditBox(this.id);"><a @*href="@Url.Action("Edit", new {name=data.movieName})"*@><i class="material-icons" style="color:green;">edit</i></a></button></td>
-                        <td><button><a href="@Url.Action("Delete", new {name=data.movieName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
-
+                        <th rowspan="2" class="rowSpan" style="padding-top:30px;">Movie Name</th>
+                        <th rowspan="2" style="padding-top:30px;">Price</th>
+                        <th rowspan="2" style="padding-top:30px;">Type</th>
+                        <th rowspan="2" style="padding-top:30px;">Product Type</th>
+                        <th rowspan="2" style="padding-top:30px;">Image</th>
+                        <th colspan="2">Action</th>
                     </tr>
+                    <tr>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td style="padding-top:40px;">@(data.movieName)</td>
+                            <td style="padding-top:40px;">@(data.moviePrice)</td>
+                            <td style="padding-top:40px;">@(data.movieType)</td>
+                            <td style="padding-top:40px;">@(data.productType)</td>
+                            <td><img src="@(data.movieImg!=null?Url.Content(data.movieImg):"")" height="100" width="70" /></td>
+                            <td style="padding-top:40px;"><button id="@data.movieName" onclick="showEditBox(this.id);" style="background:none;border-style:none;"><a @*href="@Url.Action("Edit", new {name=data.movieName})"*@><i class="material-icons" style="color:green;">edit</i></a></button></td>
+                            <td style="padding-top:40px;"><button style="background:none;border-style:none;"><a href="@Url.Action("Delete", new {name=data.movieName})"><i class="material-icons" style="color:red;">delete</i></a></button></td>
+
+                        </tr>
 
 
-                }
-            </table>
-        </div>
+                    }
+                </table>
+            </div>
 
-        @*recent purchase table ends*@
+            @*recent purchase table ends*@
 
 
-    </div>@*pageContent*@
+        </div>@*pageContent*@
 
     </div>@*mainBox ends*@
     <script>
         function show() {
             document.getElementById("addMovieBox").style.visibility = "visible";
+            document.getElementById("blurBox").style.visibility = "visible";
         }
-        
+
         function hide() {
             document.getElementById("addMovieBox").style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
         }
-        function showEditBox(id)
-            {
-            document.getElementById("editMovieBox_"+id).style.visibility = "visible";
+        function showEditBox(id) {
+            document.getElementById("editMovieBox_" + id).style.visibility = "visible";
+            document.getElementById("blurBox").style.visibility = "visible";
         }
         function hideEditBox(id) {
             document.getElementById(id).style.visibility = "hidden";
+            document.getElementById("blurBox").style.visibility = "hidden";
         }
 
     </script>
