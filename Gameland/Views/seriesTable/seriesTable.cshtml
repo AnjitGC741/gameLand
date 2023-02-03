@@ -81,17 +81,23 @@
                     <li>
                         <a href="@Url.Action("calender","forMessage")">Calender</a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("userMessage","forMessage")">Message <span style="background-color:red; border-radius:100%;padding:2px 8px;color:white;margin-left:100px">@Session["totalMessage"]</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("homePage","forHomePage")">Logout</a>
+                    </li>
 
 
 
                 </ul>
 
                 <div class="mb-5">
-                    <h3 class="h6">Subscribe for newsletter</h3>
+                    <h3 class="h6">Search</h3>
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
@@ -100,7 +106,7 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Dz Gameland</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
